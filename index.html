@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> 🌸 </title>
+<title>رژیم نفس طلایی من 🌸</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -15,14 +15,15 @@
   .selectable-card.selected{border-color:#f472b6;background-color:#fdf2f8;box-shadow:0 0 20px rgba(244,114,182,.3)}
   .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:60;transition:all .4s;opacity:0;pointer-events:none}
   .toast.show{opacity:1;bottom:2.5rem}
-  .ai-msg{max-width:85%;border-radius:1rem;padding:.6rem .9rem;font-size:11px;line-height:1.8;white-space:pre-wrap}
+  .ai-msg{max-width:85%;border-radius:1rem;padding:.65rem .9rem;font-size:11px;line-height:1.9;white-space:pre-wrap}
   .msg-user{background:#f472b6;color:#fff;margin-inline-start:auto;border-bottom-left-radius:.25rem}
-  .msg-ai{background:#fdf2f8;border:1px solid #fbcfe8;color:#4a4a4a;border-bottom-right-radius:.25rem}
-  .recipe{background:#fdf2f8;border:1px dashed #f9a8d4;border-radius:.8rem;padding:.5rem .7rem;font-size:10.5px;color:#9d174d;line-height:1.9;margin-top:.5rem}
+  .msg-ai{background:#fdf2f8;border:1px solid #fbcfe8;border-bottom-right-radius:.25rem}
+  .recipe{background:#fff7fb;border:1px dashed #f9a8d4;border-radius:.9rem;padding:.7rem .9rem;font-size:11px;color:#9d174d;line-height:2.1;margin-top:.6rem}
+  .recipe b{color:#be185d}
   .dislike-chip{display:inline-flex;align-items:center;gap:.3rem;background:#fee2e2;color:#b91c1c;font-size:10px;font-weight:bold;padding:.2rem .6rem;border-radius:99px}
   .supp-card{background:rgba(255,255,255,.85);border:1px solid #e9d5ff;border-radius:1rem;padding:.75rem}
-  .loading-pulse{animation:pulse 1.2s infinite}@keyframes pulse{50%{opacity:.4}}
-  @media print{.no-print{display:none!important}body{background:#fff!important}}
+  .input-range{accent-color:#f472b6;width:100%}
+  @media print{.no-print{display:none!important}body{background:#fff!important}.recipe{border-style:solid}}
   ::-webkit-scrollbar{height:6px;width:6px}::-webkit-scrollbar-thumb{background:#f9a8d4;border-radius:99px}
 </style>
 </head>
@@ -30,9 +31,9 @@
 <div class="max-w-4xl mx-auto space-y-6">
 
   <header class="text-center no-print mb-4">
-    <div class="inline-flex p-4 rounded-full bg-pink-100 text-pink-500 mb-3 animate-pulse shadow-sm"><i class="fa-solid fa-wand-magic-sparkles fa-2x"></i></div>
+    <div class="inline-flex p-4 rounded-full bg-pink-100 text-pink-500 mb-3 animate-pulse shadow-sm"><i class="fa-solid fa-gem fa-2x"></i></div>
     <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-2">رژیم نفس طلایی من 🌸</h1>
-    <p class="text-pink-400 text-xs sm:text-sm">💕</p>
+    <p class="text-pink-400 text-xs sm:text-sm">با دستور پخت‌های قدم‌به‌قدم، ورزش دلخواه، وعده‌های تمرین و دستیار هوشمند 💕</p>
   </header>
 
   <!-- FORM -->
@@ -60,23 +61,24 @@
       <div>
         <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-bullseye"></i> ۳. هدف بدنی</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="goalContainer">
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white selected" onclick="selectGoal(this,'fatloss')"><h3 class="font-bold text-gray-800 text-xs">🔥 چربی‌سوزی + حفظ عضله</h3><p class="text-[11px] text-gray-400">کاهش چربی و سفت شدن.</p></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'hourglass')"><h3 class="font-bold text-gray-800 text-xs">💎 فرم‌دهی ساعت‌شنی</h3><p class="text-[11px] text-gray-400">برجسته‌سازی، کمر باریک.</p></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'health')"><h3 class="font-bold text-gray-800 text-xs">🍃 تثبیت و شادابی</h3><p class="text-[11px] text-gray-400">انرژی و شادابی پوست.</p></div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white selected" onclick="selectGoal(this,'fatloss')"><h3 class="font-bold text-gray-800 text-xs">🔥 چربی‌سوزی + حفظ عضله</h3></div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'hourglass')"><h3 class="font-bold text-gray-800 text-xs">💎 فرم‌دهی ساعت‌شنی</h3></div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'health')"><h3 class="font-bold text-gray-800 text-xs">🍃 تثبیت و شادابی</h3></div>
         </div>
       </div>
 
       <div>
-        <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-calendar-days"></i> ۴. ورزش‌ها</h2>
+        <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-calendar-days"></i> ۴. ورزش‌ها — روز، ساعت و مدت دلخواه</h2>
+        <p class="text-xs text-gray-400 mb-4">با اسلایدر، زمان شروع و مدت هر تمرین رو خودت انتخاب کن:</p>
         <div class="space-y-4" id="sportsWrap"></div>
       </div>
 
       <div>
         <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-ban"></i> ۵. غذاهایی که بدشون میاد</h2>
-        <input type="text" id="blacklist" placeholder="با کاما جدا کن — یا روی هر غذا 👎 بزن" class="w-full p-3 rounded-2xl border border-pink-200 text-xs">
+        <input type="text" id="blacklist" placeholder="با کاما جدا کن — یا روی هر غذا 👎 بزن تا یاد بگیره" class="w-full p-3 rounded-2xl border border-pink-200 text-xs">
       </div>
 
-      <button type="submit" class="w-full py-4 bg-gradient-to-r from-pink-400 via-rose-400 to-pink-500 text-white font-extrabold rounded-2xl shadow-lg flex items-center justify-center gap-2 text-sm"><i class="fa-solid fa-calculator"></i> ساخت برنامه هوشمند</button>
+      <button type="submit" class="w-full py-4 bg-gradient-to-r from-pink-400 via-rose-400 to-pink-500 text-white font-extrabold rounded-2xl shadow-lg flex items-center justify-center gap-2 text-sm"><i class="fa-solid fa-calculator"></i> ساخت برنامه‌ی طلایی</button>
     </form>
   </div>
 
@@ -85,7 +87,7 @@
     <div class="pastel-card p-6 bg-white border-2 border-pink-200">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-pink-100 pb-4 mb-4 gap-4">
         <div>
-          <h2 class="text-xl font-extrabold text-pink-600"><i class="fa-solid fa-heart"></i> برنامه‌ی هفتگی تو</h2>
+          <h2 class="text-xl font-extrabold text-pink-600"><i class="fa-solid fa-gem"></i> برنامه‌ی نفس طلایی تو</h2>
           <p id="todayDateText" class="text-xs text-pink-400 font-bold mt-1"></p>
         </div>
         <div class="flex flex-wrap gap-2 no-print">
@@ -93,52 +95,62 @@
           <button onclick="resetForm()" class="px-3 py-2 bg-gray-100 text-gray-600 font-bold text-xs rounded-xl">ویرایش داده‌ها</button>
         </div>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-        <div class="bg-pink-50 p-3 rounded-2xl"><span class="block text-[10px] text-pink-500 font-bold">کالری روزانه</span><span id="targetCalories" class="text-xl font-extrabold text-pink-600">--</span><span class="text-[10px] text-gray-400">kcal</span></div>
-        <div class="bg-rose-50 p-3 rounded-2xl"><span class="block text-[10px] text-rose-500 font-bold">پروتئین</span><span id="targetProtein" class="text-xl font-extrabold text-rose-600">--</span><span class="text-[10px] text-gray-400">گرم</span></div>
-        <div class="bg-amber-50 p-3 rounded-2xl"><span class="block text-[10px] text-amber-500 font-bold">کربوهیدرات</span><span id="targetCarbs" class="text-xl font-extrabold text-amber-600">--</span><span class="text-[10px] text-gray-400">گرم</span></div>
-        <div class="bg-purple-50 p-3 rounded-2xl"><span class="block text-[10px] text-purple-500 font-bold">چربی مفید</span><span id="targetFats" class="text-xl font-extrabold text-purple-600">--</span><span class="text-[10px] text-gray-400">گرم</span></div>
-      </div>
+
+      <!-- Macros: collapsible, de-emphasized -->
+      <details class="no-print">
+        <summary class="text-[11px] text-gray-400 font-bold cursor-pointer flex items-center gap-1.5"><i class="fa-solid fa-chart-simple"></i> جزئیات کالری و درشت‌مغذی‌ها (اختیاری)</summary>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mt-3">
+          <div class="bg-pink-50 p-3 rounded-2xl"><span class="block text-[10px] text-pink-500 font-bold">کالری روزانه</span><span id="targetCalories" class="text-lg font-extrabold text-pink-600">--</span></div>
+          <div class="bg-rose-50 p-3 rounded-2xl"><span class="block text-[10px] text-rose-500 font-bold">پروتئین</span><span id="targetProtein" class="text-lg font-extrabold text-rose-600">--</span></div>
+          <div class="bg-amber-50 p-3 rounded-2xl"><span class="block text-[10px] text-amber-500 font-bold">کربوهیدرات</span><span id="targetCarbs" class="text-lg font-extrabold text-amber-600">--</span></div>
+          <div class="bg-purple-50 p-3 rounded-2xl"><span class="block text-[10px] text-purple-500 font-bold">چربی مفید</span><span id="targetFats" class="text-lg font-extrabold text-purple-600">--</span></div>
+        </div>
+      </details>
+      <p id="macroLine" class="text-[10px] text-gray-400 mt-2"></p>
     </div>
 
     <div id="dislikesPanel" class="pastel-card p-4 bg-white border border-red-100 hidden">
-      <h3 class="text-xs font-extrabold text-red-500 mb-2"><i class="fa-solid fa-brain"></i> سلیقه‌ی یادگرفته‌شده — این‌ها دیگه پیشنهاد نمی‌شن <span class="font-normal text-gray-400">(✕ = پشیمونی)</span></h3>
+      <h3 class="text-xs font-extrabold text-red-500 mb-2"><i class="fa-solid fa-brain"></i> اپ یاد گرفته دیگه این‌ها رو پیشنهاد نده <span class="font-normal text-gray-400">(✕ = پشیمونی)</span></h3>
       <div id="dislikesChips" class="flex flex-wrap gap-1.5"></div>
     </div>
 
     <div class="flex gap-2 overflow-x-auto pb-1 no-print" id="dayTabs"></div>
-    <div id="workoutBadge" class="p-3.5 bg-pink-100/80 border border-pink-200 rounded-2xl text-xs font-bold text-pink-700 flex flex-wrap items-center justify-between gap-2"></div>
+    <div id="workoutBadge" class="p-3.5 bg-pink-100/80 border border-pink-200 rounded-2xl text-xs font-bold text-pink-700"></div>
 
-    <!-- SUPPLEMENTS -->
-    <div class="pastel-card p-5 bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 border border-purple-200">
-      <h3 class="font-extrabold text-purple-700 text-sm mb-1"><i class="fa-solid fa-capsules"></i> مکمل‌ها و ویتامین‌های هوشمند</h3>
-      <p class="text-[10px] text-gray-400 mb-3">هر مکمل با توضیح اینکه به چی کمک می‌کنه و ملاحظات رژیمی‌اش — مصرف دقیق رو با پزشک چک کن.</p>
-      <div id="supplementsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-gray-700"></div>
+    <!-- Pre-workout tips -->
+    <div id="preWorkoutCard" class="pastel-card p-5 bg-gradient-to-r from-amber-50 to-pink-50 border border-amber-200 hidden">
+      <h3 class="font-extrabold text-amber-700 text-sm mb-2"><i class="fa-solid fa-bolt"></i> نکات قبل از تمرین امروز</h3>
+      <div id="preWorkoutTips" class="space-y-2 text-xs text-gray-700"></div>
     </div>
 
-    <!-- MEALS -->
     <div class="space-y-3">
-      <h3 class="text-sm font-extrabold text-pink-600"><i class="fa-solid fa-utensils"></i> وعده‌های امروز — هر روز متفاوت از دیروز! 🍳</h3>
+      <h3 class="text-sm font-extrabold text-pink-600"><i class="fa-solid fa-utensils"></i> وعده‌های امروز — با دستور پخت کامل 🍳</h3>
       <div id="mealsContainer" class="space-y-3"></div>
     </div>
 
-    <!-- AI ASSISTANT -->
+    <!-- Supplements -->
+    <div class="pastel-card p-5 bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 border border-purple-200">
+      <h3 class="font-extrabold text-purple-700 text-sm mb-1"><i class="fa-solid fa-capsules"></i> مکمل‌ها و ویتامین‌ها</h3>
+      <p class="text-[10px] text-gray-400 mb-3">هر مکمل به چه بخشی کمک می‌کنه + ملاحظات رژیمی. مصرف‌ها را با پزشک چک کن.</p>
+      <div id="supplementsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-gray-700"></div>
+    </div>
+
+    <!-- AI Assistant -->
     <div class="pastel-card p-5 bg-white border border-pink-200">
       <div class="flex items-center justify-between mb-2">
-        <h3 class="font-extrabold text-pink-600 text-sm"><i class="fa-solid fa-robot"></i> دستیار هوشمند (Multi-AI)</h3>
+        <h3 class="font-extrabold text-pink-600 text-sm"><i class="fa-solid fa-robot"></i> دستیار طلایی من</h3>
         <button onclick="openAiSettings()" class="px-2.5 py-1.5 bg-purple-100 text-purple-700 font-bold text-[10px] rounded-lg">🔑 اتصال API</button>
       </div>
       <p id="aiStatusLine" class="text-[11px] mb-3"></p>
-      <div id="aiChat" class="max-h-80 overflow-y-auto space-y-2 bg-pink-50/40 rounded-2xl p-3 mb-3 border border-pink-100">
-        <div class="ai-msg msg-ai">سلام پرنسس 🌸 بپرس یا از دکمه «✨ ترکیب AI» روی هر وعده استفاده کن!</div>
-      </div>
+      <div id="aiChat" class="h-72 overflow-y-auto space-y-2 bg-pink-50/40 rounded-2xl p-3 mb-2 border border-pink-100 flex flex-col"></div>
+      <div class="flex flex-wrap gap-1.5 mb-2" id="aiChips"></div>
       <div class="flex gap-2">
-        <input type="text" id="aiPrompt" placeholder="مثلاً: شام سبک مالزیایی پیشنهاد بده..." class="flex-grow p-2.5 rounded-xl border border-pink-200 text-xs" onkeydown="if(event.key==='Enter')askAI()">
+        <input type="text" id="aiPrompt" placeholder="هر چی دوست داری بپرس... مثلاً: شام امشب سنگین نباشه" class="flex-grow p-2.5 rounded-xl border border-pink-200 text-xs" onkeydown="if(event.key==='Enter')askAI()">
         <button id="aiSendBtn" onclick="askAI()" class="px-4 py-2.5 bg-pink-500 text-white font-bold text-xs rounded-xl">➤</button>
       </div>
     </div>
 
-    <div class="text-center py-6 text-xs text-pink-400">طراحی شده با تمام وجود برای پرنسس قشنگ من 🌸💖</div>
+    <div class="text-center py-6 text-xs text-pink-400">رژیم نفس طلایی من — ساخته شده با عشق 🌸💖</div>
   </div>
 </div>
 
@@ -146,7 +158,7 @@
 <div id="aiModal" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4 no-print">
   <div class="pastel-card bg-white p-6 w-full max-w-md space-y-4 max-h-[90vh] overflow-y-auto">
     <div class="flex items-center justify-between"><h3 class="font-extrabold text-pink-600 text-sm">🔑 اتصال به هوش مصنوعی</h3><button onclick="closeAiSettings()" class="text-gray-400">✕</button></div>
-    <p class="text-[11px] text-gray-400">کلید فقط در مرورگر خودت ذخیره می‌شه و جایی ارسال نمی‌شه.</p>
+    <p class="text-[11px] text-gray-400">کلید فقط در مرورگر خودت ذخیره می‌شه و به هیچ سروری نمی‌ره.</p>
     <select id="aiProvider" onchange="onProviderChange()" class="w-full p-2.5 rounded-xl border border-pink-200 text-xs font-bold"></select>
     <select id="aiModel" class="w-full p-2.5 rounded-xl border border-pink-200 text-xs font-bold"></select>
     <input type="password" id="aiKey" placeholder="sk-..." dir="ltr" class="w-full p-2.5 rounded-xl border border-pink-200 text-xs">
@@ -167,26 +179,22 @@
 let selectedFat='20-22',selectedGoal='fatloss',currentDay='شنبه';
 let aiHistory=[],planContext=null,dayMenus={},currentIdx={};
 const daysOfWeek=['شنبه','یکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنج‌شنبه','جمعه'];
-const mealKeys=['breakfast','lunch','snack','dinner'];
-const mealTitles={breakfast:'صبحانه',lunch:'ناهار',snack:'میان‌وعده',dinner:'شام'};
-const mealIcons={breakfast:'fa-mug-saucer',lunch:'fa-drumstick-bite',snack:'fa-apple-whole',dinner:'fa-utensils'};
+const mealKeys=['breakfast','lunch','snack','preworkout','postworkout','dinner'];
+const mealTitles={breakfast:'صبحانه',lunch:'ناهار',snack:'میان‌وعده',preworkout:'⚡ قبل از تمرین',postworkout:'💪 بعد از تمرین',dinner:'شام'};
+const mealIcons={breakfast:'fa-mug-saucer',lunch:'fa-drumstick-bite',snack:'fa-apple-whole',preworkout:'fa-bolt',postworkout:'fa-dumbbell',dinner:'fa-utensils'};
 const sportsList=[
-  {id:'pilates',name:'پیلاتس / باشگاه',icon:'fa-wand-magic-sparkles',days:['شنبه','دوشنبه','چهارشنبه'],times:[['17:00','عصر (۱۷:۰۰)'],['10:00','صبح (۱۰:۰۰)']]},
-  {id:'hiking',name:'هایکینگ',icon:'fa-mountain',days:['پنج‌شنبه','جمعه'],times:[['08:00','صبح زود (۰۸:۰۰)'],['16:00','عصر (۱۶:۰۰)']]},
-  {id:'walk',name:'پیاده‌روی سریع',icon:'fa-person-walking',days:['یکشنبه','سه‌شنبه'],times:[['18:30','غروب (۱۸:۳۰)'],['09:00','صبح (۰۹:۰۰)']]}
+  {id:'pilates',name:'پیلاتس / باشگاه',icon:'fa-wand-magic-sparkles',days:['شنبه','دوشنبه','چهارشنبه'],defStart:17,defDur:60},
+  {id:'hiking',name:'هایکینگ',icon:'fa-mountain',days:['پنج‌شنبه','جمعه'],defStart:8,defDur:90},
+  {id:'walk',name:'پیاده‌روی سریع',icon:'fa-person-walking',days:['یکشنبه','سه‌شنبه'],defStart:18,defDur:45}
 ];
 
 /* ============ DISLIKE MEMORY ============ */
-function getDislikes(){try{return JSON.parse(localStorage.getItem('princess_dislikes'))||[]}catch(e){return[]}}
+function getDislikes(){try{return JSON.parse(localStorage.getItem('golden_dislikes'))||[]}catch(e){return[]}}
 function addDislike(item){
-  let d=getDislikes();if(!d.includes(item)){d.push(item);localStorage.setItem('princess_dislikes',JSON.stringify(d));}
-  toast(`«${item}» یاد گرفتم — دیگه پیشنهاد نمی‌دم 👎🌸`);
-  buildWeek();renderCurrent();
+  let d=getDislikes();if(!d.includes(item)){d.push(item);localStorage.setItem('golden_dislikes',JSON.stringify(d));}
+  toast(`«${item}» یاد گرفتم — دیگه پیشنهاد نمی‌دم 👎🌸`);buildWeek();renderCurrent();
 }
-function removeDislike(item){
-  localStorage.setItem('princess_dislikes',JSON.stringify(getDislikes().filter(x=>x!==item)));
-  buildWeek();renderCurrent();
-}
+function removeDislike(item){localStorage.setItem('golden_dislikes',JSON.stringify(getDislikes().filter(x=>x!==item)));buildWeek();renderCurrent();}
 function renderDislikes(){
   const d=getDislikes();document.getElementById('dislikesPanel').classList.toggle('hidden',d.length===0);
   document.getElementById('dislikesChips').innerHTML=d.map(x=>`<span class="dislike-chip">${x} <button onclick="removeDislike('${x}')" class="font-black">✕</button></span>`).join('');
@@ -197,72 +205,94 @@ function allBlacklist(){
 }
 function ok(text){return !allBlacklist().some(b=>b&&text.includes(b));}
 
-/* ============ BIG FOOD DATABASE (MALAYSIA) ============ */
+/* ============ FOOD DATABASE — detailed matching recipes ============ */
 const mealsDB={
 breakfast:[
- {name:'اوملت مرغ و اسفناج با پنیر',items:['تخم‌مرغ','مرغ','اسفناج','پنیر'],cal:320,protein:26,recipe:'۲ تخم‌مرغ + ۵۰g مرغ پخته ریش‌ریش را با اسفناج در تابه نچسب ۵ دقیقه بپز؛ پنیر کم‌چرب داخلش بگذار و تا کن. با نان سبوس‌دار یا تنهایی بخور.'},
- {name:'اسموتی انبه، ماست یونانی و جو دوسر',items:['انبه','ماست یونانی','جو دوسر'],cal:300,protein:20,recipe:'نصف انبه رسیده + ۱۵۰g ماست یونانی + ۲ قاشق جو دوسر را بلندر کن. انبه مالزی ارزون و شیرینه — بدون شکر اضافه!'},
- {name:'چیا پودینگ نارگیل و موز',items:['دانه چیا','شیر نارگیل','موز'],cal:280,protein:12,recipe:'شب قبل ۲ قاشق چیا را با ۱۵۰ml شیر نارگیل در یخچال بذار؛ صبح موز حلقه‌شده و کمی دارچین روش. صفر پخت!'},
- {name:'جو دوسر گرم با موز و کره بادام‌زمینی',items:['جو دوسر','موز','کره بادام‌زمینی','شیر'],cal:310,protein:15,recipe:'نصف لیوان جو دوسر را با شیر ۳ دقیقه بجوشون؛ موز و ۱ قاشق کره بادام‌زمینی روش. سیرکننده تا ظهر.'},
- {name:'املت چای‌سیم (سبزیجات چینی) با قارچ',items:['تخم‌مرغ','قارچ','کلم','هویج'],cal:300,protein:20,recipe:'سبزیجات رنده‌شده را ۳ دقیقه تفت بده، ۲ تخم‌مرغ زده‌شده اضافه کن؛ با سس سویا کم‌نمک و فلفل سیاه مزه بده.'},
- {name:'نان و پنیر با پاپایا و گردو',items:['نان سبوس‌دار','پنیر','پاپایا','گردو'],cal:290,protein:16,recipe:'۲ کف دست نان سبوس‌دار + پنیر کم‌چرب + قاچ پاپایا + ۳ عدد گردو. صبحانه ۳ دقیقه‌ای!'},
- {name:'تخم‌مرغ آبپز با آووکادو روی نان',items:['تخم‌مرغ','آووکادو','نان سبوس‌دار'],cal:320,protein:18,recipe:'نصف آووکادو له‌شده را روی نان توستر بمال، تخم‌مرغ آبپز روش خرد کن، نمک و فلفل بپاش.'},
- {name:'پنکیک جو دوسر و موز (بدون شکر)',items:['جو دوسر','موز','تخم‌مرغ'],cal:290,protein:14,recipe:'۱ موز + ۱ تخم‌مرغ + ۳ قاشق جو دوسر را بلندر کن و مثل پنکیک با اسپری روغن بپز. با کمی عسل طبیعی!'},
- {name:'ماست یونانی با گرانولا و رامبوتان',items:['ماست یونانی','گرانولا','رامبوتان'],cal:280,protein:17,recipe:'۱۵۰g ماست یونانی + ۲ قاشق گرانولای کم‌شکر + ۵ رامبوتان محلی. سریع و خوشمزه.'}
+ {name:'اوملت مرغ و اسفناج با پنیر',items:['تخم‌مرغ','مرغ','اسفناج','پنیر'],cal:320,protein:26,
+  recipe:'<b>مواد:</b> ۲ عدد تخم‌مرغ، ۵۰ گرم سینه‌ی مرغ پخته یا گریل‌شده، یک مشت اسفناج تازه یا یخ‌زده، ۱ قاشق پنیر کم‌چرب رنده‌شده.<br><b>مرحله ۱:</b> تابه‌ی نچسب را روی حرارت متوسط بگذار؛ اگر نچسب نیست فقط نصف قاشق چای‌خوری روغن بریز.<br><b>مرحله ۲:</b> اسفناج را ۲ دقیقه در تابه بنداز تا نرم شود.<br><b>مرحله ۳:</b> تخم‌مرغ‌ها را در کاسه بزن، نمک و فلفل بزن و روی اسفناج بریز؛ صبر کن لبه‌ها بسته شود (۲-۳ دقیقه).<br><b>مرحله ۴:</b> مرغ خردشده و پنیر را روی نصف املت بگذار، املت را تا کن و ۱ دقیقه دیگر با درب بسته بپز تا پنیر کش بیاید. نوش جان!'},
+ {name:'جو دوسر گرم با موز و کره بادام‌زمینی',items:['جو دوسر','موز','کره بادام‌زمینی','شیر'],cal:310,protein:15,
+  recipe:'<b>مواد:</b> نصف لیوان جو دوسر، ۱ لیوان شیر کم‌چرب (یا آب + شیر)، ۱ عدد موز، ۱ قاشق چای‌خوری کره بادام‌زمینی، دارچین.<br><b>مرحله ۱:</b> جو دوسر و شیر را در قابلمه کوچک بریز و روی حرارت متوسط هم بزن.<br><b>مرحله ۲:</b> بعد از ۳-۴ دقیقه که غلیظ شد از روی حرارت بردار.<br><b>مرحله ۳:</b> موز حلقه‌شده و کره بادام‌زمینی روش بگذار و دارچین بپاش. اگر شیرین دوست داری نصف قاشق عسل اضافه کن — همین!'},
+ {name:'تخم‌مرغ آبپز با آووکادو روی نان توستر',items:['تخم‌مرغ','آووکادو','نان سبوس‌دار'],cal:320,protein:18,
+  recipe:'<b>مواد:</b> ۲ تخم‌مرغ، نصف آووکادو، ۱-۲ کف دست نان سبوس‌دار، نمک، فلفل سیاه، آبلیمو.<br><b>مرحله ۱:</b> تخم‌مرغ‌ها را در آب سرد بگذار؛ از جوش آمدن ۸ دقیقه صبر کن، بعد آب سرد روش کن و پوست بکن.<br><b>مرحله ۲:</b> نان را توستر کن.<br><b>مرحله ۳:</b> آووکادو را با چنگال له کن، چند قطره آبلیمو و نمک بزن و روی نان بمال.<br><b>مرحله ۴:</b> تخم‌مرغ‌ها را برش بزن، روی نان بچین و فلفل سیاه بپاش. آماده!'},
+ {name:'اسموتی ماست یونانی، موز و جو دوسر',items:['ماست یونانی','موز','جو دوسر','شیر'],cal:300,protein:20,
+  recipe:'<b>مواد:</b> ۱۵۰ گرم ماست یونانی، ۱ موز، ۲ قاشق جو دوسر، نصف لیوان شیر، یخ (اختیاری).<br><b>مرحله ۱:</b> همه مواد را در بلندر بریز.<br><b>مرحله ۲:</b> ۳۰ تا ۴۵ ثانیه بلندر کن تا کاملاً یکدست شود.<br><b>مرحله ۳:</b> در لیوان بریز و با چند تکه موز تزئین کن. اگر شیرین‌تر خواستی ۱ خرما اضافه کن — قند طبیعی!'},
+ {name:'نان و پنیر با گوجه خیار و گردو',items:['نان سبوس‌دار','پنیر','گوجه','خیار','گردو'],cal:290,protein:16,
+  recipe:'<b>مواد:</b> ۲ کف دست نان سبوس‌دار، ۳۰ گرم پنیر کم‌چرب، ۱ گوجه و ۱ خیار خردشده، ۳ عدد گردو.<br><b>مرحله ۱:</b> صبحانه‌ی بدون پخت! نان را بچین.<br><b>مرحله ۲:</b> پنیر را روی نان بگذار، سبزیجات و گردو کنارش.<br><b>مرحله ۳:</b> یک لیوان چای کم‌رنگ یا قهوه شیر کنارش؛ اگر شیرین می‌خواهی ۱ عدد خرما بهتر از قند و شکره.'}
 ],
 lunch:[
- {name:'فیله مرغ گریل با برنج و سالاد آچار',items:['مرغ','برنج','خیار','هویج'],cal:430,protein:38,recipe:'فیله مرغ را با زردچوبه، فلفل و لیمو ۱۰ دقیقه گریل کن. با ۵-۶ قاشق برنج و سالاد آچار مالزیایی (خیار، هویج، سرکه) بخور.'},
- {name:'ماهی گریل (Ikan Bakar) با سبزی بخارپز',items:['ماهی','لیموترش','سبزیجات'],cal:390,protein:36,recipe:'فیله ماهی تازه (کریل، تنگیری یا سالیمون) را با زردچوبه و لیموترش ماریینه کن و ۱۲ دقیقه در فر/ایرفرایر بپز. امگا۳ عالی!'},
- {name:'استرای‌فری مرغ با سبزیجات استوایی',items:['مرغ','کلم','فلفل دلمه','برنج قهوه‌ای'],cal:420,protein:35,recipe:'نواری مرغ را با سس سویا و سیر تفت بده، کلم و دلمه اضافه کن. با کمی برنج قهوه‌ای — بدون روغن اضافه.'},
- {name:'سالاد تن ماهی با ذرت و تخم‌مرغ',items:['تن ماهی','ذرت','تخم‌مرغ','کاهو'],cal:360,protein:32,recipe:'تن در آب + ذرت + تخم‌مرغ آبپز + کاهو با ماست و آبلیمو (به‌جای مایونز). ۵ دقیقه‌ای!'},
- {name:'میگو گریل با سبزیجات و برنج',items:['میگو','برنج','سبزیجات'],cal:400,protein:34,recipe:'میگوی تازه را با سیر و لیموترش ۵ دقیقه گریل کن؛ با برنج کم و سبزیجات بخارپز سرو کن. میگوی مالزی تازه و ارزونه!'},
- {name:'توفو و مرغ با برنج و سوپ سبزی',items:['توفو','مرغ','برنج','سبزیجات'],cal:410,protein:36,recipe:'توفوی مکعبی و مرغ را با سس سویا تفت بده؛ با ۵ قاشق برنج و یه کاسه سوپ سبزی سرو کن.'},
- {name:'خوراک عدس و مرغ با برنج (حس خونه)',items:['عدس','مرغ','برنج','گوجه'],cal:440,protein:32,recipe:'عدس + مرغ + گوجه رنده‌شده + زردچوبه را ۲۵ دقیقه بجوشون. با برنج کم — یاد خونه می‌ندازت 🏠'},
- {name:'رول مرغ و سبزیجات با نان تورتیا',items:['مرغ','تورتیا','کاهو','آووکادو'],cal:400,protein:30,recipe:'مرغ گریل نوار خردشده + کاهو + آووکادو را در تورتیا بپیچ. ناهار مدرسه/دانشگاه عالی!'},
- {name:'سوپ تایلندی سبک مرغ (توم یام رژیمی)',items:['مرغ','قارچ','لیموترش','فلفل'],cal:350,protein:32,recipe:'عصاره مرغ + لیموترش + برگ لیمو + قارچ + مرغ را ۱۵ دقیقه بجوشون؛ شیر نارگیل کم اضافه کن. کم‌کالری و فوق‌العاده!'}
+ {name:'فیله مرغ گریل با برنج و سالاد شیرازی',items:['مرغ','برنج','گوجه','خیار'],cal:430,protein:38,
+  recipe:'<b>مواد:</b> ۱۵۰ گرم فیله مرغ، ۶ قاشق برنج پخته، ۱ گوجه + ۱ خیار + پیاز خردشده، آبلیمو، روغن زیتون.<br><b>مرحله ۱:</b> فیله‌ها را با ماست کم‌چرب + پیاز رنده + زردچوبه + فلفل ۳۰ دقیقه ماریینه کن (صبح آماده کنی عالیه).<br><b>مرحله ۲:</b> تابه یا گریل را داغ کن، مرغ‌ها را ۴-۵ دقیقه هر طرف بپز تا طلایی شوند.<br><b>مرحله ۳:</b> سالاد شیرازی را با آبلیمو و یک قاشق چای‌خوری روغن زیتون آماده کن.<br><b>مرحله ۴:</b> برنج را در قالب یا کفگیر فشرده سرو کن که حجمش قابل کنترل باشه. مرغ داغ، سالاد سرد — عالی!'},
+ {name:'ماهی گریل با سبزیجات بخارپز',items:['ماهی','لیموترش','سبزیجات'],cal:390,protein:36,
+  recipe:'<b>مواد:</b> ۱۵۰ گرم فیله ماهی تازه (هر ماهی کم‌چرب)، لیموترش، زردچوبه، فلفل، سبزیجات مخلوط (هویج، بروکلی، لوبیا سبز).<br><b>مرحله ۱:</b> ماهی را با آب‌نیم‌لیمو + زردچوبه + فلفل ۱۵ دقیقه ماریینه کن.<br><b>مرحله ۲:</b> سبزیجات را در قابلمه با ۲ قاشق آب و درب بسته، ۵ دقیقه بخارپز کن تا ترد اما سبز بماند.<br><b>مرحله ۳:</b> ماهی را در فر یا ایرفرایر ۱۲ دقیقه با دمای ۲۰۰ درجه بپز (یا در تابه داغ ۴ دقیقه هر طرف).<br><b>مرحله ۴:</b> موقع سرو آب لیموترش تازه روی ماهی بچکان. هیچ سس سنگینی لازم نیست!'},
+ {name:'استرای‌فری مرغ با سبزیجات و برنج قهوه‌ای',items:['مرغ','کلم','فلفل دلمه','برنج قهوه‌ای'],cal:420,protein:35,
+  recipe:'<b>مواد:</b> ۱۲۰ گرم سینه مرغ نواری، کلم + فلفل دلمه + هویج (در کل ۲ لیوان)، ۱ قاشق سس سویا کم‌نمک، سیر، ۵ قاشق برنج قهوه‌ای.<br><b>مرحله ۱:</b> تابه را کاملاً داغ کن؛ ۱ قاشق چای‌خوری روغن بریز.<br><b>مرحله ۲:</b> سیر خردشده ۳۰ ثانیه، بعد مرغ‌ها را ۵ دقیقه تفت بده تا رنگ بگیرند.<br><b>مرحله ۳:</b> سبزیجات را اضافه کن و ۴ دقیقه با حرارت بالا تفت بده — هم بزن که نسوزد.<br><b>مرحله ۴:</b> سس سویا و کمی فلفل سیاه اضافه کن، ۱ دقیقه دیگر و خاموش کن. با برنج گرم سرو کن.'},
+ {name:'سالاد تن ماهی با ذرت و تخم‌مرغ',items:['تن ماهی','ذرت','تخم‌مرغ','کاهو'],cal:360,protein:32,
+  recipe:'<b>مواد:</b> ۱ قوطی تن ماهی در آب، ۳ قاشق ذرت، ۲ تخم‌مرغ آبپز، کاهو + خیار + گوجه، ماست کم‌چرب، آبلیمو.<br><b>مرحله ۱:</b> تن ماهی را کاملاً آبکش کن تا روغن/آبش برود.<br><b>مرحله ۲:</b> سبزیجات را خرد کن و در کاسه بزرگ بریز.<br><b>مرحله ۳:</b> سس را با ۲ قاشق ماست + آبلیمو + نمک + فلفل درست کن (بدون مایونز!).<br><b>مرحله ۴:</b> همه را مخلوط کن، تخم‌مرغ‌های چهارقسم‌شده روش. ۵ دقیقه‌ای آماده — برای ناهار بیرون از خانه هم فوق‌العاده‌ست.'},
+ {name:'خوراک عدس و مرغ با برنج',items:['عدس','مرغ','گوجه','برنج'],cal:440,protein:32,
+  recipe:'<b>مواد:</b> نصف لیوان عدس، ۱۰۰ گرم مرغ تکه‌شده، ۱ گوجه رنده‌شده، پیاز کوچک، زردچوبه، لیموترش.<br><b>مرحله ۱:</b> پیاز را با ۱ قاشق روغن طلایی کن، زردچوبه اضافه کن.<br><b>مرحله ۲:</b> گوجه رنده و مرغ را اضافه کن، ۵ دقیقه تفت بده.<br><b>مرحله ۳:</b> عدس شسته‌شده + ۲ لیوان آب بریز، درب بگذار و روی حرارت ملایم ۳۰-۳۵ دقیقه بجوش تا عدس کاملاً نرم شود.<br><b>مرحله ۴:</b> نمک و آب‌لیمو اضافه کن و با ۴-۵ قاشق برنج بخور. غذای خونه‌ای و دلچسب!'}
 ],
 snack:[
- {name:'ماست یونانی با انبه و بادام',items:['ماست یونانی','انبه','بادام'],cal:180,protein:13,recipe:'۱۵۰g ماست یونانی + انبه خردشده + ۵ بادام. ساده و عالی.'},
- {name:'تخم‌مرغ آبپز با خیار و سس سویا',items:['تخم‌مرغ','خیار'],cal:150,protein:12,recipe:'۲ تخم‌مرغ آبپز + خیار حلقه‌شده + کمی سس سویا. پروتئین سریع.'},
- {name:'اسموتی پیتایا و شیر',items:['پیتایا','شیر کم‌چرب'],cal:160,protein:9,recipe:'نصف پیتایای صورتی + ۱۵۰ml شیر را بلندر کن. قشنگ و خوشمزه 💗'},
- {name:'موز با کره بادام‌زمینی',items:['موز','کره بادام‌زمینی'],cal:190,protein:6,recipe:'۱ موز + ۱ قاشق چای‌خوری کره بادام‌زمینی طبیعی. انرژی قبل ورزش!'},
- {name:'ماست یونانی با رامبوتان یا لانگسات',items:['ماست یونانی','رامبوتان'],cal:170,protein:12,recipe:'ماست + ۵-۶ عدد رامبوتان/لانگسات محلی. شیرینی طبیعی!'},
- {name:'شیک پروتئین وی با موز',items:['پودر پروتئین','موز','شیر'],cal:210,protein:24,recipe:'۱ اسکوپ وی + ۱ موز + شیر را بلندر کن. بعد از تمرین بهترین گزینه.'},
- {name:'مغزهای مخلوط با چای سبز',items:['بادام','گردو','چای سبز'],cal:180,protein:6,recipe:'یک مشت کوچک (۱۰ عدد) مغز خام + چای سبز. آنتی‌اکسیدان و چربی مفید.'},
- {name:'جو دوسر و ماست لیوانی',items:['جو دوسر','ماست یونانی','عسل'],cal:190,protein:12,recipe:'۲ قاشق جو دوسر + ماست یونانی + ۱ قاشق چای‌خوری عسل، لایه‌لایه در لیوان. قشنگ و سیرکننده.'}
+ {name:'ماست یونانی با میوه فصل و بادام',items:['ماست یونانی','میوه','بادام'],cal:180,protein:13,
+  recipe:'۱۵۰ گرم ماست یونانی در کاسه بریز؛ هر میوه‌ای که دوست داری (سیب، موز، پرتقال، انبه...) خردش کن روش، ۵-۶ عدد بادام خام اضافه کن. اگر دوست نداری همون ماست ساده + دارچین هم عالیه.'},
+ {name:'تخم‌مرغ آبپز با خیار',items:['تخم‌مرغ','خیار'],cal:150,protein:12,
+  recipe:'۲ تخم‌مرغ آبپز (از جوش ۸ دقیقه) + ۱ خیار حلقه‌شده + کمی نمک و فلفل. پروتئین سریع بین کلاس یا قبل خرید از سوپرمارکت.'},
+ {name:'شیک پروتئین وی با موز',items:['پودر پروتئین','موز','شیر'],cal:210,protein:24,
+  recipe:'۱ اسکوپ پودر پروتئین + ۱ موز + ۲۵۰ میلی‌لیتر شیر کم‌چرب را در شیکر بریز و ۲۰ ثانیه تکان بده یا بلندر کن. بعد از ورزش بهترین زمانشه.'},
+ {name:'مغزهای مخلوط با چای سبز',items:['بادام','گردو','چای سبز'],cal:180,protein:6,
+  recipe:'یک مشت کوچک (حدود ۱۰ عدد) مغز بادام و گردو خام + ۱ لیوان چای سبز دم‌کشیده. مراقب باش بیشتر از یک مشت نخوری — مغزها سالم‌اند ولی پرکالری!'},
+ {name:'جو دوسر و ماست لیوانی',items:['جو دوسر','ماست یونانی','عسل'],cal:190,protein:12,
+  recipe:'در یک لیوان شیشه‌ای لایه‌لایه بریز: ۲ قاشق جو دوسر، ۳ قاشق ماست یونانی، ۱ قاشق چای‌خوری عسل، بعد یک لایه دیگر جو و ماست. بذار ۱۰ دقیقه بماند تا جو نرم شود.'}
+],
+preworkout:[
+ {name:'۱-۲ خرما + یک لیوان آب',items:['خرما'],cal:110,protein:1,
+  recipe:'۳۰ تا ۴۵ دقیقه قبل از تمرین ۱-۲ عدد خرما با یک لیوان آب بخور: انرژی سریع می‌دهد بدون سنگینی معده.'},
+ {name:'نصف موز + چند قاشق ماست',items:['موز','ماست یونانی'],cal:120,protein:6,
+  recipe:'اگر تمرین سنگین داری (باشگاه یا هایکینگ طولانی): نصف موز + ۲-۳ قاشق ماست یونانی، ۴۵ دقیقه قبل. کربوهیدراتش سوخت می‌دهد و پروتئینش از شکستن عضله جلوگیری می‌کند.'},
+ {name:'چای سبز یا قهوه شیرین (اختیاری)',items:['چای سبز'],cal:30,protein:0,
+  recipe:'اگر انرژی کم داری، یک فنجان چای سبز یا نصف لیوان قهوه‌ی کم‌شیر ۳۰ دقیقه قبل، تمرین را قوی‌تر می‌کند. زیاده‌روی نکن که ضربان بالا نره!'}
+],
+postworkout:[
+ {name:'شیک وی + کراتین + موز',items:['پودر پروتئین','کراتین','موز','شیر'],cal:250,protein:27,
+  recipe:'تا یک ساعت بعد از تمرین: ۱ اسکوپ پودر پروتئین + ۵ گرم کراتین + ۱ موز + ۲۵۰ میلی‌لیتر شیر را در شیکر بریز و خوب تکان بده. این وعده مهم‌ترین وعده‌ی روزِ تمرین توست — عضله‌ها الان گرسنه‌اند!'},
+ {name:'تخم‌مرغ آبپز + نان سبوس‌دار + میوه',items:['تخم‌مرغ','نان سبوس‌دار','میوه'],cal:260,protein:18,
+  recipe:'اگر وی نداری یا دیر تمرین کرده‌ای: ۲ تخم‌مرغ آبپز + ۱ کف دست نان سبوس‌دار + یک عدد میوه کوچک (سیب/پرتقال). کربوهیدرات گلیکوژن را پر می‌کند و پروتئین عضله را ترمیم.'},
+ {name:'ماست یونانی + عسل + جو دوسر',items:['ماست یونانی','عسل','جو دوسر'],cal:230,protein:16,
+  recipe:'۱۵۰ گرم ماست یونانی + ۱ قاشق عسل + ۲ قاشق جو دوسر را مخلوط کن و بخور. پروتئین + کربوهیدرات سریع — ریکاوری عالی بدون شیکر و پودر.'}
 ],
 dinner:[
- {name:'سوپ جو با مرغ و سبزیجات',items:['جو پرک','مرغ','هویج','کرفس'],cal:300,protein:24,recipe:'مرغ پخته ریش‌ریش + ۳ قاشق جو پرک + سبزیجات خرد را با ۲ لیوان آب/عصاره ۱۵ دقیقه بجوشون. گرم و سبک.'},
- {name:'فیله مرغ گریل با سالاد سبز و لیموترش',items:['مرغ','سالاد','لیموترش'],cal:320,protein:32,recipe:'مرغ گریل + سالاد بزرگ با آبلیمو و روغن زیتون. شام کم‌کربوهیدرات = خواب بهتر.'},
- {name:'اوملت قارچ و اسفناج',items:['تخم‌مرغ','قارچ','اسفناج'],cal:280,protein:22,recipe:'۲ تخم‌مرغ + قارچ و اسفناج تفت‌داده. ۷ دقیقه‌ای شام کامل.'},
- {name:'توفوی سوخاری سبک با بروکلی',items:['توفو','بروکلی','سس سویا'],cal:290,protein:24,recipe:'توفوی مکعبی را با اسپری روغن و سس سویا در ایرفرایر ترد کن؛ بروکلی بخارپز کنارش. توفوی مالزی بی‌نظیره!'},
- {name:'سالاد تن ماهی با ذرت و کاهو',items:['تن ماهی','ذرت','کاهو'],cal:300,protein:28,recipe:'تن در آب + ذرت + کاهو + ماست و لیمو. سبک، سریع، سیرکننده.'},
- {name:'سوپ توفو و سبزیجات چینی',items:['توفو','کلم','قارچ','سس سویا'],cal:260,protein:20,recipe:'توفو، کلم و قارچ را در ۲ لیوان آب با سس سویا و زنجبیل ۱۰ دقیقه بجوشون. شب‌های گرم مالزی عالیه.'},
- {name:'میگو و سبزیجات بخارپز',items:['میگو','بروکلی','هویج'],cal:280,protein:26,recipe:'میگو را با سیر ۴-۵ دقیقه تفت بده، سبزیجات بخارپز کنارش. پروتئین کم‌چرب شبانه.'},
- {name:'املت سفیده با سبزیجات',items:['سفیده تخم‌مرغ','اسفناج','قارچ'],cal:220,protein:22,recipe:'۳ سفیده + ۱ زرده با سبزیجات بپز. کم‌کالری‌ترین شام پروتئینی.'},
- {name:'سالاد مرغ سزار رژیمی',items:['مرغ','کاهو','ماست','نان خشک'],cal:310,protein:29,recipe:'مرغ گریل + کاهو + سس ماست و لیمو + چند تکه نان توستر خشک. خوشمزه و رژیمی!'}
+ {name:'سوپ جو با مرغ و سبزیجات',items:['جو پرک','مرغ','هویج','کرفس'],cal:300,protein:24,
+  recipe:'<b>مواد:</b> ۳ قاشق جو پرک، ۸۰ گرم مرغ پخته ریش‌ریش، هویج + کرفس + پیاز خردشده، ۲ لیوان آب یا عصاره مرغ.<br><b>مرحله ۱:</b> پیاز را با ۱ قاشق چای‌خوری روغن تفت بده.<br><b>مرحله ۲:</b> سبزیجات را اضافه کن، ۳ دقیقه تفت.<br><b>مرحله ۳:</b> آب و مرغ را بریز، جوش که آمد جو پرک را اضافه کن.<br><b>مرحله ۴:</b> ۱۵ دقیقه روی حرارت ملایم با درب بسته بپز؛ نمک، فلفل و کمی زردچوبه بزن. گرم و آرام‌بخش قبل خواب.'},
+ {name:'فیله مرغ گریل با سالاد سبز',items:['مرغ','سالاد','لیموترش'],cal:320,protein:32,
+  recipe:'<b>مواد:</b> ۱۲۰ گرم فیله مرغ، کاهو + خیار + گوجه + فلفل دلمه، آبلیمو، ۱ قاشق چای‌خوری روغن زیتون.<br><b>مرحله ۱:</b> مرغ را با ماست + آبلیمو + سیر ۲۰ دقیقه ماریینه کن.<br><b>مرحله ۲:</b> در تابه داغ ۴-۵ دقیقه هر طرف بپز.<br><b>مرحله ۳:</b> سالاد بزرگ را با آبلیمو + روغن زیتون + نمک آماده کن.<br><b>مرحله ۴:</b> بدون نان و برنج بخور — شام بدون کربوهیدرات سنگین خواب رو بهتر می‌کنه و چربی‌سوزی شبانه رو بالا می‌بره.'},
+ {name:'اوملت قارچ و اسفناج',items:['تخم‌مرغ','قارچ','اسفناج'],cal:280,protein:22,
+  recipe:'<b>مواد:</b> ۲ تخم‌مرغ، ۵-۶ عدد قارچ برش‌خورده، یک مشت اسفناج.<br><b>مرحله ۱:</b> قارچ‌ها را در تابه نچسب بدون روغن تفت بده تا آبشان کشیده شود (۳ دقیقه).<br><b>مرحله ۲:</b> اسفناج را اضافه کن، ۱ دقیقه دیگر.<br><b>مرحله ۳:</b> تخم‌مرغ‌های زده‌شده + نمک و فلفل را بریز؛ لبه‌ها که بسته شد املت را تا کن و ۲ دقیقه با درب بسته بپز. ۷ دقیقه‌ای شام کامل!'},
+ {name:'توفوی سوخاری سبک با بروکلی',items:['توفو','بروکلی','سس سویا'],cal:290,protein:24,
+  recipe:'<b>مواد:</b> ۱۵۰ گرم توفوی سفت، یک کاسه بروکلی، ۱ قاشق سس سویا کم‌نمک، سیر، کنجد (اختیاری).<br><b>مرحله ۱:</b> توفو را حوله بپیچ و ۱۰ دقیقه فشار بده تا آبش برود؛ مکعبی خرد کن.<br><b>مرحله ۲:</b> مکعب‌ها را با کمی سس سویا و سیر خیس کن.<br><b>مرحله ۳:</b> در ایرفرایر ۱۵ دقیقه ۲۰۰ درجه (یا تابه داغ با ۱ قاشق روغن، هر طرف ۳ دقیقه) تا ترد شود.<br><b>مرحله ۴:</b> بروکلی را ۵ دقیقه بخارپز کن، کنار توفو با کمی کنجد سرو کن.'},
+ {name:'سالاد مرغ گریل سزار رژیمی',items:['مرغ','کاهو','ماست','نان خشک'],cal:310,protein:29,
+  recipe:'<b>مواد:</b> ۱۰۰ گرم سینه مرغ گریل‌شده، یک کاسه کاهو خردشده، ۲ قاشق ماست کم‌چرب، آبلیمو، سیر رنده، ۲-۳ عدد نان توستر مکعبی‌شده.<br><b>مرحله ۱:</b> سس را درست کن: ماست + آبلیمو + سیر + نمک + فلفل (بدون سس آماده‌ی پرکالری).<br><b>مرحله ۲:</b> مرغ را نواری خرد کن.<br><b>مرحله ۳:</b> کاهوها را با سس مخلوط کن، مرغ و مکعب‌های نان روش. خوشمزه و کاملاً رژیمی!'}
 ]};
 
-/* ============ COMBO POOL (for offline generator) ============ */
+/* ============ COMBO POOL (offline generator) ============ */
 const comboPool={
- base:{breakfast:['اوملت ۲ تخم‌مرغی','چیا پودینگ','اسموتی ماست یونانی','جو دوسر گرم','نان و پنیر کم‌چرب','پنکیک جو دوسر'],
-       lunch:['فیله مرغ گریل','ماهی تازه گریل','استرای‌فری مرغ','توفوی سوخاری','میگو گریل','خوراک عدس و مرغ'],
-       snack:['ماست یونانی','تخم‌مرغ آبپز','شیک پروتئین وی','مغزهای مخلوط','لیوانی جو دوسر'],
-       dinner:['سوپ جو با مرغ','اوملت قارچ و اسفناج','سالاد تن ماهی','توفو و بروکلی','فیله مرغ گریل','میگو و سبزیجات']},
- add:{breakfast:['با انبه','با موز','با پاپایا','با پیتایا','با اسفناج و قارچ','با آووکادو','با کره بادام‌زمینی','با گردو و بادام'],
-      lunch:['با ۵ قاشق برنج','با سالاد آچار','با سبزی بخارپز','با برنج قهوه‌ای','با سوپ سبزی','با سالاد کلم'],
-      snack:['با انبه','با موز','با رامبوتان','با پیتایا','با بادام','با خرما','با عسل'],
-      dinner:['با لیموترش','با سبزیجات بخارپز','با سالاد سبز','با قارچ','با سس سویا کم‌نمک']}
+ base:{breakfast:['اوملت ۲ تخم‌مرغی','جو دوسر گرم','نان و پنیر کم‌چرب','اسموتی ماست یونانی','تخم‌مرغ آبپز با نان'],
+       lunch:['فیله مرغ گریل','ماهی گریل','استرای‌فری مرغ','خوراک عدس و مرغ','سالاد تن ماهی'],
+       snack:['ماست یونانی','تخم‌مرغ آبپز','مغزهای مخلوط','لیوانی جو دوسر'],
+       dinner:['سوپ جو با مرغ','اوملت قارچ و اسفناج','سالاد مرغ گریل','توفوی سوخاری','فیله مرغ با سالاد']},
+ add:{breakfast:['با موز','با میوه فصل','با اسفناج و قارچ','با گوجه و خیار','با گردو'],
+      lunch:['با ۵-۶ قاشق برنج','با سالاد شیرازی','با سبزی بخارپز','با برنج قهوه‌ای'],
+      snack:['با میوه فصل','با بادام','با عسل','با خرما'],
+      dinner:['با سالاد سبز','با سبزی بخارپز','با لیموترش','با سوپ سبزیجات']}
 };
 function genCombo(mk){
   const r=a=>a[Math.floor(Math.random()*a.length)];
   let base,adds;
   for(let t=0;t<30;t++){base=r(comboPool.base[mk]);adds=r(comboPool.add[mk]);if(ok(base+' '+adds))break;}
   const sample=mealsDB[mk][Math.floor(Math.random()*mealsDB[mk].length)];
-  return {name:`${base} ${adds}`,items:[base,adds],cal:Math.max(150,Math.round(sample.cal+(Math.random()*60-30))),protein:Math.max(8,Math.round(sample.protein+(Math.random()*8-4))),recipe:'مثل دستور پخت‌های مشابه در برنامه: تفت/گریل کم‌روغن، بدون شکر اضافه، در ۵ تا ۱۵ دقیقه ✨',icon:mealIcons[mk]};
+  return {name:`${base} ${adds}`,items:[base,adds],cal:Math.max(100,Math.round(sample.cal+(Math.random()*50-25))),protein:Math.max(6,Math.round(sample.protein+(Math.random()*8-4))),
+    recipe:'این یک ترکیب انعطافی است: مثل دستور پخت مشابه‌اش در برنامه عمل کن — پروتئین را گریل/تفت کم‌روغن بده، سبزیجات تازه کنارش بگذار و از شکر و روغن اضافه پرهیز کن. ✨',icon:mealIcons[mk]};
 }
 
-/* ============ WEEK BUILDER — no repeat vs yesterday ============ */
+/* ============ WEEK BUILDER — variety guaranteed ============ */
 function pickNoRepeat(mk,prevNames){
   const opts=mealsDB[mk].filter(m=>ok(m.items.join(' ')+' '+m.name));
   const fresh=opts.filter(m=>!prevNames.includes(m.name));
@@ -274,78 +304,58 @@ function buildWeek(){
   let prevNames=[];
   daysOfWeek.forEach(day=>{
     dayMenus[day]={};
-    mealKeys.forEach(mk=>{
-      dayMenus[day][mk]=[pickNoRepeat(mk,prevNames)];
-    });
+    mealKeys.forEach(mk=>{dayMenus[day][mk]=[pickNoRepeat(mk,prevNames)];});
     prevNames=mealKeys.flatMap(mk=>dayMenus[day][mk].map(m=>m.name));
   });
 }
 
-/* ============ AI COMBO GENERATOR ============ */
+/* ============ AI COMBO ============ */
 async function aiCombo(day,mk,btn){
-  btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> AI...';btn.disabled=true;
+  btn.innerHTML='⏳ AI...';btn.disabled=true;
   const cfg=getAiCfg(),p=PROVIDERS[cfg.provider];
   const recent=daysOfWeek.slice(0,daysOfWeek.indexOf(day)+1).flatMap(d=>dayMenus[d][mk].map(m=>m.name));
+  const label=mealTitles[mk].replace(/[⚡💪]/g,'').trim();
   if(cfg.key&&p.endpoint){
-    const sys=`تو سرآشپز رژیمی هستی. برای یک دختر ایرانی ساکن مالزی یک غذای «${mealTitles[mk]}» کاملاً جدید و خوشمزه با مواد در دسترس مالزی (مرغ، ماهی تازه، میگو، توفو، تخم‌مرغ، برنج، جو دوسر، ماست یونانی، انبه، پاپایا، پیتایا، سبزیجات) بساز. کالری هدف: حدود ${Math.round((planContext?.cal||1800)/4)} کیلوکالری. از این غذاها که اخیراً خورده استفاده نکن: ${recent.join('،')}. از این‌ها هم پرهیز کن: ${getDislikes().join('،')||'هیچ'}. دستور پخت حداکثر ۱۵ دقیقه. فقط و فقط JSON معتبر با این کلیدها برگردان: {"name":"","items":["",""],"cal":0,"protein":0,"recipe":""}`;
+    const sys=`تو سرآشپز رژیمی صمیمی هستی. برای یک دختر ایرانی یک ${label} کاملاً جدید و خوشمزه بساز. کالری هدف حدود ${Math.round((planContext?.cal||1800)/(mk==='snack'?8:4))} کیلوکالری. مواد ساده و در دسترس. از این غذاها که اخیراً خورده استفاده نکن: ${recent.join('،')}. پرهیز کن از: ${getDislikes().join('،')||'هیچ'}. دستور پخت را «قدم‌به‌قدم و کامل» بنویس (مواد دقیق با گریم، سپس مراحل شماره‌دار) تا هیچ گیجی پیش نیاید. فقط JSON معتبر با کلیدهای name, items(آرایه‌ی مواد اصلی), cal, protein, recipe برگردان.`;
     try{
       let txt=null;
       if(p.endpoint==='GOOGLE'){
-        const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${cfg.model}:generateContent?key=${cfg.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts:[{text:'ترکیب جدید بساز'}]}],generationConfig:{maxOutputTokens:600,responseMimeType:'application/json'}})});
+        const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${cfg.model}:generateContent?key=${cfg.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[{role:'user',parts:[{text:'ترکیب جدید بساز'}]}],generationConfig:{maxOutputTokens:900,responseMimeType:'application/json'}})});
         txt=(await r.json())?.candidates?.[0]?.content?.parts?.[0]?.text;
       }else{
         const headers={'Content-Type':'application/json','Authorization':'Bearer '+cfg.key};
-        let body={model:cfg.model,response_format:{type:'json_object'},messages:[{role:'system',content:sys},{role:'user',content:'ترکیب جدید بساز'}],max_tokens:600};
-        if(cfg.provider==='anthropic'){delete headers.Authorization;headers['x-api-key']=cfg.key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true';body={model:cfg.model,system:sys,messages:[{role:'user',content:'ترکیب جدید بساز'}],max_tokens:600};}
+        let body={model:cfg.model,response_format:{type:'json_object'},messages:[{role:'system',content:sys},{role:'user',content:'ترکیب جدید بساز'}],max_tokens:900};
+        if(cfg.provider==='anthropic'){delete headers.Authorization;headers['x-api-key']=cfg.key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true';body={model:cfg.model,system:sys,messages:[{role:'user',content:'ترکیب جدید بساز'}],max_tokens:900};}
         const r=await fetch(p.endpoint,{method:'POST',headers,body:JSON.stringify(body)});
         txt=(await r.json())?.choices?.[0]?.message?.content;
       }
       if(txt){
         const j=JSON.parse(txt.replace(/```json|```/g,'').trim());
-        if(j.name){
-          j.icon=mealIcons[mk];
-          dayMenus[day][mk]=[j];
-          currentIdx[day+mk]=0;
-          renderMeals();toast('✨ ترکیب جدید AI آماده شد!');
-          btn.innerHTML='✨ ترکیب AI';btn.disabled=false;return;
-        }
+        if(j.name){j.icon=mealIcons[mk];dayMenus[day][mk]=[j];currentIdx[day+mk]=0;renderMeals();toast('✨ ترکیب جدید AI آماده شد!');btn.innerHTML='✨ ترکیب AI';btn.disabled=false;return;}
       }
     }catch(e){console.error(e);}
   }
-  // offline fallback — smarter: avoid this week's repeats
-  const c=genCombo(mk);
-  dayMenus[day][mk]=[c];currentIdx[day+mk]=0;
-  renderMeals();toast(cfg.key?'AI جواب نداد — ترکیب آفلاین ساختم 🌸':'✨ ترکیب جدید (آفلاین) آماده شد!');
+  dayMenus[day][mk]=[genCombo(mk)];currentIdx[day+mk]=0;
+  renderMeals();toast(cfg.key?'AI جواب نداد — آفلاین ساختم 🌸':'✨ ترکیب جدید (آفلاین) آماده شد!');
   btn.innerHTML='✨ ترکیب AI';btn.disabled=false;
 }
 function nextCombo(day,mk){
   const menu=dayMenus[day][mk];
   currentIdx[day+mk]=((currentIdx[day+mk]||0)+1)%menu.length;
-  // if cycled through all, generate fresh one instantly
   if(currentIdx[day+mk]===0){dayMenus[day][mk].push(genCombo(mk));currentIdx[day+mk]=dayMenus[day][mk].length-1;}
   renderMeals();toast('ترکیب بعدی ✨');
 }
 
-/* ============ SUPPLEMENTS (detailed) ============ */
-function renderSupplements(){
-  let active=[];
-  sportsList.forEach(s=>{
-    if(document.getElementById('sport_'+s.id).checked){
-      const sel=Array.from(document.querySelectorAll(`#days_${s.id} .day-btn.bg-pink-500`)).map(b=>b.dataset.day);
-      if(sel.includes(currentDay))active.push({name:s.name,time:document.getElementById('time_'+s.id).value});
-    }
-  });
-  document.getElementById('workoutBadge').innerHTML=active.length
-    ?`<span>🏋️‍♀️ ورزش امروز: <strong>${active.map(a=>a.name+' ('+a.time+')').join(' و ')}</strong></span><span class="bg-pink-500 text-white px-2 py-0.5 rounded-md text-[10px]">روز تمرین</span>`
-    :`<span>🌸 امروز استراحت و ریکاوری</span>`;
+/* ============ SUPPLEMENTS ============ */
+function renderSupplements(hasWorkout){
   const S=[
-   {t:'مولتی‌ویتامین بانوان',when:'همراه صبحانه',why:'عضلات، انرژی، سلامت مو و پوست',note:'همیشه با غذا بخور تا تهوع نگیری؛ آهنش جذب کافئین رو کم می‌کنه، پس با چای/قهوه فاصله بنداز.',diet:'چربی حل‌شونده‌ی غذا جذب ویتامین‌های A-D-E-K رو بالا می‌بره.'},
-   {t:'ویتامین D3 (۱۰۰۰-۲۰۰۰ واحد)',when:'همراه صبحانه',why:'استخوان‌ها، سیستم ایمنی، تنظیم هورمون و خلق‌وخو',note:'چربی‌حل‌شده است — حتماً با غذای چرب‌دار (تخم‌مرغ، آووکادو).',diet:'کمک به حفظ عضله هنگام کسری کالری؛ در مالزی با این‌همه آفتاب هم معمولاً کمبود شایعه.'},
-   {t:'امگا ۳ (EPA+DHA)',when:'همراه ناهار',why:'کاهش التهاب، سلامت قلب، شادابی پوست و مو',note:'با ناهار بخور (غذای چرب) تا جذب کامل بشه؛ در یخچال نگه دار.',diet:'چون ماهی تازه هفته‌ای ۲-۳ بار تو برنامه‌ست، روزهای بدون ماهی مهم‌تره.'},
-   {t:'کراتین مونوهیدرات (۵ گرم)',when:active.length?`بعد تمرین (${active[0].time})`:'هر روز، هر ساعت',why:'قدرت، حجم عضله، ریکاوری سریع‌تر',note:'هر روز—even روز استراحت—تا مخازن عضله پر بمونه؛ با آب فراوان.',diet:'چند صد گرم افزایش وزن آب در عضله ممکنه — طبیعیه و به چربی ربط نداره!'},
-   {t:'پودر پروتئین وی (۱ اسکوپ ~۲۴g)',when:active.length?'بعد تمرین':'عصرانه',why:'سنتز عضله، سیری، رسوندن سهمیه پروتئین روزانه',note:'هدف روزانه حدوداً '+(planContext?planContext.protein.toLocaleString('fa-IR'):'۱۲۰')+' گرمه — وی برای پر کردن شکاف غذاییه، نه جایگزین غذا.',diet:'اگر معده‌ات به لاکتوز حساسه، وی ایزولیت (Isolate) بخر که لاکتوزش کمه.'},
-   {t:'منیزیم (۲۵۰mg)',when:'۴۵ دقیقه قبل خواب',why:'خواب عمیق‌تر، رفع گرفتگی عضلات، کاهش استرس',note:'با معده خالی ممکنه ملین باشه — با یه لقمه سبک بخور.',diet:'در کسری کالری دفع منیزیم بیشتره؛ مکملش خواب و ریکاوری رو بهتر می‌کنه.'},
-   {t:'زینک (۱۰-۱۵mg)',when:'۴۵ دقیقه قبل خواب',why:'سیستم ایمنی، سلامت پوست و مو، تولید هورمون‌ها',note:'با آهن و کلسیم همزمان نگیر (جذبشون رو کم می‌کنه) — شب بهترین وقته.',diet:'برای پوست صورت و ریزش مو هنگام رژیم خیلی مؤثره.'}
+   {t:'مولتی‌ویتامین بانوان',when:'همراه صبحانه',why:'انرژی روزانه، سلامت مو و پوست، جبران ریزمغذی‌های رژیم',note:'همیشه با غذا بخور؛ با چای و قهوه فاصله بنداز چون کافئین جذب آهن را کم می‌کند.',diet:'با غذای کمی چرب، جذب ویتامین‌های A-D-E-K بهتر می‌شود.'},
+   {t:'ویتامین D3 (۱۰۰۰-۲۰۰۰ واحد)',when:'همراه صبحانه',why:'استخوان‌ها، ایمنی بدن، خلق‌وخو و تنظیم هورمون‌ها',note:'چربی‌حل است — با صبحانه‌ای که تخم‌مرغ یا آووکادو دارد بخور.',diet:'در کسری کالری، D3 کافی به حفظ عضله و جلوگیری از خستگی کمک می‌کند.'},
+   {t:'امگا ۳ (EPA+DHA)',when:'همراه ناهار',why:'کاهش التهاب بدن، سلامت قلب، شادابی پوست و مو',note:'با ناهار (غذای چرب‌دار) بخور؛ در یخچال نگه دار تا تند نشود.',diet:'روزهایی که ماهی نخورده‌ای مهم‌تر است — مثل مکملِ غذای دریایی.'},
+   {t:'کراتین مونوهیدرات (۵ گرم)',when:hasWorkout?'بعد از تمرین':'هر روز، هر ساعتی',why:'قدرت بیشتر، عضله‌سازی، ریکاوری سریع‌تر تمرین‌ها',note:'هر روز بخور حتی روز استراحت — اثرش انباشتی است؛ با آب فراوان.',diet:'ممکن است ۰.۵ تا ۱ کیلو وزن آبِ داخل عضله اضافه کند — این چربی نیست و نشانه‌ی خوبی است!'},
+   {t:'پودر پروتئین وی (۱ اسکوپ)',when:hasWorkout?'بعد از تمرین':'عصرانه',why:'ساخت و ترمیم عضله، سیری بیشتر، رساندن پروتئین روزانه به هدف',note:'جای غذا نیست، مکمل غذاست؛ هدف روزانه حدود '+(planContext?planContext.protein.toLocaleString('fa-IR'):'۱۲۰')+' گرم است.',diet:'اگر معده‌ات به شیر حساس است، وی ایزوله (Isolate) بخر که لاکتوز کمی دارد.'},
+   {t:'منیزیم (۲۵۰mg)',when:'۴۵ دقیقه قبل خواب',why:'خواب عمیق‌تر، جلوگیری از گرفتگی عضلات، کاهش استرس',note:'با معده‌ی خیلی خالی ملین است؛ با یک لقمه سبک بخور.',diet:'در رژیم‌های کم‌کالری دفع منیزیم بیشتر است؛ مکملش ریکاوری ورزش را بهتر می‌کند.'},
+   {t:'زینک (۱۰-۱۵mg)',when:'۴۵ دقیقه قبل خواب',why:'ایمنی بدن، سلامت پوست و جلوگیری از ریزش مو، سلامت هورمون‌ها',note:'با آهن و کلسیم همزمان نگیر (جذب همدیگر را کم می‌کنند) — شب بهترین زمان است.',diet:'در رژیم، پوست و مو اولین جایی است که کمبودش دیده می‌شود؛ زینک از این جلوگیری می‌کند.'}
   ];
   document.getElementById('supplementsContainer').innerHTML=S.map(s=>`
     <div class="supp-card">
@@ -354,7 +364,7 @@ function renderSupplements(){
         <span class="bg-purple-100 text-purple-600 px-1.5 py-0.5 rounded-md text-[9px] font-bold">${s.when}</span>
       </div>
       <p class="text-[10px] text-gray-600"><strong>💚 به چی کمک می‌کنه:</strong> ${s.why}</p>
-      <p class="text-[10px] text-gray-500 mt-0.5"><strong>⚠️ ملاحظه رژیمی:</strong> ${s.diet}</p>
+      <p class="text-[10px] text-gray-500 mt-0.5"><strong>⚖️ ملاحظه رژیمی:</strong> ${s.diet}</p>
       <p class="text-[10px] text-gray-400 mt-0.5"><i class="fa-solid fa-lightbulb text-amber-400"></i> ${s.note}</p>
     </div>`).join('');
 }
@@ -367,13 +377,24 @@ function buildForm(){
   document.getElementById('sportsWrap').innerHTML=sportsList.map(s=>`
     <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
       <label class="flex items-center gap-2 font-bold text-xs text-gray-800"><input type="checkbox" id="sport_${s.id}" checked class="w-4 h-4 accent-pink-500"> <i class="fa-solid ${s.icon} text-pink-400"></i> ${s.name}</label>
-      <div class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-        <div><span class="text-gray-500 font-semibold">روزها:</span><div class="flex flex-wrap gap-1 mt-1" id="days_${s.id}">${daysOfWeek.map(d=>`<button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 rounded-lg text-[10px] font-bold ${s.days.includes(d)?'bg-pink-500 text-white':'bg-gray-100 text-gray-600'}" data-day="${d}">${d}</button>`).join('')}</div></div>
-        <div><span class="text-gray-500 font-semibold">ساعت:</span><select id="time_${s.id}" class="w-full p-2 rounded-xl border border-pink-200 font-bold mt-1">${s.times.map(t=>`<option value="${t[0]}" ${s.days.includes(daysOfWeek[0])&&t[0]===s.times[0][0]?'selected':''}>${t[1]}</option>`).join('')}</select></div>
+      <div class="mt-3 pt-3 border-t border-pink-100 space-y-3 text-xs">
+        <div><span class="text-gray-500 font-semibold">روزهای تمرین:</span><div class="flex flex-wrap gap-1 mt-1" id="days_${s.id}">${daysOfWeek.map(d=>`<button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 rounded-lg text-[10px] font-bold ${s.days.includes(d)?'bg-pink-500 text-white':'bg-gray-100 text-gray-600'}" data-day="${d}">${d}</button>`).join('')}</div></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <span class="text-gray-500 font-semibold">ساعت شروع: <b id="startLabel_${s.id}" class="text-pink-600">${String(s.defStart).padStart(2,'0')}:۰۰</b></span>
+            <input type="range" min="5" max="22" step="0.5" value="${s.defStart}" id="start_${s.id}" class="input-range mt-1" oninput="document.getElementById('startLabel_${s.id}').innerText=fmtTime(this.value)">
+          </div>
+          <div>
+            <span class="text-gray-500 font-semibold">مدت تمرین: <b id="durLabel_${s.id}" class="text-pink-600">${s.defDur} دقیقه</b></span>
+            <input type="range" min="20" max="180" step="5" value="${s.defDur}" id="dur_${s.id}" class="input-range mt-1" oninput="document.getElementById('durLabel_${s.id}').innerText=this.value+' دقیقه'">
+          </div>
+        </div>
       </div>
     </div>`).join('');
 }
+function fmtTime(v){const h=Math.floor(v),m=(v%1)*60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');}
 function collectDays(){const o={};sportsList.forEach(s=>{o[s.id]=Array.from(document.querySelectorAll(`#days_${s.id} .day-btn.bg-pink-500`)).map(b=>b.dataset.day)});return o;}
+function getSports(){return sportsList.map(s=>({id:s.id,name:s.name,checked:document.getElementById('sport_'+s.id).checked,days:collectDays()[s.id],start:fmtTime(document.getElementById('start_'+s.id).value),dur:document.getElementById('dur_'+s.id).value}));}
 function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
 function calculateAndShowPlan(){
   const w=+document.getElementById('weight').value||62,h=+document.getElementById('height').value||165,a=+document.getElementById('age').value||24;
@@ -383,26 +404,51 @@ function calculateAndShowPlan(){
   document.getElementById('targetProtein').innerText=protein.toLocaleString('fa-IR');
   document.getElementById('targetCarbs').innerText=carbs.toLocaleString('fa-IR');
   document.getElementById('targetFats').innerText=fat.toLocaleString('fa-IR');
+  document.getElementById('macroLine').textContent=`سوخت‌وساز پایه حدود ${Math.round(bmr).toLocaleString('fa-IR')} کیلوکالری — برنامه با کسری ملایم چیده شده؛ اعداد دقیق نیستند و همین تقریبی کافیه 🌸`;
   planContext={cal,protein,carbs,fat,goal:selectedGoal};
   document.getElementById('todayDateText').innerText='تاریخ امروز: '+new Date().toLocaleDateString('fa-IR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   const wd=new Date().toLocaleDateString('fa-IR',{weekday:'long'});currentDay=daysOfWeek.includes(wd)?wd:'شنبه';
-  localStorage.setItem('princess_form',JSON.stringify({age:a,height:h,weight:w,blacklist:document.getElementById('blacklist').value,days:collectDays()}));
+  localStorage.setItem('golden_form',JSON.stringify({age:a,height:h,weight:w,blacklist:document.getElementById('blacklist').value,sports:getSports()}));
   buildWeek();renderDislikes();renderDayTabs();switchDay(currentDay);
   document.getElementById('formSection').classList.add('hidden');
   document.getElementById('resultSection').classList.remove('hidden');
-  window.scrollTo({top:0,behavior:'smooth'});toast('برنامه‌ی متنوع‌ات آماده شد 🌸');
+  window.scrollTo({top:0,behavior:'smooth'});toast('برنامه‌ی طلایی‌ات آماده شد 🌸');
+}
+function todaySports(){
+  return getSports().filter(s=>s.checked&&s.days.includes(currentDay));
 }
 function renderDayTabs(){document.getElementById('dayTabs').innerHTML=daysOfWeek.map(d=>`<button onclick="switchDay('${d}')" class="px-4 py-2 rounded-xl font-bold text-xs whitespace-nowrap ${currentDay===d?'bg-pink-500 text-white shadow-md':'bg-white text-gray-600'}">${d}</button>`).join('');}
-function switchDay(d){currentDay=d;renderDayTabs();renderSupplements();renderMeals();}
-function renderCurrent(){renderSupplements();renderMeals();renderDislikes();}
+function switchDay(d){currentDay=d;renderDayTabs();renderDayInfo();renderMeals();}
+function renderCurrent(){renderDayInfo();renderMeals();renderDislikes();}
+function renderDayInfo(){
+  const act=todaySports();
+  document.getElementById('workoutBadge').innerHTML=act.length
+    ?act.map(a=>`<div class="flex flex-wrap items-center justify-between gap-2 mb-1"><span>🏋️‍♀️ <strong>${a.name}</strong> — ساعت ${a.start} | مدت ${a.dur} دقیقه</span><span class="bg-pink-500 text-white px-2 py-0.5 rounded-md text-[10px]">روز تمرین</span></div>`).join('')
+    :`<span>🌸 امروز استراحت و ریکاوری — بدنت را بگذار عضله بسازد</span>`;
+  // pre-workout card
+  const pc=document.getElementById('preWorkoutCard');
+  if(act.length){
+    pc.classList.remove('hidden');
+    const earliest=act.sort((a,b)=>a.start<b.start?-1:1)[0];
+    document.getElementById('preWorkoutTips').innerHTML=`
+      <div class="bg-white/80 p-2.5 rounded-xl border border-amber-100"><strong>⏰ ساعت ${earliest.start} (${earliest.name}، ${earliest.dur} دقیقه):</strong> وعده‌ی «⚡ قبل از تمرین» را ۳۰ تا ۴۵ دقیقه قبل از شروع بخور.</div>
+      <div class="bg-white/80 p-2.5 rounded-xl border border-amber-100"><strong>💧 آب:</strong> از ۲ ساعت قبل کم‌کم آب بنوش (یک لیوان هر نیم ساعت)؛ وسط تمرین هم جرعه‌جرعه. معده‌ی پر آب تمرین را سخت می‌کند.</div>
+      <div class="bg-white/80 p-2.5 rounded-xl border border-amber-100"><strong>🍽 غذا سنگین نخور:</strong> ۲ ساعت قبل، وعده‌ی اصلی را تمام کرده باش؛ فقط میان‌وعده‌ی سبک قبل از تمرین مجاز است.</div>
+      <div class="bg-white/80 p-2.5 rounded-xl border border-amber-100"><strong>☕️ کافئین (اختیاری):</strong> اگر قهوه یا چای سبز دوست داری، ۳۰ دقیقه قبل انرژی بیشتری می‌دهد — نزدیک خواب نخور.</div>`;
+  } else pc.classList.add('hidden');
+  renderSupplements(act.length>0);
+}
 function renderMeals(){
+  const act=todaySports();
   document.getElementById('mealsContainer').innerHTML=mealKeys.map(mk=>{
+    if((mk==='preworkout'||mk==='postworkout')&&!act.length)return '';
     const menu=dayMenus[currentDay][mk];const idx=Math.min(currentIdx[currentDay+mk]||0,menu.length-1);
     const meal=menu[idx];
+    const accent=mk==='preworkout'?'border-amber-200 bg-amber-50/40':mk==='postworkout'?'border-rose-200 bg-rose-50/40':'border-pink-100 bg-white';
     return `
-    <div class="pastel-card rounded-2xl p-4 bg-white border border-pink-100">
-      <div class="flex items-center justify-between gap-2 border-b border-pink-50 pb-2 mb-2">
-        <span class="text-xs font-bold text-pink-500"><i class="fa-solid ${mealIcons[mk]}"></i> ${mealTitles[mk]}</span>
+    <div class="pastel-card rounded-2xl p-4 ${accent}">
+      <div class="flex items-center justify-between gap-2 border-b border-pink-100 pb-2 mb-2">
+        <span class="text-xs font-bold ${mk==='preworkout'?'text-amber-600':mk==='postworkout'?'text-rose-600':'text-pink-500'}"><i class="fa-solid ${mealIcons[mk]}"></i> ${mealTitles[mk]}</span>
         <div class="flex gap-1.5 no-print">
           <button onclick="aiCombo('${currentDay}','${mk}',this)" class="px-2.5 py-1 bg-purple-500 text-white font-bold text-[10px] rounded-lg hover:bg-purple-600">✨ ترکیب AI</button>
           <button onclick="nextCombo('${currentDay}','${mk}')" class="px-2.5 py-1 bg-pink-100 text-pink-600 font-bold text-[10px] rounded-lg hover:bg-pink-200">🔄 ترکیب جدید</button>
@@ -410,7 +456,7 @@ function renderMeals(){
         </div>
       </div>
       <div class="flex justify-between items-start gap-3">
-        <div>
+        <div class="flex-grow">
           <h4 class="font-extrabold text-gray-800 text-xs sm:text-sm mb-1">${meal.name}</h4>
           <div class="recipe">👨‍🍳 ${meal.recipe}</div>
         </div>
@@ -451,21 +497,22 @@ function openAiSettings(){const c=getAiCfg();
   document.getElementById('aiKey').value=c.key||'';document.getElementById('testResult').innerHTML='';
   document.getElementById('aiModal').classList.remove('hidden');}
 function closeAiSettings(){document.getElementById('aiModal').classList.add('hidden')}
-function getAiCfg(){try{return JSON.parse(localStorage.getItem('princess_ai'))||{provider:'none'}}catch(e){return{provider:'none'}}}
-function saveAiSettings(){localStorage.setItem('princess_ai',JSON.stringify({provider:document.getElementById('aiProvider').value,model:document.getElementById('aiModel').value,key:document.getElementById('aiKey').value.trim()}));updateAiStatus();closeAiSettings();toast('ذخیره شد 🌸');}
-function clearAiSettings(){localStorage.removeItem('princess_ai');updateAiStatus();toast('کلید حذف شد');}
+function getAiCfg(){try{return JSON.parse(localStorage.getItem('golden_ai'))||{provider:'none'}}catch(e){return{provider:'none'}}}
+function saveAiSettings(){localStorage.setItem('golden_ai',JSON.stringify({provider:document.getElementById('aiProvider').value,model:document.getElementById('aiModel').value,key:document.getElementById('aiKey').value.trim()}));updateAiStatus();closeAiSettings();toast('ذخیره شد 🌸');}
+function clearAiSettings(){localStorage.removeItem('golden_ai');updateAiStatus();toast('کلید حذف شد');}
 async function callAI(q){
   const c=getAiCfg(),p=PROVIDERS[c.provider];
   if(!c.key||!p.endpoint)return null;
-  const sys=`تو دستیار تغذیه‌ی یک دختر ایرانی ساکن مالزی هستی. برنامه‌ی او: ${JSON.stringify(planContext||{})}. غذاهایی که دوست ندارد: ${getDislikes().join('،')||'ندارد'}. از مواد در دسترس مالزی پیشنهاد بده، دستور پخت حداکثر ۱۵ دقیقه با کالری و پروتئین تقریبی. فارسی صمیمی جواب بده.`;
+  const act=todaySports();
+  const sys=`تو «دستیار طلایی»، دستیار تغذیه و تناسب اندام یک دختر جوان ایرانی هستی. برنامه‌اش: ${JSON.stringify(planContext||{})}. ورزش امروز: ${act.length?act.map(a=>a.name+' ساعت '+a.start+' به مدت '+a.dur+' دقیقه').join(' و '):'استراحت'}. غذاهای دوست‌نداشته: ${getDislikes().join('،')||'ندارد'}. مواد در دسترس: مرغ، ماهی، تخم‌مرغ، توفو، برنج، جو دوسر، ماست یونانی، میوه‌ها و سبزیجات معمولی. همیشه فارسی صمیمی با لحن مهربان جواب بده؛ دستور پخت‌ها را کامل و قدم‌به‌قدم بنویس (مواد با گریم + مراحل شماره‌دار) و کالری و پروتئین تقریبی بده. جواب‌ها کوتاه‌ولطیف ولی کامل باشند.`;
   try{
     if(p.endpoint==='GOOGLE'){
-      const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${c.model}:generateContent?key=${c.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[...aiHistory.slice(-6),{role:'user',parts:[{text:q}]}],generationConfig:{maxOutputTokens:700}})});
+      const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${c.model}:generateContent?key=${c.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[...aiHistory.slice(-8),{role:'user',parts:[{text:q}]}],generationConfig:{maxOutputTokens:900}})});
       return (await r.json())?.candidates?.[0]?.content?.parts?.[0]?.text||null;
     }
     const headers={'Content-Type':'application/json','Authorization':'Bearer '+c.key};
-    let body={model:c.model,messages:[{role:'system',content:sys},...aiHistory.slice(-6),{role:'user',content:q}],max_tokens:700};
-    if(c.provider==='anthropic'){delete headers.Authorization;headers['x-api-key']=c.key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true';body={model:c.model,system:sys,messages:[...aiHistory.slice(-6),{role:'user',content:q}],max_tokens:700};}
+    let body={model:c.model,messages:[{role:'system',content:sys},...aiHistory.slice(-8),{role:'user',content:q}],max_tokens:900};
+    if(c.provider==='anthropic'){delete headers.Authorization;headers['x-api-key']=c.key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true';body={model:c.model,system:sys,messages:[...aiHistory.slice(-8),{role:'user',content:q}],max_tokens:900};}
     const r=await fetch(p.endpoint,{method:'POST',headers,body:JSON.stringify(body)});
     return (await r.json())?.choices?.[0]?.message?.content||null;
   }catch(e){console.error(e);return null;}
@@ -473,8 +520,8 @@ async function callAI(q){
 async function testConnection(){
   const res=document.getElementById('testResult');
   res.innerHTML='<span class="loading-pulse">⏳ در حال تست...</span>';
-  const ok=await callAI('فقط بنویس: متصل شدم 🌸');
-  res.innerHTML=ok?'<span class="text-emerald-600 font-bold">✅ اتصال موفق!</span>':'<span class="text-red-500 font-bold">❌ ناموفق — کلید/مدل را چک کن (جزئیات: F12)</span>';
+  const okr=await callAI('فقط بنویس: متصل شدم 🌸');
+  res.innerHTML=okr?'<span class="text-emerald-600 font-bold">✅ اتصال موفق!</span>':'<span class="text-red-500 font-bold">❌ ناموفق — کلید/مدل را چک کن (جزئیات: F12)</span>';
 }
 function updateAiStatus(){const c=getAiCfg();
   document.getElementById('aiStatusLine').innerHTML=c.key
@@ -482,21 +529,29 @@ function updateAiStatus(){const c=getAiCfg();
     :`<span class="text-amber-600">ℹ️ بدون کلید — حالت آفلاین. <button onclick="openAiSettings()" class="underline font-bold">کلید وصل کن</button></span>`;}
 function chatMsg(t,w){const box=document.getElementById('aiChat'),el=document.createElement('div');
   el.className='ai-msg '+(w==='user'?'msg-user':'msg-ai');el.textContent=t;box.appendChild(el);box.scrollTop=box.scrollHeight;}
+const chips=['یه شام سبک پیشنهاد بده','هوس شکلات کردم چیکار کنم؟','کراتین رو کی بخورم؟','قبل تمرین چی بخورم؟'];
+function renderChips(){document.getElementById('aiChips').innerHTML=chips.map(c=>`<button onclick="quickAsk('${c}')" class="px-2.5 py-1 bg-pink-50 border border-pink-200 text-pink-600 text-[10px] font-bold rounded-full hover:bg-pink-100">${c}</button>`).join('');}
+function quickAsk(q){document.getElementById('aiPrompt').value=q;askAI();}
 async function askAI(){
   const inp=document.getElementById('aiPrompt'),q=inp.value.trim();if(!q)return;
   inp.value='';chatMsg(q,'user');aiHistory.push({role:'user',content:q});
-  if(aiHistory.length>10)aiHistory=aiHistory.slice(-10);
-  const b=document.getElementById('aiSendBtn');b.innerHTML='⏳';
+  if(aiHistory.length>12)aiHistory=aiHistory.slice(-12);
+  const b=document.getElementById('aiSendBtn');b.innerHTML='⏳';b.disabled=true;
   let a=await callAI(q);
-  if(!a)a=`(حالت آفلاین 🌸) برای «${q}»: یک گزینه‌ی سبک ~۳۰۰ کیلوکالری با پروتئین بالا (مرغ گریل، ماهی، توفو یا تخم‌مرغ) از برنامه‌ی همین هفته انتخاب کن و از غذاهای دوست‌نداشته‌ات (${getDislikes().join('،')||'—'}) پرهیز کن. برای جواب دقیق‌تر، کلید API وصل کن.`;
-  chatMsg(a,'ai');aiHistory.push({role:'assistant',content:a});b.innerHTML='➤';
+  if(!a)a=`(حالت آفلاین 🌸) برای «${q}»: از قوانین طلایی برنامه استفاده کن — وعده‌ها پروتئین‌دار، قبل تمرین سبک و ۳۰-۴۵ دقیقه قبل، بعد تمرین وی + کراتین تا یک ساعت، شام کم‌کربوهیدرات، و پرهیز از: ${getDislikes().join('،')||'—'}. برای جواب‌های شخصی‌تر و دقیق‌تر، از دکمه 🔑 کلید API یکی از سرویس‌ها را وصل کن.`;
+  chatMsg(a,'ai');aiHistory.push({role:'assistant',content:a});b.innerHTML='➤';b.disabled=false;
 }
 
 /* ============ INIT ============ */
-buildForm();buildWeek();updateAiStatus();
-try{const s=JSON.parse(localStorage.getItem('princess_form'));
+buildForm();buildWeek();renderChips();updateAiStatus();
+try{const s=JSON.parse(localStorage.getItem('golden_form'));
   if(s){document.getElementById('age').value=s.age||24;document.getElementById('height').value=s.height||165;document.getElementById('weight').value=s.weight||62;document.getElementById('blacklist').value=s.blacklist||'';
-    if(s.days)sportsList.forEach(sp=>document.querySelectorAll(`#days_${sp.id} .day-btn`).forEach(b=>{const on=(s.days[sp.id]||[]).includes(b.dataset.day);b.classList.toggle('bg-pink-500',on);b.classList.toggle('text-white',on);b.classList.toggle('bg-gray-100',!on);b.classList.toggle('text-gray-600',!on);}));
+    if(s.sports)sportsList.forEach(sp=>{const sv=s.sports.find(x=>x.id===sp.id);if(!sv)return;
+      document.getElementById('sport_'+sp.id).checked=sv.checked;
+      document.querySelectorAll(`#days_${sp.id} .day-btn`).forEach(b=>{const on=(sv.days||[]).includes(b.dataset.day);b.classList.toggle('bg-pink-500',on);b.classList.toggle('text-white',on);b.classList.toggle('bg-gray-100',!on);b.classList.toggle('text-gray-600',!on);});
+      if(sv.start){document.getElementById('start_'+sp.id).value=parseFloat(sv.start);document.getElementById('startLabel_'+sp.id).innerText=sv.start;}
+      if(sv.dur){document.getElementById('dur_'+sp.id).value=sv.dur;document.getElementById('durLabel_'+sp.id).innerText=sv.dur+' دقیقه';}
+    });
   }}catch(e){}
 </script>
 </body>
