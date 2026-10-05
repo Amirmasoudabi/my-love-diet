@@ -3,985 +3,540 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>برنامه غذایی و ورزشی هوشمند برای عشق من 💖</title>
-    
+    <title>پرنسس دایت 🌸 | رژیم و برنامه‌ی نفس طلایی من</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Chart.js for Analytics -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Vazirmatn Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        love: {
-                            50: '#fff0f5',
-                            100: '#ffe4e6',
-                            200: '#fecdd3',
-                            300: '#fda4af',
-                            400: '#fb7185',
-                            500: '#f43f5e',
-                            600: '#e11d48',
-                            700: '#be123c',
-                        },
-                        cute: {
-                            purple: '#f3e8ff',
-                            darkpurple: '#9333ea',
-                            accent: '#ff69b4',
-                            mint: '#e6fffa',
-                            mintdark: '#0d9488'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Vazirmatn', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
-            background: linear-gradient(135deg, #fff0f5 0%, #fae8ff 50%, #f0fdf4 100%);
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e6 50%, #f3e8ff 100%);
             min-height: 100vh;
+            color: #4a4a4a;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 30px -5px rgba(244, 63, 94, 0.1);
+        .pastel-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 2px solid #fbcfe8;
+            box-shadow: 0 12px 30px -10px rgba(244, 114, 182, 0.2);
+            border-radius: 2rem;
         }
-        .cute-shadow {
-            box-shadow: 0 8px 25px -4px rgba(251, 113, 133, 0.25);
+        .selectable-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
+        .selectable-card:hover {
+            transform: translateY(-4px);
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #ffe4e6;
-            border-radius: 10px;
+        .selectable-card.selected {
+            border-color: #f472b6;
+            background-color: #fdf2f8;
+            box-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #fb7185;
-            border-radius: 10px;
+        @media print {
+            .no-print { display: none !important; }
+            body { background: #fff !important; }
         }
     </style>
 </head>
-<body class="text-slate-800 pb-16 custom-scrollbar">
+<body class="py-8 px-3 sm:px-6">
 
-    <!-- Navigation / Header -->
-    <header class="sticky top-0 z-40 glass-card border-b border-love-100">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div class="flex items-center space-x-3 space-x-reverse">
-                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-love-500 to-pink-400 flex items-center justify-center text-white text-xl shadow-lg">
-                    👑
-                </div>
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <header class="text-center mb-8 no-print">
+            <div class="inline-flex p-4 rounded-full bg-pink-100 text-pink-500 mb-3 animate-pulse shadow-sm">
+                <i class="fa-solid fa-sparkles fa-2x"></i>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-2">رژیم و سلامتی پرنسس من 🌸✨</h1>
+            <p class="text-pink-400 text-xs sm:text-sm">طراحی شده با برنامه‌ریزی هوشمند، مکمل‌ها، ورزش‌ها و عشق 💕</p>
+        </header>
+
+        <!-- STEP 1: FORM -->
+        <div id="formSection" class="pastel-card p-6 sm:p-8 mb-8">
+            <form id="dietForm" class="space-y-8">
+                
+                <!-- 1. Detailed Physical Info -->
                 <div>
-                    <h1 class="font-extrabold text-slate-800 text-lg md:text-xl flex items-center gap-2">
-                        رژیم اختصاصی عشق من <span class="text-love-500">❤️</span>
-                    </h1>
-                    <p class="text-xs text-slate-500" id="current-date-display">امروز: در حال دریافت تاریخ...</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-2">
-                <button onclick="switchTab('analytics-tab')" class="px-3 py-1.5 rounded-xl bg-purple-100 text-purple-700 hover:bg-purple-200 text-xs md:text-sm font-semibold transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span class="hidden md:inline">آمار و تاریخچه</span>
-                </button>
-                <button onclick="openSettingsModal()" class="px-3 py-1.5 rounded-xl bg-love-100 text-love-700 hover:bg-love-200 text-xs md:text-sm font-semibold transition flex items-center gap-1.5">
-                    <i class="fa-solid fa-robot"></i>
-                    <span>تنظیمات AI</span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-4 pt-6">
-
-        <!-- Navigation Tabs -->
-        <div class="flex bg-white/70 backdrop-blur p-1.5 rounded-2xl mb-6 shadow-sm border border-rose-100 max-w-md mx-auto">
-            <button id="tab-btn-calculator" onclick="switchTab('calculator-tab')" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all text-center text-white bg-gradient-to-r from-love-500 to-pink-500 shadow-md">
-                <i class="fa-solid fa-calculator ml-1"></i> محاسبه و برنامه
-            </button>
-            <button id="tab-btn-daily" onclick="switchTab('daily-tab')" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all text-center text-slate-600 hover:text-love-600">
-                <i class="fa-solid fa-calendar-check ml-1"></i> ثبت امروز
-            </button>
-            <button id="tab-btn-analytics" onclick="switchTab('analytics-tab')" class="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all text-center text-slate-600 hover:text-love-600">
-                <i class="fa-solid fa-chart-pie ml-1"></i> خروجی و آمار
-            </button>
-        </div>
-
-        <!-- ================= TAB 1: CALCULATOR & PROFILE FORM ================= -->
-        <div id="calculator-tab" class="space-y-6">
-            
-            <!-- User Info Input Form -->
-            <section class="glass-card rounded-3xl p-6 md:p-8 cute-shadow border-2 border-love-100 relative overflow-hidden">
-                <div class="absolute -top-10 -left-10 w-32 h-32 bg-pink-200 rounded-full blur-2xl opacity-50"></div>
-                
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 rounded-2xl bg-love-100 text-love-600 flex items-center justify-center text-xl font-bold">
-                        1
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-extrabold text-slate-800">مشخصات فیزیکی و اهداف 🌸</h2>
-                        <p class="text-xs text-slate-500">اطلاعاتت رو وارد کن تا دقیق‌ترین برنامه برات محاسبه بشه عزیز دلم</p>
+                    <h2 class="text-base font-extrabold text-pink-600 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse"></i> ۱. مشخصات فیزیکی دقیق
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100">
+                            <label class="block text-xs font-bold text-gray-600 mb-1">سن (سال)</label>
+                            <input type="number" id="age" value="24" class="w-full p-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300 text-center font-extrabold text-pink-600">
+                        </div>
+                        <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100">
+                            <label class="block text-xs font-bold text-gray-600 mb-1">قد (سانتی‌متر)</label>
+                            <input type="number" id="height" value="165" class="w-full p-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300 text-center font-extrabold text-pink-600">
+                        </div>
+                        <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100">
+                            <label class="block text-xs font-bold text-gray-600 mb-1">وزن فعلی (کیلوگرم)</label>
+                            <input type="number" id="weight" value="62" class="w-full p-2.5 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-300 text-center font-extrabold text-pink-600">
+                        </div>
                     </div>
                 </div>
 
-                <form id="profile-form" onsubmit="event.preventDefault(); calculateAndGeneratePlan();" class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">قد (سانتی‌متر):</label>
-                        <input type="number" id="height" required value="168" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 font-bold">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">وزن کنونی (کیلوگرم):</label>
-                        <input type="number" step="0.1" id="weight" required value="62" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 font-bold">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">سن (سال):</label>
-                        <input type="number" id="age" required value="24" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 font-bold">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">هدف بدنی:</label>
-                        <select id="goal" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 font-bold">
-                            <option value="weight_loss">چربی‌سوزی و فرم‌دهی (کاهش وزن)</option>
-                            <option value="maintenance" selected>تثبیت وزن و تناسب اندام کیوت</option>
-                            <option value="muscle_gain">عضله‌سازی و افزایش حجم متناسب</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">درصد چربی بدنی تقریبی:</label>
-                        <select id="body-fat" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 font-bold">
-                            <option value="low">پایین (۱۸٪ - ۲۲٪)</option>
-                            <option value="medium" selected>متوسط (۲۳٪ - ۲۸٪)</option>
-                            <option value="high">بالا (بالای ۲۹٪)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">سطح فعالیت روزانه (غیر ورزشی):</label>
-                        <select id="activity-level" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 font-bold">
-                            <option value="sedentary">کم‌تحرک (پشت‌میز نشینی)</option>
-                            <option value="moderate" selected>متوسط (پیاده‌روی روزانه)</option>
-                            <option value="active">پرتحرک و فعال</option>
-                        </select>
-                    </div>
-
-                    <!-- Workouts & Blacklist Inputs -->
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-bold text-slate-700 mb-2">روزها و ساعت‌های تمرین ورزشی:</label>
-                        <input type="text" id="workout-schedule" value="روزهای زوج (شنبه، دوشنبه، چهارشنبه) ساعت ۱۷:۰۰" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 text-sm">
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">نوع ورزش تخصصی:</label>
-                        <input type="text" id="workout-type" value="بدنسازی + ۲۰ دقیقه کاردیو" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white/90 text-slate-800 text-sm">
-                    </div>
-
-                    <div class="md:col-span-3">
-                        <label class="block text-xs font-bold text-rose-600 mb-2"><i class="fa-solid fa-ban ml-1"></i> غذاهایی که دوست نداری یا حساسیت داری (لیست سیاه):</label>
-                        <input type="text" id="blacklist" placeholder="مثلاً: بادمجان، کرفس، ماهی، شیریجات خام" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-rose-400 focus:outline-none bg-red-50/50 text-slate-800 text-sm">
-                    </div>
-
-                    <div class="md:col-span-3 pt-4">
-                        <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-love-500 via-pink-500 to-purple-500 text-white font-extrabold text-base shadow-lg hover:opacity-95 transition transform active:scale-95 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            <span>محاسبه برنامه و زمان‌بندی هوشمند</span>
-                        </button>
-                    </div>
-                </form>
-            </section>
-
-            <!-- Generated Plan Results (Initially Hidden until Calculate Clicked) -->
-            <div id="plan-results" class="hidden space-y-6">
-                
-                <!-- Macro & Calorie Cards -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="glass-card p-5 rounded-3xl text-center border-t-4 border-love-500">
-                        <span class="text-xs text-slate-500 font-bold">کالری پیشنهادی</span>
-                        <div class="text-2xl font-black text-love-600 mt-1" id="res-calories">0</div>
-                        <span class="text-[10px] text-slate-400">کیلوکالری در روز</span>
-                    </div>
-
-                    <div class="glass-card p-5 rounded-3xl text-center border-t-4 border-blue-400">
-                        <span class="text-xs text-slate-500 font-bold">پروتئین لازم</span>
-                        <div class="text-2xl font-black text-blue-600 mt-1" id="res-protein">0g</div>
-                        <span class="text-[10px] text-slate-400" id="res-protein-pct">0%</span>
-                    </div>
-
-                    <div class="glass-card p-5 rounded-3xl text-center border-t-4 border-amber-400">
-                        <span class="text-xs text-slate-500 font-bold">کربوهیدرات</span>
-                        <div class="text-2xl font-black text-amber-600 mt-1" id="res-carbs">0g</div>
-                        <span class="text-[10px] text-slate-400" id="res-carbs-pct">0%</span>
-                    </div>
-
-                    <div class="glass-card p-5 rounded-3xl text-center border-t-4 border-emerald-400">
-                        <span class="text-xs text-slate-500 font-bold">چربی مفید</span>
-                        <div class="text-2xl font-black text-emerald-600 mt-1" id="res-fats">0g</div>
-                        <span class="text-[10px] text-slate-400" id="res-fats-pct">0%</span>
+                <!-- 2. Visual Body Fat Selection -->
+                <div>
+                    <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-percent"></i> ۲. تخمین تصویری چربی و فرم فعلی بدن
+                    </h2>
+                    <p class="text-xs text-gray-400 mb-4">فرم بدنت به کدوم یک از گزینه‌ها نزدیک‌تره؟</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="bodyFatContainer">
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this, '15-18')">
+                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                                <i class="fa-solid fa-person-running"></i>
+                            </div>
+                            <span class="block font-bold text-xs text-gray-700">۱۵٪ تا ۱۸٪</span>
+                            <span class="text-[10px] text-gray-400">بسیار کات و فیت</span>
+                        </div>
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white selected" onclick="selectFat(this, '20-22')">
+                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                                <i class="fa-solid fa-child-dress"></i>
+                            </div>
+                            <span class="block font-bold text-xs text-gray-700">۲۰٪ تا ۲۲٪</span>
+                            <span class="text-[10px] text-gray-400">متناسب و ایده آل</span>
+                        </div>
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this, '25-28')">
+                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                                <i class="fa-solid fa-person"></i>
+                            </div>
+                            <span class="block font-bold text-xs text-gray-700">۲۵٪ تا ۲۸٪</span>
+                            <span class="text-[10px] text-gray-400">کمی چربی نرمال</span>
+                        </div>
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this, '30+')">
+                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                            </div>
+                            <span class="block font-bold text-xs text-gray-700">۳۰٪ به بالا</span>
+                            <span class="text-[10px] text-gray-400">بافت چربی نرم</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Meal Plan & Supplement Timeline -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- 3. Target Physique -->
+                <div>
+                    <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye"></i> ۳. هدف بدنی
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="goalContainer">
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white selected" onclick="selectGoal(this, 'fatloss_muscle')">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="p-1.5 rounded-lg bg-pink-100 text-pink-500 text-xs"><i class="fa-solid fa-fire"></i></span>
+                                <h3 class="font-bold text-gray-800 text-xs">چربی‌‌سوزی + حفظ عضله</h3>
+                            </div>
+                            <p class="text-[11px] text-gray-400">کاهش چربی و سفت شدن بدن.</p>
+                        </div>
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this, 'hourglass')">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="p-1.5 rounded-lg bg-pink-100 text-pink-500 text-xs"><i class="fa-solid fa-gem"></i></span>
+                                <h3 class="font-bold text-gray-800 text-xs">فرم‌دهی ساعت‌شنی</h3>
+                            </div>
+                            <p class="text-[11px] text-gray-400">برجسته‌سازی عضلات پا/باسن و باریک ماندن کمر.</p>
+                        </div>
+                        <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this, 'health')">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="p-1.5 rounded-lg bg-pink-100 text-pink-500 text-xs"><i class="fa-solid fa-leaf"></i></span>
+                                <h3 class="font-bold text-gray-800 text-xs">تثبیت و شادابی</h3>
+                            </div>
+                            <p class="text-[11px] text-gray-400">افزایش انرژی و شادابی پوست.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Sports Schedule (Pilates, Hike, Fast Walk) -->
+                <div>
+                    <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-days"></i> ۴. برنامه‌ریزی اختصاصی ورزش‌ها
+                    </h2>
+                    <p class="text-xs text-gray-400 mb-4">روزها و ساعات ورزش هات رو مشخص کن تا زمان‌بندی دقیق کراتین، وی و ویتامین‌ها تنطیم بشه:</p>
                     
-                    <!-- Meals Column -->
-                    <div class="lg:col-span-2 space-y-4">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-extrabold text-slate-800 text-lg flex items-center gap-2">
-                                <span>🍱</span> برنامه وعده‌های غذایی امروز
-                            </h3>
-                            <button onclick="optimizeWithAI()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-xs font-bold hover:shadow-md transition flex items-center gap-1.5">
-                                <i class="fa-solid fa-sparkles"></i>
-                                <span>بهبود هوشمند با AI</span>
-                            </button>
+                    <div class="space-y-4">
+                        <!-- Pilates Reformer -->
+                        <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
+                            <label class="flex items-center gap-2 cursor-pointer font-bold text-xs sm:text-sm text-gray-800">
+                                <input type="checkbox" id="sport_pilates" checked onchange="toggleConfig('pilates')" class="w-4 h-4 accent-pink-500">
+                                <i class="fa-solid fa-sparkles text-pink-400"></i> پیلاتس ریفورمر
+                            </label>
+                            <div id="config_pilates" class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                <div>
+                                    <span class="block text-gray-500 mb-1 font-semibold">روزهای تمرین:</span>
+                                    <div class="flex flex-wrap gap-1" id="days_pilates">
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="شنبه">شنبه</button>
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="دوشنبه">دوشنبه</button>
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="چهارشنبه">چهارشنبه</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="block text-gray-500 mb-1 font-semibold">ساعت شروع:</span>
+                                    <select id="time_pilates" class="w-full p-2 rounded-xl border border-pink-200 bg-pink-50/40 font-bold text-gray-700">
+                                        <option value="17:00" selected>عصر (۱۷:۰۰)</option>
+                                        <option value="10:00">صبح (۱۰:۰۰)</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
-                        <div id="meals-container" class="space-y-4">
-                            <!-- Dynamically Generated Meals -->
+                        <!-- Hiking -->
+                        <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
+                            <label class="flex items-center gap-2 cursor-pointer font-bold text-xs sm:text-sm text-gray-800">
+                                <input type="checkbox" id="sport_hiking" checked onchange="toggleConfig('hiking')" class="w-4 h-4 accent-pink-500">
+                                <i class="fa-solid fa-mountain text-pink-400"></i> هایکینگ و کوهنوردی
+                            </label>
+                            <div id="config_hiking" class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                <div>
+                                    <span class="block text-gray-500 mb-1 font-semibold">روزهای تمرین:</span>
+                                    <div class="flex flex-wrap gap-1" id="days_hiking">
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="پنج‌شنبه">پنج‌شنبه</button>
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="جمعه">جمعه</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="block text-gray-500 mb-1 font-semibold">ساعت شروع:</span>
+                                    <select id="time_hiking" class="w-full p-2 rounded-xl border border-pink-200 bg-pink-50/40 font-bold text-gray-700">
+                                        <option value="08:00" selected>صبح زود (۰۸:۰۰)</option>
+                                        <option value="16:00">عصر (۱۶:۰۰)</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Supplements & Water Column -->
-                    <div class="space-y-6">
-                        <div class="glass-card p-6 rounded-3xl cute-shadow border-2 border-purple-100">
-                            <h3 class="font-extrabold text-purple-900 text-base mb-4 flex items-center gap-2">
-                                <span>💊</span> زمان‌بندی دقیق مکمل‌ها
-                            </h3>
-                            <ul id="supplements-list" class="space-y-3 text-sm">
-                                <!-- Supplements injected dynamically -->
-                            </ul>
-                        </div>
-
-                        <div class="glass-card p-6 rounded-3xl cute-shadow border-2 border-blue-100">
-                            <h3 class="font-extrabold text-blue-900 text-base mb-2 flex items-center gap-2">
-                                <span>💧</span> هدف آب‌رسانی روزانه
-                            </h3>
-                            <p class="text-xs text-slate-600 mb-4">برای شادابی پوست و چربی‌سوزی عالی، حتماً مصرف کن خوشگلم!</p>
-                            <div class="text-center py-2 bg-blue-50 rounded-2xl border border-blue-200">
-                                <span class="text-3xl font-black text-blue-600" id="water-target">2.8</span>
-                                <span class="text-xs text-blue-700 font-bold">لیتر (حدود ۱۱ لیوان)</span>
+                        <!-- Fast Walk -->
+                        <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
+                            <label class="flex items-center gap-2 cursor-pointer font-bold text-xs sm:text-sm text-gray-800">
+                                <input type="checkbox" id="sport_walk" checked onchange="toggleConfig('walk')" class="w-4 h-4 accent-pink-500">
+                                <i class="fa-solid fa-person-walking text-pink-400"></i> پیاده‌روی سریع
+                            </label>
+                            <div id="config_walk" class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                <div>
+                                    <span class="block text-gray-500 mb-1 font-semibold">روزهای تمرین:</span>
+                                    <div class="flex flex-wrap gap-1" id="days_walk">
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="یکشنبه">یکشنبه</button>
+                                        <button type="button" onclick="toggleDayBtn(this)" class="day-btn px-2 py-1 bg-pink-500 text-white rounded-lg" data-day="سه‌شنبه">سه‌شنبه</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="block text-gray-500 mb-1 font-semibold">ساعت شروع:</span>
+                                    <select id="time_walk" class="w-full p-2 rounded-xl border border-pink-200 bg-pink-50/40 font-bold text-gray-700">
+                                        <option value="18:30" selected>غروب (۱۸:۳۰)</option>
+                                        <option value="09:00">صبح (۰۹:۰۰)</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-            </div>
-
+                <!-- Calculate Button -->
+                <button type="button" onclick="calculateAndShowPlan()" class="w-full py-4 bg-gradient-to-r from-pink-400 via-rose-400 to-pink-500 text-white font-extrabold rounded-2xl shadow-lg hover:opacity-95 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-solid fa-calculator"></i> محاسبه هوشمند برنامه و زمان‌بندی مکمل‌ها
+                </button>
+            </form>
         </div>
 
-        <!-- ================= TAB 2: DAILY TRACKER ================= -->
-        <div id="daily-tab" class="hidden space-y-6">
-            <div class="glass-card p-6 rounded-3xl cute-shadow border-2 border-love-100">
-                <div class="flex items-center justify-between mb-6">
-                    <div>
-                        <h2 class="text-xl font-extrabold text-slate-800">ثبت عملکرد و وضعیت امروز ✨</h2>
-                        <p class="text-xs text-slate-500" id="tracker-date">تاریخ امروز: در حال دریافت...</p>
-                    </div>
-                    <span class="text-2xl">📝</span>
-                </div>
-
-                <form id="daily-log-form" onsubmit="event.preventDefault(); saveDailyLog();" class="space-y-5">
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-2">وزن امروز (کیلوگرم):</label>
-                            <input type="number" step="0.1" id="log-weight" placeholder="مثلاً 61.8" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-2">میزان مصرف آب (لیوان):</label>
-                            <input type="number" id="log-water" value="8" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-2">درصد پایبندی به رژیم امروز:</label>
-                            <select id="log-adherence" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white font-bold">
-                                <option value="100">۱۰۰٪ - عالی و بدون خطا 💪</option>
-                                <option value="80">۸۰٪ - خیلی خوب با یک تقلب کوچک</option>
-                                <option value="50">۵۰٪ - متوسط</option>
-                                <option value="30">کمتر از ۵۰٪ - نیاز به انگیزه بیشتر</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">وضعیت ورزش و تمرین امروز:</label>
-                        <select id="log-workout-done" class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white font-bold">
-                            <option value="كامل انجام شد">کامل و عالی انجام شد 🔥</option>
-                            <option value="سبك انجام شد">سبک انجام شد</option>
-                            <option value="استراحت بود">روز استراحت (Rest Day) 😴</option>
-                            <option value="انجام نشد">انجام نشد</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">یادداشت و احساس امروز / پیام برای هوش مصنوعی:</label>
-                        <textarea id="log-notes" rows="3" placeholder="امروز چطور پیش رفت؟ خسته شدی؟ هوس خوراکی خاصی کردی؟ بنویس تا هوش مصنوعی یاد بگیره..." class="w-full px-4 py-3 rounded-2xl border border-rose-200 focus:ring-2 focus:ring-love-400 focus:outline-none bg-white text-sm"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-extrabold text-base shadow-md hover:opacity-95 transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <span>ثبت نهایی و ذخیره روز امروز</span>
-                    </button>
-
-                </form>
-            </div>
-        </div>
-
-        <!-- ================= TAB 3: ANALYTICS & EXCEL EXPORT ================= -->
-        <div id="analytics-tab" class="hidden space-y-6">
+        <!-- STEP 2: RESULT SECTION -->
+        <div id="resultSection" class="hidden space-y-6">
             
-            <!-- Summary Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-card p-5 rounded-3xl text-center">
-                    <span class="text-xs text-slate-500 font-bold">کل روزهای ثبت‌شده</span>
-                    <div class="text-2xl font-black text-purple-600 mt-1" id="stat-total-days">0</div>
-                    <span class="text-[10px] text-slate-400">روز تلاش مداوم</span>
+            <!-- Summary Header -->
+            <div class="pastel-card p-6 bg-white border-2 border-pink-200">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-pink-100 pb-4 mb-4 gap-4">
+                    <div>
+                        <h2 class="text-xl font-extrabold text-pink-600 flex items-center gap-2">
+                            <i class="fa-solid fa-heart"></i> برنامه‌ی تغذیه‌ای و مکمل‌های امروز
+                        </h2>
+                        <p id="todayDateText" class="text-xs text-pink-400 font-bold mt-1"></p>
+                    </div>
+                    <div class="flex gap-2 no-print">
+                        <button onclick="exportToCSV()" class="px-3 py-2 bg-emerald-100 text-emerald-700 font-bold text-xs rounded-xl hover:bg-emerald-200 transition flex items-center gap-1">
+                            <i class="fa-solid fa-file-excel"></i> خروجی اکسل (.CSV)
+                        </button>
+                        <button onclick="resetForm()" class="px-3 py-2 bg-gray-100 text-gray-600 font-bold text-xs rounded-xl hover:bg-gray-200 transition">
+                            ویرایش داده‌ها
+                        </button>
+                    </div>
                 </div>
 
-                <div class="glass-card p-5 rounded-3xl text-center">
-                    <span class="text-xs text-slate-500 font-bold">میانگین پایبندی</span>
-                    <div class="text-2xl font-black text-emerald-600 mt-1" id="stat-avg-adherence">0%</div>
-                    <span class="text-[10px] text-slate-400">نرخ موفقیت</span>
-                </div>
-
-                <div class="glass-card p-5 rounded-3xl text-center">
-                    <span class="text-xs text-slate-500 font-bold">تغییرات وزن کل</span>
-                    <div class="text-2xl font-black text-rose-600 mt-1" id="stat-weight-change">0 kg</div>
-                    <span class="text-[10px] text-slate-400">از روز اول</span>
-                </div>
-
-                <div class="glass-card p-5 rounded-3xl text-center">
-                    <span class="text-xs text-slate-500 font-bold">میانگین مصرف آب</span>
-                    <div class="text-2xl font-black text-blue-600 mt-1" id="stat-avg-water">0</div>
-                    <span class="text-[10px] text-slate-400">لیوان در روز</span>
-                </div>
-            </div>
-
-            <!-- Export Section & Actions -->
-            <div class="glass-card p-6 rounded-3xl cute-shadow border-2 border-emerald-100 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div>
-                    <h3 class="font-extrabold text-slate-800 text-base">📊 خروجی کامل جدول اکسل (CSV)</h3>
-                    <p class="text-xs text-slate-500">گزارش کامل تمام روزها از روز اول تا امروز با تمامی جزئیات قابل بازکردن در Excel</p>
-                </div>
-                <button onclick="exportToExcel()" class="w-full md:w-auto px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-lg transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-file-excel text-lg"></i>
-                    <span>دانلود فایل اکسل تاریخچه</span>
-                </button>
-            </div>
-
-            <!-- Weight Chart -->
-            <div class="glass-card p-6 rounded-3xl cute-shadow">
-                <h3 class="font-extrabold text-slate-800 text-base mb-4">📈 روند تغییرات وزن</h3>
-                <div class="h-64">
-                    <canvas id="weightChart"></canvas>
+                <!-- Macros Breakdown -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                    <div class="bg-pink-50 p-3 rounded-2xl">
+                        <span class="block text-[10px] text-pink-500 font-bold">کالری روزانه</span>
+                        <span id="targetCalories" class="text-xl font-extrabold text-pink-600">--</span>
+                        <span class="text-[10px] text-gray-400">kcal</span>
+                    </div>
+                    <div class="bg-rose-50 p-3 rounded-2xl">
+                        <span class="block text-[10px] text-rose-500 font-bold">پروتئین (حفظ عضله)</span>
+                        <span id="targetProtein" class="text-xl font-extrabold text-rose-600">--</span>
+                        <span class="text-[10px] text-gray-400">گرم</span>
+                    </div>
+                    <div class="bg-amber-50 p-3 rounded-2xl">
+                        <span class="block text-[10px] text-amber-500 font-bold">کربوهیدرات</span>
+                        <span id="targetCarbs" class="text-xl font-extrabold text-amber-600">--</span>
+                        <span class="text-[10px] text-gray-400">گرم</span>
+                    </div>
+                    <div class="bg-purple-50 p-3 rounded-2xl">
+                        <span class="block text-[10px] text-purple-500 font-bold">چربی مفید</span>
+                        <span id="targetFats" class="text-xl font-extrabold text-purple-600">--</span>
+                        <span class="text-[10px] text-gray-400">گرم</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Days History Table -->
-            <div class="glass-card p-6 rounded-3xl cute-shadow overflow-hidden">
-                <h3 class="font-extrabold text-slate-800 text-base mb-4">🗓️️ جدول سوابق تمام روزها</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-right text-xs">
-                        <thead>
-                            <tr class="bg-rose-50 text-slate-700 border-b border-rose-100">
-                                <th class="p-3">تاریخ</th>
-                                <th class="p-3">وزن</th>
-                                <th class="p-3">پایبندی</th>
-                                <th class="p-3">مصرف آب</th>
-                                <th class="p-3">ورزش</th>
-                                <th class="p-3">یادداشت</th>
-                            </tr>
-                        </thead>
-                        <tbody id="history-table-body" class="divide-y divide-rose-50">
-                            <!-- Injected dynamically -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <!-- Days Tabs -->
+            <div class="flex gap-2 overflow-x-auto pb-1 no-print" id="dayTabs"></div>
 
-        </div>
+            <!-- Today's Workout Badge -->
+            <div id="workoutBadge" class="p-3.5 bg-pink-100/80 border border-pink-200 rounded-2xl text-xs font-bold text-pink-700 flex items-center justify-between"></div>
 
-    </main>
-
-    <!-- AI Assistant Floating Widget -->
-    <div id="ai-chat-btn" onclick="toggleAIChat()" class="fixed bottom-6 left-6 z-40 w-14 h-14 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white flex items-center justify-center text-2xl shadow-2xl cursor-pointer hover:scale-110 transition transform">
-        💬
-    </div>
-
-    <!-- AI Chat Window -->
-    <div id="ai-chat-window" class="fixed bottom-24 left-6 z-50 w-80 md:w-96 glass-card rounded-3xl cute-shadow border-2 border-purple-200 hidden flex flex-col overflow-hidden h-[450px]">
-        <div class="bg-gradient-to-r from-purple-600 to-pink-500 p-4 text-white flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <span class="text-xl">🤖</span>
-                <div>
-                    <h4 class="font-bold text-sm">مشاور و دستیار تغذیه عشقت</h4>
-                    <span class="text-[10px] opacity-80">متصل به تمام داده‌ها و هوش مصنوعی</span>
-                </div>
-            </div>
-            <button onclick="toggleAIChat()" class="text-white hover:opacity-70 text-lg"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-
-        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs custom-scrollbar">
-            <div class="bg-purple-100 text-purple-900 p-3 rounded-2xl max-w-[85%] font-medium">
-                سلام خوشگلم! من مربی و هوش مصنوعی اختصاصی تو هستم. هر سوالی درباره وعده‌ها، جایگزینی غذاها یا برنامه داری ازم بپرس! 🌸
-            </div>
-        </div>
-
-        <div class="p-3 bg-white border-t border-purple-100 flex items-center gap-2">
-            <input type="text" id="chat-input" placeholder="پیامت رو بنویس..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 px-3 py-2 rounded-xl border border-purple-200 text-xs focus:outline-none focus:ring-2 focus:ring-purple-400">
-            <button onclick="sendChatMessage()" class="w-9 h-9 rounded-xl bg-purple-600 text-white flex items-center justify-center hover:bg-purple-700 transition">
-                <i class="fa-solid fa-paper-plane text-xs"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Settings Modal (API Key & LLM Configuration) -->
-    <div id="settings-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass-card max-w-md w-full p-6 rounded-3xl cute-shadow border-2 border-love-200 space-y-5">
-            <div class="flex items-center justify-between border-b border-rose-100 pb-3">
-                <h3 class="font-extrabold text-slate-800 text-base flex items-center gap-2">
-                    <i class="fa-solid fa-sliders text-love-500"></i>
-                    <span>تنظیمات هوش مصنوعی (Universal LLM)</span>
+            <!-- Daily Supplements & Vitamins timing -->
+            <div class="pastel-card p-5 bg-gradient-to-r from-purple-50 via-pink-50 to-rose-50 border border-purple-200">
+                <h3 class="font-extrabold text-purple-700 text-sm mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-capsules"></i> زمان‌بندی هوشمند کراتین، پروتئین وی و ویتامین‌ها
                 </h3>
-                <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+                <div id="supplementsContainer" class="space-y-2 text-xs text-gray-700"></div>
             </div>
 
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">ارائه‌دهنده سرویس (Provider):</label>
-                    <select id="llm-provider" onchange="updateLLMDefaults()" class="w-full px-3 py-2.5 rounded-xl border border-rose-200 text-xs font-bold bg-white">
-                        <option value="google">Google Gemini (پیش‌‌فرض پیشنهادی)</option>
-                        <option value="openai">OpenAI (GPT-4o / GPT-3.5)</option>
-                        <option value="claude">Anthropic Claude</option>
-                        <option value="custom">API Endpoint سفارشی (OpenAI-compatible)</option>
-                    </select>
-                </div>
+            <!-- Meals Plan -->
+            <div id="mealsContainer" class="space-y-3"></div>
 
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">کلید اختصاصی API (API Key):</label>
-                    <input type="password" id="llm-api-key" placeholder="کلید API خود را وارد کنید..." class="w-full px-3 py-2.5 rounded-xl border border-rose-200 text-xs bg-white">
-                    <p class="text-[10px] text-slate-400 mt-1">در صورت خالی بودن، از سیستم پردازش هوشمند محلی پشتیبان استفاده خواهد شد.</p>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">نام مدل (Model Name):</label>
-                    <input type="text" id="llm-model" value="gemini-3-flash-preview" class="w-full px-3 py-2.5 rounded-xl border border-rose-200 text-xs bg-white">
-                </div>
-
-                <div id="custom-endpoint-container" class="hidden">
-                    <label class="block text-xs font-bold text-slate-700 mb-1">آدرس آدرس Custom Endpoint URL:</label>
-                    <input type="text" id="llm-endpoint" placeholder="https://api.openai.com/v1/chat/completions" class="w-full px-3 py-2.5 rounded-xl border border-rose-200 text-xs bg-white">
-                </div>
-            </div>
-
-            <div class="flex gap-2 pt-2">
-                <button onclick="saveLLMSettings()" class="flex-1 py-3 rounded-xl bg-love-500 hover:bg-love-600 text-white font-bold text-xs shadow-md transition">
-                    ذخیره تنظیمات
-                </button>
-                <button onclick="closeSettingsModal()" class="px-4 py-3 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition">
-                    انصراف
-                </button>
+            <!-- Footer -->
+            <div class="text-center py-6 text-xs text-pink-400">
+                طراحی شده با تمام وجود برای پرنسس من 🌸💖
             </div>
         </div>
+
     </div>
 
     <script>
-        // Global State & Persistent Storage Key
-        const STORAGE_KEY = 'CUTE_DIET_APP_DATA_V2';
-        
-        let appState = {
-            profile: null,
-            calculatedPlan: null,
-            dailyLogs: [],
-            llmConfig: {
-                provider: 'google',
-                apiKey: '',
-                model: 'gemini-3-flash-preview',
-                endpoint: ''
+        let selectedFat = '20-22';
+        let selectedGoal = 'fatloss_muscle';
+        let currentDay = 'شنبه';
+
+        const daysOfWeek = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
+
+        const weeklyMenu = {
+            'شنبه': {
+                breakfast: { name: "املت ۳ سفیده + ۱ صفار با اسفناج + ۲ کف دست نان سنگک", cal: 310, protein: 24, icon: "fa-egg" },
+                lunch: { name: "فیله مرغ گریل (۱۵۰g) + ۶ قاشق برنج قهوه‌ای + سالاد سبز", cal: 420, protein: 38, icon: "fa-drumstick-bite" },
+                snack: { name: "۱ لیوان شیر کم‌چرب + ۵ عدد بادام + ۱ عدد سیب", cal: 180, protein: 8, icon: "fa-apple-whole" },
+                dinner: { name: "سالاد تن ماهی (بدون روغن) با لیموترش و زیتون", cal: 320, protein: 30, icon: "fa-fish" }
+            },
+            'یکشنبه': {
+                breakfast: { name: "اوتمیل جوپرک با شیر کم‌چرب + ۵ عدد توت‌فرنگی", cal: 290, protein: 18, icon: "fa-bowl-rice" },
+                lunch: { name: "کباب فیله گوسفندی کم‌چرب (۱۲۰g) + گوجه + سالاد", cal: 450, protein: 35, icon: "fa-utensils" },
+                snack: { name: "ماست یونانی (۱۵۰g) + ۱ قاشق عسل", cal: 160, protein: 14, icon: "fa-ice-cream" },
+                dinner: { name: "خوراک کدو سبز و فیله مرغ + ۲ کف دست نان جو", cal: 310, protein: 28, icon: "fa-carrot" }
+            },
+            'دوشنبه': {
+                breakfast: { name: "۲ عدد تخم‌مرغ آبپز + ۵ عدد زیتون + نان سبوس‌دار", cal: 320, protein: 16, icon: "fa-egg" },
+                lunch: { name: "استیک بوقلمون (۱۵۰g) + سیب‌زمینی تنوری (۱۰۰g)", cal: 410, protein: 36, icon: "fa-bowl-food" },
+                snack: { name: "شیک پروتئین وی با ماست یا شیر", cal: 200, protein: 22, icon: "fa-glass-water" },
+                dinner: { name: "سوپ جو پرک با سینه مرغ ریش‌ریش شده", cal: 280, protein: 22, icon: "fa-mug-hot" }
+            },
+            'سه‌شنبه': {
+                breakfast: { name: "پنیر کم‌چرب + ۲ عدد گردو + خیار گوجه + نان سنگک", cal: 280, protein: 14, icon: "fa-cheese" },
+                lunch: { name: "ماهی قزل‌آلا کباب شده + ۷ قاشق سبزی‌پلو کم‌روغن", cal: 460, protein: 34, icon: "fa-fish" },
+                snack: { name: "یک عدد پرتقال + ۵ عدد پسته", cal: 140, protein: 4, icon: "fa-lemon" },
+                dinner: { name: "خوراک عدسی کم‌روغن با لیموترش تازه", cal: 300, protein: 18, icon: "fa-bowl-rice" }
+            },
+            'چهارشنبه': {
+                breakfast: { name: "پنکیک رژیمی (موز + ۱ تخم‌مرغ + ۲ قاشق جوپرک)", cal: 300, protein: 15, icon: "fa-stroopwafel" },
+                lunch: { name: "میگو گریل شده + کینوا + سبزیجات مشوی", cal: 390, protein: 32, icon: "fa-shrimp" },
+                snack: { name: "شیر گرم + ۲ عدد خرما", cal: 150, protein: 6, icon: "fa-mug-saucer" },
+                dinner: { name: "سالاد سزار رژیمی با سس ماست و فیله مرغ", cal: 330, protein: 29, icon: "fa-wheat-awn" }
+            },
+            'پنج‌شنبه': {
+                breakfast: { name: "املت گوجه‌فرنگی با روغن زیتون کم + نان جو", cal: 290, protein: 15, icon: "fa-egg" },
+                lunch: { name: "خورشت قیمه کم‌روغن با گوشت لخم + ۶ قاشق برنج", cal: 470, protein: 30, icon: "fa-bowl-food" },
+                snack: { name: "میکس مغزیجات خام (۱۰ عدد) + چای سبز", cal: 160, protein: 5, icon: "fa-leaf" },
+                dinner: { name: "بشقاب سبزیجات بخارپز + ۱۰۰ گرم قارچ گریل", cal: 260, protein: 14, icon: "fa-carrot" }
+            },
+            'جمعه': {
+                breakfast: { name: "حلیم کم‌چرب بوقلمون (بدون شکر) + نان سنگک", cal: 340, protein: 22, icon: "fa-bowl-rice" },
+                lunch: { name: "جوجه‌کباب فیله مرغ + گوجه + سالاد شیرازی", cal: 430, protein: 37, icon: "fa-drumstick-bite" },
+                snack: { name: "یک لیوان اسموتی توت‌فرنگی", cal: 150, protein: 5, icon: "fa-glass-water" },
+                dinner: { name: "خوراک لوبیا چیتی خانگی با قارچ", cal: 290, protein: 16, icon: "fa-bowl-rice" }
             }
         };
 
-        let weightChartInstance = null;
-
-        // Initialize App on Load
-        window.onload = function() {
-            loadStateFromStorage();
-            initCurrentDate();
-            renderProfileToForm();
-            if (appState.calculatedPlan) {
-                renderPlanResults(appState.calculatedPlan);
-            }
-            renderAnalytics();
-            initChart();
-        };
-
-        // --- Date Engine (Solar Hijri & Gregorian) ---
-        function initCurrentDate() {
-            const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-            const persianDate = new Intl.DateTimeFormat('fa-IR', options).format(now);
-            
-            document.getElementById('current-date-display').innerText = `امروز: ${persianDate}`;
-            document.getElementById('tracker-date').innerText = `تاریخ ثبت: ${persianDate}`;
+        function selectFat(el, val) {
+            document.querySelectorAll('#bodyFatContainer .selectable-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedFat = val;
         }
 
-        function getTodayISO() {
-            return new Date().toISOString().split('T')[0];
+        function selectGoal(el, val) {
+            document.querySelectorAll('#goalContainer .selectable-card').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedGoal = val;
         }
 
-        function getTodayPersianShort() {
-            return new Intl.DateTimeFormat('fa-IR', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+        function toggleConfig(key) {
+            const chk = document.getElementById('sport_' + key);
+            const cfg = document.getElementById('config_' + key);
+            if(chk.checked) cfg.classList.remove('hidden');
+            else cfg.classList.add('hidden');
         }
 
-        // --- Tab Switching Logic ---
-        function switchTab(tabId) {
-            ['calculator-tab', 'daily-tab', 'analytics-tab'].forEach(id => {
-                document.getElementById(id).classList.add('hidden');
-            });
-            document.getElementById(tabId).classList.remove('hidden');
+        function toggleDayBtn(btn) {
+            btn.classList.toggle('bg-pink-500');
+            btn.classList.toggle('text-white');
+            btn.classList.toggle('bg-gray-100');
+            btn.classList.toggle('text-gray-600');
+        }
 
-            // Update Tab Button Styles
-            ['calculator', 'daily', 'analytics'].forEach(name => {
-                const btn = document.getElementById(`tab-btn-${name}`);
-                if (`${name}-tab` === tabId) {
-                    btn.className = "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all text-center text-white bg-gradient-to-r from-love-500 to-pink-500 shadow-md";
-                } else {
-                    btn.className = "flex-1 py-2.5 rounded-xl font-bold text-sm transition-all text-center text-slate-600 hover:text-love-600";
+        function calculateAndShowPlan() {
+            const weight = parseFloat(document.getElementById('weight').value) || 62;
+            const height = parseFloat(document.getElementById('height').value) || 165;
+            const age = parseFloat(document.getElementById('age').value) || 24;
+
+            let bmr = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+            let targetCal = Math.round(bmr * 1.35 - 300);
+            let protein = Math.round(weight * 2.0);
+            let fat = Math.round((targetCal * 0.25) / 9);
+            let carbs = Math.round((targetCal - (protein * 4) - (fat * 9)) / 4);
+
+            document.getElementById('targetCalories').innerText = targetCal;
+            document.getElementById('targetProtein').innerText = protein;
+            document.getElementById('targetCarbs').innerText = carbs;
+            document.getElementById('targetFats').innerText = fat;
+
+            // Auto Date
+            const today = new Date().toLocaleDateString('fa-IR');
+            document.getElementById('todayDateText').innerText = `تاریخ امروز: ${today}`;
+
+            renderDayTabs();
+            switchDay('شنبه');
+
+            document.getElementById('formSection').classList.add('hidden');
+            document.getElementById('resultSection').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderDayTabs() {
+            document.getElementById('dayTabs').innerHTML = daysOfWeek.map(day => `
+                <button onclick="switchDay('${day}')" class="px-4 py-2 rounded-xl font-bold text-xs whitespace-nowrap transition ${currentDay === day ? 'bg-pink-500 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-pink-100'}">
+                    ${day}
+                </button>
+            `).join('');
+        }
+
+        function switchDay(day) {
+            currentDay = day;
+            renderDayTabs();
+            renderSupplements();
+            renderMeals();
+        }
+
+        function renderSupplements() {
+            const sports = [
+                { id: 'pilates', name: 'پیلاتس ریفورمر' },
+                { id: 'hiking', name: 'هایکینگ' },
+                { id: 'walk', name: 'پیاده‌روی سریع' }
+            ];
+
+            let activeToday = [];
+            sports.forEach(s => {
+                const chk = document.getElementById('sport_' + s.id);
+                if (chk && chk.checked) {
+                    const daysBtns = document.querySelectorAll(`#days_${s.id} .day-btn.bg-pink-500`);
+                    let selectedDays = Array.from(daysBtns).map(b => b.getAttribute('data-day'));
+                    if (selectedDays.includes(currentDay)) {
+                        let time = document.getElementById('time_' + s.id).value;
+                        activeToday.push({ name: s.name, time: time });
+                    }
                 }
             });
 
-            if (tabId === 'analytics-tab') {
-                renderAnalytics();
+            const badge = document.getElementById('workoutBadge');
+            const supp = document.getElementById('supplementsContainer');
+
+            if (activeToday.length > 0) {
+                let text = activeToday.map(a => `${a.name} (ساعت ${a.time})`).join(' و ');
+                badge.innerHTML = `<span><i class="fa-solid fa-dumbbell text-pink-600"></i> ورزش امروز: <strong>${text}</strong></span> <span class="bg-pink-500 text-white px-2 py-0.5 rounded-md text-[10px]">روز تمرین 🏋️‍♀️</span>`;
+            } else {
+                badge.innerHTML = `<span><i class="fa-solid fa-mug-hot text-purple-500"></i> برنامه امروز: <strong>استراحت و ریکاوری (Rest Day)</strong></span> <span class="bg-purple-200 text-purple-700 px-2 py-0.5 rounded-md text-[10px]">استراحت 🌸</span>`;
             }
-        }
 
-        // --- Nutrition & Diet Calculation Logic ---
-        function calculateAndGeneratePlan() {
-            const profile = {
-                height: parseFloat(document.getElementById('height').value),
-                weight: parseFloat(document.getElementById('weight').value),
-                age: parseInt(document.getElementById('age').value),
-                goal: document.getElementById('goal').value,
-                bodyFat: document.getElementById('body-fat').value,
-                activity: document.getElementById('activity-level').value,
-                workoutSchedule: document.getElementById('workout-schedule').value,
-                workoutType: document.getElementById('workout-type').value,
-                blacklist: document.getElementById('blacklist').value.split('،').join(',').split(',')
-            };
+            let suppHtml = `
+                <div class="bg-white/80 p-2.5 rounded-xl border border-purple-100">
+                    <strong>همراه صبحانه:</strong> ۱ عدد مولتی‌ویتامین بانوان + ۱ عدد ویتامین D3 (۱۰۰۰ واحد).
+                </div>
+            `;
 
-            appState.profile = profile;
-
-            // BMR Calculation (Mifflin-St Jeor for Women)
-            let bmr = (10 * profile.weight) + (6.25 * profile.height) - (5 * profile.age) - 161;
-            
-            // Activity Multiplier
-            let activityMult = profile.activity === 'active' ? 1.55 : (profile.activity === 'moderate' ? 1.375 : 1.2);
-            let tdee = bmr * activityMult;
-
-            // Goal Adjustment
-            let targetCalories = tdee;
-            if (profile.goal === 'weight_loss') targetCalories -= 350;
-            if (profile.goal === 'muscle_gain') targetCalories += 250;
-
-            targetCalories = Math.round(targetCalories);
-
-            // Macros Distribution
-            let proteinPerKg = profile.goal === 'muscle_gain' ? 2.0 : (profile.goal === 'weight_loss' ? 1.8 : 1.5);
-            let proteinGrams = Math.round(profile.weight * proteinPerKg);
-            let fatGrams = Math.round((targetCalories * 0.25) / 9);
-            let carbsGrams = Math.round((targetCalories - (proteinGrams * 4) - (fatGrams * 9)) / 4);
-
-            // Water Target
-            let waterTarget = ((profile.weight * 0.035) + 0.5).toFixed(1);
-
-            // Meal Items Generator (Filtered by Blacklist)
-            const meals = generateFilteredMeals(targetCalories, profile.blacklist);
-            const supplements = generateSupplements(profile);
-
-            const calculatedPlan = {
-                calories: targetCalories,
-                protein: proteinGrams,
-                carbs: carbsGrams,
-                fats: fatGrams,
-                water: waterTarget,
-                meals: meals,
-                supplements: supplements,
-                generatedAt: getTodayPersianShort()
-            };
-
-            appState.calculatedPlan = calculatedPlan;
-            saveStateToStorage();
-            renderPlanResults(calculatedPlan);
-        }
-
-        function generateFilteredMeals(calories, blacklist) {
-            const isBlacklisted = (item) => blacklist.some(b => b.trim() && item.includes(b.trim()));
-
-            let breakfast = "اوتمیل با شیر کم‌چرب، دارچین، ۱ قاشق چایخوری عسل و ۵ عدد بادام";
-            if (isBlacklisted(breakfast)) breakfast = "۲ عدد تخم‌مرغ آب‌پز + ۱ کف دست نان سنگک + خیار و گوجه";
-
-            let snack1 = "یک عدد سیب سرخ + ۴ عدد گردو";
-            if (isBlacklisted(snack1)) snack1 = "یک لیوان شیر کم‌چرب + ۲ عدد خرما";
-
-            let lunch = "۱۵۰ گرم فیله مرغ گریل شده + ۶ قاشق برنج کته با روغن زیتون + سالاد فصل";
-            if (isBlacklisted(lunch)) lunch = "۱۴۰ گرم گوشت چرخ‌کرده کم‌چرب + ۱ عدد سیب‌زمینی تنوری + سبزیجات";
-
-            let snack2 = "یک کاسه کوچک ماست یونانی + ۱ قاشق مربیخوری دانه چیا";
-            
-            let dinner = "۱۲۰ گرم ماهی قزل‌آلا یا تن ماهی بدون روغن + سالاد سبزیجات فراوان با لیموترش";
-            if (isBlacklisted(dinner)) dinner = "۲ عدد فیله مرغ + قارچ کبابی + ۱ کف دست نان جو";
-
-            return [
-                { title: "صبحانه انرژی‌بخش (ساعت ۸:۰۰)", desc: breakfast, icon: "🌅" },
-                { title: "میان‌وعده صبح (ساعت ۱۱:۰۰)", desc: snack1, icon: "🍎" },
-                { title: "ناهار کامل و مقوی (ساعت ۱۴:۰۰)", desc: lunch, icon: "🥗" },
-                { title: "میان‌وعده قبل تمرین / عصرانه (ساعت ۱۶:۳۰)", desc: snack2, icon: "🍌" },
-                { title: "شام سبک رژیمی (ساعت ۲۰:۳۰)", desc: dinner, icon: "🌙" }
-            ];
-        }
-
-        function generateSupplements(profile) {
-            return [
-                { name: "مولتی‌ویتامین فارماتون/اکتیوومن", time: "همراه با صبحانه (۱ عدد)", note: "برای شادابی و انرژی کل روز" },
-                { name: "ویتامین D3 (پنج هزار)", time: "هفته‌ای یک عدد بعد از ناهار", note: "تنظیم هورمون‌ها و سلامت استخوان" },
-                { name: "قرص آهن / ففول", time: "قبل از خواب با یک لیوان آب مرکبات", note: "جلوگیری از خستگی و کم‌خونی" },
-                { name: "امگا ۳", time: "همراه ناهار (۱ عدد)", note: "شادابی پوست و چربی‌‌سوزی مفید" }
-            ];
-        }
-
-        function renderPlanResults(plan) {
-            document.getElementById('plan-results').classList.remove('hidden');
-
-            document.getElementById('res-calories').innerText = plan.calories;
-            document.getElementById('res-protein').innerText = plan.protein + 'g';
-            document.getElementById('res-carbs').innerText = plan.carbs + 'g';
-            document.getElementById('res-fats').innerText = plan.fats + 'g';
-            document.getElementById('water-target').innerText = plan.water;
-
-            // Render Meals
-            const mealsContainer = document.getElementById('meals-container');
-            mealsContainer.innerHTML = '';
-            plan.meals.forEach((meal, idx) => {
-                mealsContainer.innerHTML += `
-                    <div class="glass-card p-4 rounded-2xl flex items-start gap-3 border-r-4 border-love-400">
-                        <span class="text-2xl">${meal.icon}</span>
-                        <div class="flex-1">
-                            <h4 class="font-bold text-slate-800 text-sm">${meal.title}</h4>
-                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">${meal.desc}</p>
-                        </div>
-                        <button onclick="swapMeal(${idx})" class="text-slate-400 hover:text-love-500 text-xs p-1" title="تغییر این وعده">
-                            <i class="fa-solid fa-arrows-rotate"></i>
-                        </button>
+            if (activeToday.length > 0) {
+                suppHtml += `
+                    <div class="bg-pink-100/90 p-2.5 rounded-xl border border-pink-200">
+                        <strong>بلافاصله بعد از تمرین (حدود ساعت ${activeToday[0].time}):</strong> ۱ اسکوپ پودر پروتئین وی + ۵ گرم کراتین در ۲۵۰ml آب خنک یا شیک موز.
                     </div>
                 `;
-            });
-
-            // Render Supplements
-            const suppsList = document.getElementById('supplements-list');
-            suppsList.innerHTML = '';
-            plan.supplements.forEach(s => {
-                suppsList.innerHTML += `
-                    <li class="p-2.5 rounded-xl bg-purple-50 border border-purple-100 flex items-start justify-between">
-                        <div>
-                            <span class="font-bold text-purple-900 block">${s.name}</span>
-                            <span class="text-[11px] text-purple-600">${s.time}</span>
-                        </div>
-                        <span class="text-[10px] bg-purple-200 text-purple-800 px-2 py-0.5 rounded-lg font-bold">${s.note}</span>
-                    </li>
-                `;
-            });
-
-            // Scroll Smoothly to Results
-            document.getElementById('plan-results').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function swapMeal(index) {
-            const alternatives = [
-                "۱ لیوان شیر کم‌چرب + ۱ قاشق عسل + ۲ عدد جوز هندی",
-                "۲ عدد سیب‌زمینی کوچک آب‌پز + ۱۰۰ گرم سینه مرغ",
-                "سالاد یونانی با پنیر فتا کم‌چرب و ۵ عدد زیتون",
-                "یک لیوان اسموتی توت‌فرنگی با پروتئین وی یا شیر"
-            ];
-            const randomAlt = alternatives[Math.floor(Math.random() * alternatives.length)];
-            appState.calculatedPlan.meals[index].desc = "جایگزین: " + randomAlt;
-            saveStateToStorage();
-            renderPlanResults(appState.calculatedPlan);
-        }
-
-        // --- Daily Logs Engine ---
-        function saveDailyLog() {
-            const todayDate = getTodayPersianShort();
-            const weight = parseFloat(document.getElementById('log-weight').value) || (appState.profile ? appState.profile.weight : 0);
-            const water = parseInt(document.getElementById('log-water').value) || 0;
-            const adherence = parseInt(document.getElementById('log-adherence').value) || 100;
-            const workout = document.getElementById('log-workout-done').value;
-            const notes = document.getElementById('log-notes').value;
-
-            const existingIndex = appState.dailyLogs.findIndex(l => l.date === todayDate);
-            const newLog = {
-                date: todayDate,
-                weight: weight,
-                water: water,
-                adherence: adherence,
-                workout: workout,
-                notes: notes,
-                timestamp: new Date().getTime()
-            };
-
-            if (existingIndex >= 0) {
-                appState.dailyLogs[existingIndex] = newLog;
             } else {
-                appState.dailyLogs.push(newLog);
-            }
-
-            saveStateToStorage();
-            alert("اطلاعات امروز با موفقیت ذخیره شد عزیز دلم! 💖");
-            renderAnalytics();
-        }
-
-        // --- Analytics & Excel CSV Export Engine ---
-        function renderAnalytics() {
-            const logs = appState.dailyLogs;
-            document.getElementById('stat-total-days').innerText = logs.length;
-
-            if (logs.length > 0) {
-                const avgAdherence = Math.round(logs.reduce((acc, l) => acc + l.adherence, 0) / logs.length);
-                document.getElementById('stat-avg-adherence').innerText = avgAdherence + '%';
-
-                const avgWater = (logs.reduce((acc, l) => acc + l.water, 0) / logs.length).toFixed(1);
-                document.getElementById('stat-avg-water').innerText = avgWater;
-
-                const weightDiff = (logs[logs.length - 1].weight - logs[0].weight).toFixed(1);
-                document.getElementById('stat-weight-change').innerText = (weightDiff > 0 ? '+' : '') + weightDiff + ' kg';
-            }
-
-            // Render Table
-            const tbody = document.getElementById('history-table-body');
-            tbody.innerHTML = '';
-            logs.slice().reverse().forEach(log => {
-                tbody.innerHTML += `
-                    <tr>
-                        <td class="p-3 font-bold">${log.date}</td>
-                        <td class="p-3 text-love-600 font-extrabold">${log.weight} kg</td>
-                        <td class="p-3"><span class="px-2 py-0.5 rounded-md text-[10px] font-bold ${log.adherence >= 80 ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">${log.adherence}%</span></td>
-                        <td class="p-3">${log.water} لیوان</td>
-                        <td class="p-3">${log.workout}</td>
-                        <td class="p-3 text-slate-500 max-w-xs truncate">${log.notes || '-'}</td>
-                    </tr>
+                suppHtml += `
+                    <div class="bg-white/80 p-2.5 rounded-xl border border-purple-100">
+                        <strong>عصرانه (روز استراحت):</strong> ۱ اسکوپ پروتئین وی به عنوان میان‌وعده / ۵ گرم کراتین همراه آبمیوه.
+                    </div>
                 `;
-            });
-
-            updateChart();
-        }
-
-        function exportToExcel() {
-            if (appState.dailyLogs.length === 0) {
-                alert("هنوز روزی ثبت نشده است! ابتدا اطلاعات امروز را ثبت کنید.");
-                return;
             }
 
-            // Generate UTF-8 BOM CSV for Excel Persian Support
-            let csvContent = "\uFEFF";
-            csvContent += "تاریخ,وزن (kg),درصد پایبندی,مصرف آب (لیوان),وضعیت ورزش,یادداشت‌ها\n";
+            suppHtml += `
+                <div class="bg-white/80 p-2.5 rounded-xl border border-purple-100">
+                    <strong>همراه ناهار/شام:</strong> ۱ عدد کپسول امگا ۳.
+                </div>
+                <div class="bg-white/80 p-2.5 rounded-xl border border-purple-100">
+                    <strong>۴۵ دقیقه قبل خواب:</strong> قرص منیزیم (۲۵۰mg) + زینک برای رفع گرفتگی عضلات و خواب عمیق.
+                </div>
+            `;
 
-            appState.dailyLogs.forEach(log => {
-                const row = [
-                    `"${log.date}"`,
-                    `"${log.weight}"`,
-                    `"${log.adherence}%"`,
-                    `"${log.water}"`,
-                    `"${log.workout}"`,
-                    `"${(log.notes || '').replace(/"/g, '""')}"`
-                ];
-                csvContent += row.join(",") + "\n";
+            supp.innerHTML = suppHtml;
+        }
+
+        function renderMeals() {
+            const container = document.getElementById('mealsContainer');
+            const dayData = weeklyMenu[currentDay];
+
+            container.innerHTML = Object.keys(dayData).map(key => {
+                let meal = dayData[key];
+                return `
+                    <div class="pastel-card rounded-2xl p-4 bg-white flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-3 bg-pink-100 text-pink-500 rounded-2xl text-lg">
+                                <i class="fa-solid ${meal.icon}"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-xs sm:text-sm">${meal.name}</h3>
+                            </div>
+                        </div>
+                        <div class="text-left shrink-0">
+                            <span class="block text-xs font-extrabold text-pink-600">${meal.cal} کالری</span>
+                            <span class="text-[10px] text-gray-400">${meal.protein}g پروتئین</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function exportToCSV() {
+            let csvContent = "data:text/csv;charset=utf-8,روز,وعده,نام غذا,کالری,پروتئین\n";
+            Object.keys(weeklyMenu).forEach(day => {
+                Object.keys(weeklyMenu[day]).forEach(m => {
+                    let item = weeklyMenu[day][m];
+                    csvContent += `${day},${m},${item.name},${item.cal},${item.protein}\n`;
+                });
             });
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
+            const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", `گزارش_رژیم_عشقم_${getTodayPersianShort().replace(/\//g, '-')}.csv`);
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "diet_plan.csv");
             document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
         }
 
-        function initChart() {
-            const ctx = document.getElementById('weightChart').getContext('2d');
-            weightChartInstance = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: [],
-                    datasets: [{
-                        label: 'وزن (کیلوگرم)',
-                        data: [],
-                        borderColor: '#f43f5e',
-                        backgroundColor: 'rgba(244, 63, 94, 0.1)',
-                        fill: true,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } }
-                }
-            });
-        }
-
-        function updateChart() {
-            if (!weightChartInstance) return;
-            const labels = appState.dailyLogs.map(l => l.date);
-            const data = appState.dailyLogs.map(l => l.weight);
-            weightChartInstance.data.labels = labels;
-            weightChartInstance.data.datasets[0].data = data;
-            weightChartInstance.update();
-        }
-
-        // --- Universal LLM & AI Engine ---
-        function openSettingsModal() { document.getElementById('settings-modal').classList.remove('hidden'); }
-        function closeSettingsModal() { document.getElementById('settings-modal').classList.add('hidden'); }
-
-        function updateLLMDefaults() {
-            const provider = document.getElementById('llm-provider').value;
-            const endpointContainer = document.getElementById('custom-endpoint-container');
-            const modelInput = document.getElementById('llm-model');
-
-            if (provider === 'google') {
-                modelInput.value = 'gemini-3-flash-preview';
-                endpointContainer.classList.add('hidden');
-            } else if (provider === 'openai') {
-                modelInput.value = 'gpt-4o';
-                endpointContainer.classList.add('hidden');
-            } else if (provider === 'claude') {
-                modelInput.value = 'claude-3-5-sonnet-20241022';
-                endpointContainer.classList.add('hidden');
-            } else {
-                endpointContainer.classList.remove('hidden');
-            }
-        }
-
-        function saveLLMSettings() {
-            appState.llmConfig = {
-                provider: document.getElementById('llm-provider').value,
-                apiKey: document.getElementById('llm-api-key').value,
-                model: document.getElementById('llm-model').value,
-                endpoint: document.getElementById('llm-endpoint').value
-            };
-            saveStateToStorage();
-            closeSettingsModal();
-            alert("تنظیمات هوش مصنوعی ذخیره شد!");
-        }
-
-        function toggleAIChat() {
-            document.getElementById('ai-chat-window').classList.toggle('hidden');
-        }
-
-        async function sendChatMessage() {
-            const input = document.getElementById('chat-input');
-            const message = input.value.trim();
-            if (!message) return;
-
-            appendChatMessage('user', message);
-            input.value = '';
-
-            const aiResponse = await callLLM(message);
-            appendChatMessage('ai', aiResponse);
-        }
-
-        function appendChatMessage(sender, text) {
-            const chatMessages = document.getElementById('chat-messages');
-            const isUser = sender === 'user';
-            const msgDiv = document.createElement('div');
-            msgDiv.className = isUser 
-                ? "bg-love-500 text-white p-3 rounded-2xl max-w-[85%] font-medium mr-auto text-left" 
-                : "bg-purple-100 text-purple-900 p-3 rounded-2xl max-w-[85%] font-medium";
-            msgDiv.innerText = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        async function callLLM(prompt) {
-            const config = appState.llmConfig;
-
-            // Direct Gemini API Integration
-            if (config.provider === 'google') {
-                try {
-                    const apiKey = config.apiKey || ""; 
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${config.model || 'gemini-3-flash-preview'}:generateContent?key=${apiKey}`;
-                    
-                    const systemContext = `شما یک دستیار تغذیه و مربی ورزشی فوق‌العاده مهربان، عاشقانه و حرفه‌ای برای نامزد کاربر هستید.
-                    مشخصات نامزد کاربر: قد ${appState.profile?.height}، وزن ${appState.profile?.weight}، هدف: ${appState.profile?.goal}.
-                    سیاهه‌غذاها: ${appState.profile?.blacklist.join(', ')}.
-                    همیشه بسیار صمیمی، لحن عاشقانه و کیوت پاسخ بده.`;
-
-                    const payload = {
-                        contents: [{ parts: [{ text: prompt }] }],
-                        systemInstruction: { parts: [{ text: systemContext }] }
-                    };
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    const result = await response.json();
-                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "پاسخی دریافت نشد عزیز دلم!";
-                } catch (err) {
-                    return "خطا در اتصال به هوش مصنوعی. لطفاً کلید API را در تنظیمات بررسی کنید.";
-                }
-            } else {
-                // Fallback smart response
-                return "من پیامت رو دریافت کردم! برای بهترین نتیجه می‌توانید API Key گیت‌هاب یا گوگل جمنی رو در بخش تنظیمات AI وارد کنید 🌸";
-            }
-        }
-
-        async function optimizeWithAI() {
-            alert("در حال تحلیل برنامه‌ی شما با هوش مصنوعی برای بهینه‌سازی وعده‌ها... ✨");
-            const res = await callLLM("لطفاً بر اساس اهداف من، ۱ پیشنهاد بهبود برای وعده ناهار و شام بده.");
-            alert("پیشنهاد هوش مصنوعی:\n" + res);
-        }
-
-        // --- Storage Helpers ---
-        function saveStateToStorage() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
-        }
-
-        function loadStateFromStorage() {
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                try {
-                    appState = JSON.parse(saved);
-                } catch(e) {}
-            }
-        }
-
-        function renderProfileToForm() {
-            if (!appState.profile) return;
-            const p = appState.profile;
-            document.getElementById('height').value = p.height || 168;
-            document.getElementById('weight').value = p.weight || 62;
-            document.getElementById('age').value = p.age || 24;
-            document.getElementById('goal').value = p.goal || 'maintenance';
-            document.getElementById('workout-schedule').value = p.workoutSchedule || '';
-            document.getElementById('workout-type').value = p.workoutType || '';
-            document.getElementById('blacklist').value = p.blacklist ? p.blacklist.join(', ') : '';
+        function resetForm() {
+            document.getElementById('resultSection').classList.add('hidden');
+            document.getElementById('formSection').classList.remove('hidden');
         }
     </script>
 </body>
