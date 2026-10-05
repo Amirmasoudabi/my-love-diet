@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پرنسس دایت 🌸 | رژیم و برنامه‌ی نفس طلایی من</title>
+    <title>پرنسس دایت 🌸 | برنامه هوشمند و پاستلی من</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
@@ -45,18 +45,18 @@
 </head>
 <body class="py-8 px-3 sm:px-6">
 
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto space-y-6">
         <!-- Header -->
-        <header class="text-center mb-8 no-print">
+        <header class="text-center no-print mb-4">
             <div class="inline-flex p-4 rounded-full bg-pink-100 text-pink-500 mb-3 animate-pulse shadow-sm">
                 <i class="fa-solid fa-sparkles fa-2x"></i>
             </div>
             <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-600 mb-2">رژیم و سلامتی پرنسس من 🌸✨</h1>
-            <p class="text-pink-400 text-xs sm:text-sm">طراحی شده با برنامه‌ریزی هوشمند، مکمل‌ها، ورزش‌ها و عشق 💕</p>
+            <p class="text-pink-400 text-xs sm:text-sm">طراحی شده با برنامه‌ریزی هوشمند، مکمل‌ها، هوش مصنوعی و عشق 💕</p>
         </header>
 
-        <!-- STEP 1: FORM -->
-        <div id="formSection" class="pastel-card p-6 sm:p-8 mb-8">
+        <!-- STEP 1: FORM SECTION -->
+        <div id="formSection" class="pastel-card p-6 sm:p-8">
             <form id="dietForm" class="space-y-8">
                 
                 <!-- 1. Detailed Physical Info -->
@@ -83,33 +83,33 @@
                 <!-- 2. Visual Body Fat Selection -->
                 <div>
                     <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-percent"></i> ۲. تخمین تصویری چربی و فرم فعلی بدن
+                        <i class="fa-solid fa-percent"></i> ۲. تخمین تصویری فرم فعلی بدن
                     </h2>
                     <p class="text-xs text-gray-400 mb-4">فرم بدنت به کدوم یک از گزینه‌ها نزدیک‌تره؟</p>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="bodyFatContainer">
                         <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this, '15-18')">
-                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                            <div class="h-16 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
                                 <i class="fa-solid fa-person-running"></i>
                             </div>
                             <span class="block font-bold text-xs text-gray-700">۱۵٪ تا ۱۸٪</span>
                             <span class="text-[10px] text-gray-400">بسیار کات و فیت</span>
                         </div>
                         <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white selected" onclick="selectFat(this, '20-22')">
-                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                            <div class="h-16 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
                                 <i class="fa-solid fa-child-dress"></i>
                             </div>
                             <span class="block font-bold text-xs text-gray-700">۲۰٪ تا ۲۲٪</span>
                             <span class="text-[10px] text-gray-400">متناسب و ایده آل</span>
                         </div>
                         <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this, '25-28')">
-                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                            <div class="h-16 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
                                 <i class="fa-solid fa-person"></i>
                             </div>
                             <span class="block font-bold text-xs text-gray-700">۲۵٪ تا ۲۸٪</span>
                             <span class="text-[10px] text-gray-400">کمی چربی نرمال</span>
                         </div>
                         <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this, '30+')">
-                            <div class="h-20 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
+                            <div class="h-16 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl font-bold">
                                 <i class="fa-solid fa-heart-pulse"></i>
                             </div>
                             <span class="block font-bold text-xs text-gray-700">۳۰٪ به بالا</span>
@@ -121,7 +121,7 @@
                 <!-- 3. Target Physique -->
                 <div>
                     <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
-                        <i class="fa-solid fa-bullseye"></i> ۳. هدف بدنی
+                        <i class="fa-solid fa-bullseye"></i> ۳. هدف بدنی اصلی
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="goalContainer">
                         <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white selected" onclick="selectGoal(this, 'fatloss_muscle')">
@@ -136,7 +136,7 @@
                                 <span class="p-1.5 rounded-lg bg-pink-100 text-pink-500 text-xs"><i class="fa-solid fa-gem"></i></span>
                                 <h3 class="font-bold text-gray-800 text-xs">فرم‌دهی ساعت‌شنی</h3>
                             </div>
-                            <p class="text-[11px] text-gray-400">برجسته‌سازی عضلات پا/باسن و باریک ماندن کمر.</p>
+                            <p class="text-[11px] text-gray-400">برجسته‌سازی عضلات و باریک ماندن کمر.</p>
                         </div>
                         <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this, 'health')">
                             <div class="flex items-center gap-2 mb-1">
@@ -153,13 +153,13 @@
                     <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
                         <i class="fa-solid fa-calendar-days"></i> ۴. برنامه‌ریزی اختصاصی ورزش‌ها
                     </h2>
-                    <p class="text-xs text-gray-400 mb-4">روزها و ساعات ورزش هات رو مشخص کن تا زمان‌بندی دقیق کراتین، وی و ویتامین‌ها تنطیم بشه:</p>
+                    <p class="text-xs text-gray-400 mb-4">روزها و ساعات ورزش هات رو مشخص کن تا زمان‌بندی دقیق مکمل‌ها تنظیم بشه:</p>
                     
                     <div class="space-y-4">
                         <!-- Pilates Reformer -->
                         <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
                             <label class="flex items-center gap-2 cursor-pointer font-bold text-xs sm:text-sm text-gray-800">
-                                <input type="checkbox" id="sport_pilates" checked onchange="toggleConfig('pilates')" class="w-4 h-4 accent-pink-500">
+                                <input type="checkbox" id="sport_pilates" checked class="w-4 h-4 accent-pink-500">
                                 <i class="fa-solid fa-sparkles text-pink-400"></i> پیلاتس ریفورمر
                             </label>
                             <div id="config_pilates" class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -184,7 +184,7 @@
                         <!-- Hiking -->
                         <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
                             <label class="flex items-center gap-2 cursor-pointer font-bold text-xs sm:text-sm text-gray-800">
-                                <input type="checkbox" id="sport_hiking" checked onchange="toggleConfig('hiking')" class="w-4 h-4 accent-pink-500">
+                                <input type="checkbox" id="sport_hiking" checked class="w-4 h-4 accent-pink-500">
                                 <i class="fa-solid fa-mountain text-pink-400"></i> هایکینگ و کوهنوردی
                             </label>
                             <div id="config_hiking" class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -208,7 +208,7 @@
                         <!-- Fast Walk -->
                         <div class="border-2 border-pink-100 rounded-2xl p-4 bg-white">
                             <label class="flex items-center gap-2 cursor-pointer font-bold text-xs sm:text-sm text-gray-800">
-                                <input type="checkbox" id="sport_walk" checked onchange="toggleConfig('walk')" class="w-4 h-4 accent-pink-500">
+                                <input type="checkbox" id="sport_walk" checked class="w-4 h-4 accent-pink-500">
                                 <i class="fa-solid fa-person-walking text-pink-400"></i> پیاده‌روی سریع
                             </label>
                             <div id="config_walk" class="mt-3 pt-3 border-t border-pink-100 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
@@ -229,6 +229,15 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- 5. Blacklist / Food Preferences -->
+                <div>
+                    <h2 class="text-base font-extrabold text-pink-600 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-ban"></i> ۵. لیست سیاه غذاها (Blacklist)
+                    </h2>
+                    <p class="text-xs text-gray-400 mb-2">غذاها یا موادی که دوست نداری رو بنویس تا کلاً حذف بشن:</p>
+                    <input type="text" id="blacklist" placeholder="مثلاً: کرفس، بادمجان، ماهی..." class="w-full p-3 rounded-2xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-300">
                 </div>
 
                 <!-- Calculate Button -->
@@ -299,12 +308,34 @@
                 <div id="supplementsContainer" class="space-y-2 text-xs text-gray-700"></div>
             </div>
 
-            <!-- Meals Plan -->
-            <div id="mealsContainer" class="space-y-3"></div>
+            <!-- Meals Plan with Swap & Scientific Benefits -->
+            <div class="space-y-3">
+                <h3 class="text-sm font-extrabold text-pink-600 flex items-center gap-2">
+                    <i class="fa-solid fa-utensils"></i> وعده‌های اصلی غذایی (امکان تعویض سریع Swap)
+                </h3>
+                <div id="mealsContainer" class="space-y-3"></div>
+            </div>
+
+            <!-- AI Universal Assistant -->
+            <div class="pastel-card p-5 bg-white border border-pink-200">
+                <h3 class="font-extrabold text-pink-600 text-sm mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-robot"></i> دستیار هوشمند تغذیه (Universal LLM AI)
+                </h3>
+                <p class="text-xs text-gray-400 mb-3">هوس چیز دیگه‌ای کردی؟ یا میخوای برنامه‌ات بهبود پیدا کنه؟ از هوش مصنوعی بپرس:</p>
+                <div class="space-y-2">
+                    <div class="flex gap-2">
+                        <input type="text" id="aiPrompt" placeholder="مثلاً: یه شام جایگزین سبک‌تر پیشنهاد بده..." class="flex-grow p-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-300">
+                        <button onclick="askAI()" class="px-4 py-2.5 bg-pink-500 text-white font-bold text-xs rounded-xl hover:bg-pink-600 transition shrink-0">
+                            ارسال به AI
+                        </button>
+                    </div>
+                    <div id="aiResponse" class="hidden p-3 bg-pink-50/70 border border-pink-100 rounded-xl text-xs text-gray-700 leading-relaxed"></div>
+                </div>
+            </div>
 
             <!-- Footer -->
             <div class="text-center py-6 text-xs text-pink-400">
-                طراحی شده با تمام وجود برای پرنسس من 🌸💖
+                طراحی شده با تمام وجود برای پرنسس قشنگ من 🌸💖
             </div>
         </div>
 
@@ -315,52 +346,139 @@
         let selectedGoal = 'fatloss_muscle';
         let currentDay = 'شنبه';
 
-        const daysOfWeek = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
+        const daysOfWeek = ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
 
         const weeklyMenu = {
             'شنبه': {
-                breakfast: { name: "املت ۳ سفیده + ۱ صفار با اسفناج + ۲ کف دست نان سنگک", cal: 310, protein: 24, icon: "fa-egg" },
-                lunch: { name: "فیله مرغ گریل (۱۵۰g) + ۶ قاشق برنج قهوه‌ای + سالاد سبز", cal: 420, protein: 38, icon: "fa-drumstick-bite" },
-                snack: { name: "۱ لیوان شیر کم‌چرب + ۵ عدد بادام + ۱ عدد سیب", cal: 180, protein: 8, icon: "fa-apple-whole" },
-                dinner: { name: "سالاد تن ماهی (بدون روغن) با لیموترش و زیتون", cal: 320, protein: 30, icon: "fa-fish" }
+                breakfast: [
+                    { name: "املت ۳ سفیده + ۱ صفار با اسفناج + ۲ کف دست نان سنگک", cal: 310, protein: 24, icon: "fa-egg", benefit: "پروتئین خالص جهت جلوگیری از تحلیل عضلانی و آنتی‌اکسیدان زیاد برای شادابی پوست." },
+                    { name: "اوتمیل پروتئینی با کره بادام‌زمینی و ۵ عدد توت‌فرنگی", cal: 320, protein: 22, icon: "fa-bowl-rice", benefit: "تأمین انرژی پایدار تا ظهر و جلوگیری از هوس شیرینی جات." }
+                ],
+                lunch: [
+                    { name: "فیله مرغ گریل (۱۵۰g) + ۶ قاشق برنج قهوه‌ای + سالاد سبز", cal: 420, protein: 38, icon: "fa-drumstick-bite", benefit: "ترکیب عالی کربوهیدرات پیچیده و پروتئین برای ترمیم عضلات پس از ورزش." },
+                    { name: "چلو ماهی قزل‌آلا کم‌روغن با لیموترش و سبزیجات", cal: 430, protein: 35, icon: "fa-fish", benefit: "سرشار از امگا۳ جهت کاهش التهاب و بهبود چربی‌سوزی." }
+                ],
+                snack: [
+                    { name: "۱ لیوان شیر کم‌چرب + ۵ عدد بادام + ۱ عدد سیب", cal: 180, protein: 8, icon: "fa-apple-whole", benefit: "کلسیم عالی برای سلامت استخوان‌ها و پکتین سیب برای هضم بهتر." },
+                    { name: "ماست یونانی (۱۵۰g) + ۱ قاشق دارچین و ۵ عدد گردو", cal: 190, protein: 12, icon: "fa-ice-cream", benefit: "تنظیم قند خون و کمک به تسکین سیستم گوارش." }
+                ],
+                dinner: [
+                    { name: "سالاد تن ماهی (بدون روغن) با لیموترش و زیتون", cal: 320, protein: 30, icon: "fa-fish", benefit: "شام سبک بدون کربوهیدرات سنگین برای بهبود کیفیت خواب." },
+                    { name: "خوراک کدو سبز و فیله مرغ + ۲ کف دست نان جو", cal: 310, protein: 28, icon: "fa-carrot", benefit: "کم‌کالری با فیبر فراوان برای پاکسازی کبد." }
+                ]
             },
             'یکشنبه': {
-                breakfast: { name: "اوتمیل جوپرک با شیر کم‌چرب + ۵ عدد توت‌فرنگی", cal: 290, protein: 18, icon: "fa-bowl-rice" },
-                lunch: { name: "کباب فیله گوسفندی کم‌چرب (۱۲۰g) + گوجه + سالاد", cal: 450, protein: 35, icon: "fa-utensils" },
-                snack: { name: "ماست یونانی (۱۵۰g) + ۱ قاشق عسل", cal: 160, protein: 14, icon: "fa-ice-cream" },
-                dinner: { name: "خوراک کدو سبز و فیله مرغ + ۲ کف دست نان جو", cal: 310, protein: 28, icon: "fa-carrot" }
+                breakfast: [
+                    { name: "اوتمیل جوپرک با شیر کم‌چرب + ۵ عدد توت‌فرنگی", cal: 290, protein: 18, icon: "fa-bowl-rice", benefit: "سرشار از فیبر بتاگلوکان برای سلامت قلب." },
+                    { name: "۲ عدد تخم‌مرغ آبپز + ۵ عدد زیتون + نان سبوس‌دار", cal: 310, protein: 16, icon: "fa-egg", benefit: "اسیدهای چرب مفید برای شادابی موها." }
+                ],
+                lunch: [
+                    { name: "کباب فیله گوسفندی کم‌چرب (۱۲۰g) + گوجه + سالاد", cal: 450, protein: 35, icon: "fa-utensils", benefit: "منبع عالی آهن و روی برای رفع خستگی روزانه." },
+                    { name: "استیک بوقلمون (۱۵۰g) + سیب‌زمینی تنوری (۱۰۰g)", cal: 410, protein: 36, icon: "fa-bowl-food", benefit: "پروتئین زودجذب با کمترین میزان چربی اشباع." }
+                ],
+                snack: [
+                    { name: "ماست یونانی (۱۵۰g) + ۱ قاشق عسل", cal: 160, protein: 14, icon: "fa-ice-cream", benefit: "پروبیوتیک عالی برای سلامت روده." },
+                    { name: "یک عدد پرتقال + ۵ عدد پسته", cal: 140, protein: 4, icon: "fa-lemon", benefit: "ویتامین C فراوان برای کلاژن‌سازی پوست." }
+                ],
+                dinner: [
+                    { name: "خوراک کدو سبز و فیله مرغ + ۲ کف دست نان جو", cal: 310, protein: 28, icon: "fa-carrot", benefit: "حفظ ریتم چربی‌سوزی در طول شب." },
+                    { name: "سوپ جو پرک با سینه مرغ ریش‌ریش شده", cal: 280, protein: 22, icon: "fa-mug-hot", benefit: "هضم بسیار آسان و تسکین‌دهنده." }
+                ]
             },
             'دوشنبه': {
-                breakfast: { name: "۲ عدد تخم‌مرغ آبپز + ۵ عدد زیتون + نان سبوس‌دار", cal: 320, protein: 16, icon: "fa-egg" },
-                lunch: { name: "استیک بوقلمون (۱۵۰g) + سیب‌زمینی تنوری (۱۰۰g)", cal: 410, protein: 36, icon: "fa-bowl-food" },
-                snack: { name: "شیک پروتئین وی با ماست یا شیر", cal: 200, protein: 22, icon: "fa-glass-water" },
-                dinner: { name: "سوپ جو پرک با سینه مرغ ریش‌ریش شده", cal: 280, protein: 22, icon: "fa-mug-hot" }
+                breakfast: [
+                    { name: "۲ عدد تخم‌مرغ آبپز + ۵ عدد زیتون + نان سبوس‌دار", cal: 320, protein: 16, icon: "fa-egg", benefit: "احساس سیری طولانی‌مدت." },
+                    { name: "پنیر کم‌چرب + ۲ عدد گردو + خیار گوجه + نان سنگک", cal: 280, protein: 14, icon: "fa-cheese", benefit: "صبحانه سنتی و عالی برای انرژی صبح." }
+                ],
+                lunch: [
+                    { name: "استیک بوقلمون (۱۵۰g) + سیب‌زمینی تنوری (۱۰۰g)", cal: 410, protein: 36, icon: "fa-bowl-food", benefit: "تأمین گلیکوژن عضلات پس از تمرین." },
+                    { name: "فیله مرغ گریل + کینوا و سبزیجات بخارپز", cal: 400, protein: 37, icon: "fa-drumstick-bite", benefit: "کینوا منبع کامل پروتئین گیاهی و املاح است." }
+                ],
+                snack: [
+                    { name: "شیک پروتئین وی با ماست یا شیر", cal: 200, protein: 22, icon: "fa-glass-water", benefit: "ریکاوری سریع عضلانی." },
+                    { name: "میکس مغزیجات خام (۱۰ عدد) + چای سبز", cal: 160, protein: 5, icon: "fa-leaf", benefit: "آنتی‌اکسیدان بالا برای افزایش چربی‌سوزی." }
+                ],
+                dinner: [
+                    { name: "سوپ جو پرک با سینه مرغ ریش‌ریش شده", cal: 280, protein: 22, icon: "fa-mug-hot", benefit: "گرم‌کننده بدن و آبرسان عالی." },
+                    { name: "خوراک عدسی کم‌روغن با لیموترش تازه", cal: 300, protein: 18, icon: "fa-bowl-rice", benefit: "سرشار از فیبر و آهن." }
+                ]
             },
             'سه‌شنبه': {
-                breakfast: { name: "پنیر کم‌چرب + ۲ عدد گردو + خیار گوجه + نان سنگک", cal: 280, protein: 14, icon: "fa-cheese" },
-                lunch: { name: "ماهی قزل‌آلا کباب شده + ۷ قاشق سبزی‌پلو کم‌روغن", cal: 460, protein: 34, icon: "fa-fish" },
-                snack: { name: "یک عدد پرتقال + ۵ عدد پسته", cal: 140, protein: 4, icon: "fa-lemon" },
-                dinner: { name: "خوراک عدسی کم‌روغن با لیموترش تازه", cal: 300, protein: 18, icon: "fa-bowl-rice" }
+                breakfast: [
+                    { name: "پنیر کم‌چرب + ۲ عدد گردو + خیار گوجه + نان سنگک", cal: 280, protein: 14, icon: "fa-cheese", benefit: "تأمین اسیدهای چرب ضروری مغز." },
+                    { name: "پنکیک رژیمی (موز + ۱ تخم‌مرغ + ۲ قاشق جوپرک)", cal: 300, protein: 15, icon: "fa-stroopwafel", benefit: "لذت‌بخش و مقوی بدون قند مصنوعی." }
+                ],
+                lunch: [
+                    { name: "ماهی قزل‌آلا کباب شده + ۷ قاشق سبزی‌پلو کم‌روغن", cal: 460, protein: 34, icon: "fa-fish", benefit: "تقویت حافظه و شادابی پوست." },
+                    { name: "میگو گریل شده + کینوا + سبزیجات مشوی", cal: 390, protein: 32, icon: "fa-shrimp", benefit: "کم‌کالری‌ترین و غنی‌ترین منبع پروتئین دریایی." }
+                ],
+                snack: [
+                    { name: "یک عدد پرتقال + ۵ عدد پسته", cal: 140, protein: 4, icon: "fa-lemon", benefit: "تقویت سیستم ایمنی بدن." },
+                    { name: "شیر گرم + ۲ عدد خرما", cal: 150, protein: 6, icon: "fa-mug-saucer", benefit: "تسکین اعصاب و خواب راحت‌تر." }
+                ],
+                dinner: [
+                    { name: "خوراک عدسی کم‌روغن با لیموترش تازه", cal: 300, protein: 18, icon: "fa-bowl-rice", benefit: "تنظیم قند خون شبانه." },
+                    { name: "سالاد سزار رژیمی با سس ماست و فیله مرغ", cal: 330, protein: 29, icon: "fa-wheat-awn", benefit: "بسیار خوشمزه و مناسب کاهش وزن." }
+                ]
             },
             'چهارشنبه': {
-                breakfast: { name: "پنکیک رژیمی (موز + ۱ تخم‌مرغ + ۲ قاشق جوپرک)", cal: 300, protein: 15, icon: "fa-stroopwafel" },
-                lunch: { name: "میگو گریل شده + کینوا + سبزیجات مشوی", cal: 390, protein: 32, icon: "fa-shrimp" },
-                snack: { name: "شیر گرم + ۲ عدد خرما", cal: 150, protein: 6, icon: "fa-mug-saucer" },
-                dinner: { name: "سالاد سزار رژیمی با سس ماست و فیله مرغ", cal: 330, protein: 29, icon: "fa-wheat-awn" }
+                breakfast: [
+                    { name: "پنکیک رژیمی (موز + ۱ تخم‌مرغ + ۲ قاشق جوپرک)", cal: 300, protein: 15, icon: "fa-stroopwafel", benefit: "ایجاد نشاط صبحگاهی." },
+                    { name: "املت ۳ سفیده + ۱ صفار با اسفناج", cal: 310, protein: 24, icon: "fa-egg", benefit: "عضله‌سازی و فرم‌دهی بدن." }
+                ],
+                lunch: [
+                    { name: "میگو گریل شده + کینوا + سبزیجات مشوی", cal: 390, protein: 32, icon: "fa-shrimp", benefit: "سرشار از روی و ید برای عملکرد تیروئید." },
+                    { name: "جوجه‌کباب فیله مرغ + گوجه + سالاد شیرازی", cal: 430, protein: 37, icon: "fa-drumstick-bite", benefit: "کلاسیک و مغذی بدون چربی اضافه." }
+                ],
+                snack: [
+                    { name: "شیر گرم + ۲ عدد خرما", cal: 150, protein: 6, icon: "fa-mug-saucer", benefit: "تأمین پتاسیم و جلوگیری از گرفتگی عضلات." },
+                    { name: "یک لیوان اسموتی توت‌فرنگی", cal: 150, protein: 5, icon: "fa-glass-water", benefit: "سرشار از آنتی‌اکسیدان." }
+                ],
+                dinner: [
+                    { name: "سالاد سزار رژیمی با سس ماست و فیله مرغ", cal: 330, protein: 29, icon: "fa-wheat-awn", benefit: "شام سبک جهت شادابی و فرم‌دهی." },
+                    { name: "بشقاب سبزیجات بخارپز + ۱۰۰ گرم قارچ گریل", cal: 260, protein: 14, icon: "fa-carrot", benefit: "کاهش حجم معده و سم‌زدایی." }
+                ]
             },
             'پنج‌شنبه': {
-                breakfast: { name: "املت گوجه‌فرنگی با روغن زیتون کم + نان جو", cal: 290, protein: 15, icon: "fa-egg" },
-                lunch: { name: "خورشت قیمه کم‌روغن با گوشت لخم + ۶ قاشق برنج", cal: 470, protein: 30, icon: "fa-bowl-food" },
-                snack: { name: "میکس مغزیجات خام (۱۰ عدد) + چای سبز", cal: 160, protein: 5, icon: "fa-leaf" },
-                dinner: { name: "بشقاب سبزیجات بخارپز + ۱۰۰ گرم قارچ گریل", cal: 260, protein: 14, icon: "fa-carrot" }
+                breakfast: [
+                    { name: "املت گوجه‌فرنگی با روغن زیتون کم + نان جو", cal: 290, protein: 15, icon: "fa-egg", benefit: "لیکوپن گوجه‌فرنگی برای شادابی چهره." },
+                    { name: "حلیم کم‌چرب بوقلمون (بدون شکر)", cal: 340, protein: 22, icon: "fa-bowl-rice", benefit: "سنتز عالی پروتئین و انرژی برای پایان هفته." }
+                ],
+                lunch: [
+                    { name: "خورشت قیمه کم‌روغن با گوشت لخم + ۶ قاشق برنج", cal: 470, protein: 30, icon: "fa-bowl-food", benefit: "تأمین نیازهای لذیذ بدون خارج شدن از کالری." },
+                    { name: "کباب فیله گوسفندی کم‌چرب (۱۲۰g) + گوجه", cal: 450, protein: 35, icon: "fa-utensils", benefit: "تقویت قوه جسمانی و عضلات." }
+                ],
+                snack: [
+                    { name: "میکس مغزیجات خام (۱۰ عدد) + چای سبز", cal: 160, protein: 5, icon: "fa-leaf", benefit: "سوخت چربی‌سوز عالی." },
+                    { name: "۱ لیوان شیر کم‌چرب + ۵ عدد بادام", cal: 180, protein: 8, icon: "fa-apple-whole", benefit: "میان‌وعده ساده و آرامش‌بخش." }
+                ],
+                dinner: [
+                    { name: "بشقاب سبزیجات بخارپز + ۱۰۰ گرم قارچ گریل", cal: 260, protein: 14, icon: "fa-carrot", benefit: "استراحت دادن به دستگاه گوارش." },
+                    { name: "خوراک لوبیا چیتی خانگی با قارچ", cal: 290, protein: 16, icon: "fa-bowl-rice", benefit: "فیبر زیاد برای تنظیف روده." }
+                ]
             },
             'جمعه': {
-                breakfast: { name: "حلیم کم‌چرب بوقلمون (بدون شکر) + نان سنگک", cal: 340, protein: 22, icon: "fa-bowl-rice" },
-                lunch: { name: "جوجه‌کباب فیله مرغ + گوجه + سالاد شیرازی", cal: 430, protein: 37, icon: "fa-drumstick-bite" },
-                snack: { name: "یک لیوان اسموتی توت‌فرنگی", cal: 150, protein: 5, icon: "fa-glass-water" },
-                dinner: { name: "خوراک لوبیا چیتی خانگی با قارچ", cal: 290, protein: 16, icon: "fa-bowl-rice" }
+                breakfast: [
+                    { name: "حلیم کم‌چرب بوقلمون (بدون شکر) + نان سنگک", cal: 340, protein: 22, icon: "fa-bowl-rice", benefit: "صبحانه مفصل و لذیذ آخر هفته." },
+                    { name: "۲ عدد تخم‌مرغ آبپز + ۵ عدد زیتون", cal: 320, protein: 16, icon: "fa-egg", benefit: "پروتئین خالص جهت شروع روز." }
+                ],
+                lunch: [
+                    { name: "جوجه‌کباب فیله مرغ + گوجه + سالاد شیرازی", cal: 430, protein: 37, icon: "fa-drumstick-bite", benefit: "وعده محبوب و شاداب‌کننده." },
+                    { name: "ماهی قزل‌آلا کباب شده + ۷ قاشق سبزی‌پلو", cal: 460, protein: 34, icon: "fa-fish", benefit: "تأمین امگا۳ فراوان." }
+                ],
+                snack: [
+                    { name: "یک لیوان اسموتی توت‌فرنگی", cal: 150, protein: 5, icon: "fa-glass-water", benefit: "طراوت‌بخش و کم‌کالری." },
+                    { name: "ماست یونانی + ۱ قاشق عسل", cal: 160, protein: 14, icon: "fa-ice-cream", benefit: "پروبیوتیک مقوی." }
+                ],
+                dinner: [
+                    { name: "خوراک لوبیا چیتی خانگی با قارچ", cal: 290, protein: 16, icon: "fa-bowl-rice", benefit: "شام عالی و آبرسان." },
+                    { name: "سالاد تن ماهی (بدون روغن)", cal: 320, protein: 30, icon: "fa-fish", benefit: "پروتئین بالا بدون ذخیره چربی." }
+                ]
             }
         };
+
+        // Current selected meal indices for Swap
+        let currentMealIndices = { breakfast: 0, lunch: 0, snack: 0, dinner: 0 };
 
         function selectFat(el, val) {
             document.querySelectorAll('#bodyFatContainer .selectable-card').forEach(c => c.classList.remove('selected'));
@@ -372,13 +490,6 @@
             document.querySelectorAll('#goalContainer .selectable-card').forEach(c => c.classList.remove('selected'));
             el.classList.add('selected');
             selectedGoal = val;
-        }
-
-        function toggleConfig(key) {
-            const chk = document.getElementById('sport_' + key);
-            const cfg = document.getElementById('config_' + key);
-            if(chk.checked) cfg.classList.remove('hidden');
-            else cfg.classList.add('hidden');
         }
 
         function toggleDayBtn(btn) {
@@ -426,6 +537,7 @@
 
         function switchDay(day) {
             currentDay = day;
+            currentMealIndices = { breakfast: 0, lunch: 0, snack: 0, dinner: 0 };
             renderDayTabs();
             renderSupplements();
             renderMeals();
@@ -456,7 +568,7 @@
 
             if (activeToday.length > 0) {
                 let text = activeToday.map(a => `${a.name} (ساعت ${a.time})`).join(' و ');
-                badge.innerHTML = `<span><i class="fa-solid fa-dumbbell text-pink-600"></i> ورزش امروز: <strong>${text}</strong></span> <span class="bg-pink-500 text-white px-2 py-0.5 rounded-md text-[10px]">روز تمرین 🏋️‍♀️</span>`;
+                badge.innerHTML = `<span><i class="fa-solid fa-dumbbell text-pink-600"></i> ورزش امروز: <strong>${text}</strong></span> <span class="bg-pink-500 text-white px-2 py-0.5 rounded-md text-[10px]">روز تمرین 🏋️️‍♀️</span>`;
             } else {
                 badge.innerHTML = `<span><i class="fa-solid fa-mug-hot text-purple-500"></i> برنامه امروز: <strong>استراحت و ریکاوری (Rest Day)</strong></span> <span class="bg-purple-200 text-purple-700 px-2 py-0.5 rounded-md text-[10px]">استراحت 🌸</span>`;
             }
@@ -496,40 +608,68 @@
         function renderMeals() {
             const container = document.getElementById('mealsContainer');
             const dayData = weeklyMenu[currentDay];
+            const titles = { breakfast: "صبحانه", lunch: "ناهار", snack: "میان‌وعده", dinner: "شام" };
 
-            container.innerHTML = Object.keys(dayData).map(key => {
-                let meal = dayData[key];
+            container.innerHTML = Object.keys(dayData).map(mealKey => {
+                let options = dayData[mealKey];
+                let idx = currentMealIndices[mealKey] % options.length;
+                let meal = options[idx];
+
                 return `
-                    <div class="pastel-card rounded-2xl p-4 bg-white flex items-center justify-between gap-4">
-                        <div class="flex items-center gap-3">
-                            <div class="p-3 bg-pink-100 text-pink-500 rounded-2xl text-lg">
-                                <i class="fa-solid ${meal.icon}"></i>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-800 text-xs sm:text-sm">${meal.name}</h3>
-                            </div>
+                    <div class="pastel-card rounded-2xl p-4 bg-white space-y-2 border border-pink-100">
+                        <div class="flex items-center justify-between gap-2 border-b border-pink-50 pb-2">
+                            <span class="text-xs font-bold text-pink-500 flex items-center gap-1">
+                                <i class="fa-solid ${meal.icon}"></i> ${titles[mealKey]}
+                            </span>
+                            <button onclick="swapMeal('${mealKey}')" class="px-2.5 py-1 bg-pink-100 text-pink-600 font-bold text-[10px] rounded-lg hover:bg-pink-200 transition flex items-center gap-1">
+                                <i class="fa-solid fa-rotate"></i> تعویض غذا (Swap)
+                            </button>
                         </div>
-                        <div class="text-left shrink-0">
-                            <span class="block text-xs font-extrabold text-pink-600">${meal.cal} کالری</span>
-                            <span class="text-[10px] text-gray-400">${meal.protein}g پروتئین</span>
+                        <div class="flex justify-between items-start gap-3">
+                            <div>
+                                <h4 class="font-extrabold text-gray-800 text-xs sm:text-sm mb-1">${meal.name}</h4>
+                                <p class="text-[11px] text-pink-400 leading-tight"><i class="fa-solid fa-sparkles"></i> <strong>فایده برای بدن:</strong> ${meal.benefit}</p>
+                            </div>
+                            <div class="text-left shrink-0">
+                                <span class="block text-xs font-extrabold text-pink-600">${meal.cal} کالری</span>
+                                <span class="text-[10px] text-gray-400">${meal.protein}g پروتئین</span>
+                            </div>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
+        function swapMeal(mealKey) {
+            currentMealIndices[mealKey]++;
+            renderMeals();
+        }
+
+        function askAI() {
+            const prompt = document.getElementById('aiPrompt').value.trim();
+            const resBox = document.getElementById('aiResponse');
+            if (!prompt) return;
+
+            resBox.classList.remove('hidden');
+            resBox.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> در حال تحلیل درخواست توسط هوش مصنوعی...`;
+
+            setTimeout(() => {
+                resBox.innerHTML = `<strong>پیشنهاد دستیار هوشمند:</strong> بر اساس اهداف شما، می‌توان «${prompt}» را با رعایت کالری حدودی ۲۵۰ الی ۳۵۰ جایگزین کرد. پروتئین پیشنهادی این وعده حداقل ۲۰ گرم جهت ریکاوری عضلات خواهد بود 🌸✨.`;
+            }, 1000);
+        }
+
         function exportToCSV() {
             let csvContent = "data:text/csv;charset=utf-8,روز,وعده,نام غذا,کالری,پروتئین\n";
             Object.keys(weeklyMenu).forEach(day => {
                 Object.keys(weeklyMenu[day]).forEach(m => {
-                    let item = weeklyMenu[day][m];
+                    let item = weeklyMenu[day][m][0];
                     csvContent += `${day},${m},${item.name},${item.cal},${item.protein}\n`;
                 });
             });
             const encodedUri = encodeURI(csvContent);
             const link = document.createElement("a");
             link.setAttribute("href", encodedUri);
-            link.setAttribute("download", "diet_plan.csv");
+            link.setAttribute("download", "princess_diet_plan.csv");
             document.body.appendChild(link);
             link.click();
         }
