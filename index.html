@@ -140,7 +140,7 @@
     <div class="pastel-card p-6 bg-white border-2 border-pink-200">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-pink-100 pb-4 mb-4 gap-4">
         <div>
-          <h2 class="text-xl font-extrabold text-pink-600"><i class="fa-solid fa-gem"></i> برنامه‌ی نفس طلایی تو</h2>
+          <h2 class="text-xl font-extrabold text-pink-600"><i class="fa-solid fa-gem"></i> اینم از برنامه غذایی</h2>
           <p id="todayDateText" class="text-xs text-pink-400 font-bold mt-1"></p>
         </div>
         <div class="flex flex-wrap gap-2 no-print">
@@ -191,7 +191,7 @@
     <!-- AI Assistant -->
     <div class="pastel-card p-5 bg-white border border-pink-200">
       <div class="flex items-center justify-between mb-2">
-        <h3 class="font-extrabold text-pink-600 text-sm"><i class="fa-solid fa-robot"></i> دستیار طلایی من</h3>
+        <h3 class="font-extrabold text-pink-600 text-sm"><i class="fa-solid fa-robot"></i> دستیار رژیمی من</h3>
         <button onclick="openAiSettings()" class="px-2.5 py-1.5 bg-purple-100 text-purple-700 font-bold text-[10px] rounded-lg">🔑 اتصال API</button>
       </div>
       <p id="aiStatusLine" class="text-[11px] mb-3"></p>
@@ -203,7 +203,7 @@
       </div>
     </div>
 
-    <div class="text-center py-6 text-xs text-pink-400">رژیم نفس طلایی من — ساخته شده با عشق 🌸💖</div>
+    <div class="text-center py-6 text-xs text-pink-400">رژیم نفس طلایی من — ساخته شده با بینهایت عشق 🌸💖</div>
   </div>
 </div>
 
@@ -559,7 +559,7 @@ async function callAI(q){
   const c=getAiCfg(),p=PROVIDERS[c.provider];
   if(!c.key||!p.endpoint)return null;
   const act=todaySports();
-  const sys=`تو «دستیار طلایی»، دستیار تغذیه و تناسب اندام یک دختر جوان ایرانی هستی. برنامه‌اش: ${JSON.stringify(planContext||{})}. ورزش امروز: ${act.length?act.map(a=>a.name+' ساعت '+a.start+' به مدت '+a.dur+' دقیقه').join(' و '):'استراحت'}. غذاهای دوست‌نداشته: ${getDislikes().join('،')||'ندارد'}. مواد در دسترس: مرغ، ماهی، تخم‌مرغ، توفو، برنج، جو دوسر، ماست یونانی، میوه‌ها و سبزیجات معمولی. همیشه فارسی صمیمی با لحن مهربان جواب بده؛ دستور پخت‌ها را کامل و قدم‌به‌قدم بنویس (مواد با گریم + مراحل شماره‌دار) و کالری و پروتئین تقریبی بده. جواب‌ها کوتاه‌ولطیف ولی کامل باشند.`;
+  const sys=`تو «دستیار صورتی»، دستیار تغذیه و تناسب اندام زیباترین دختر دنیایی هستی. برنامه‌اش: ${JSON.stringify(planContext||{})}. ورزش امروز: ${act.length?act.map(a=>a.name+' ساعت '+a.start+' به مدت '+a.dur+' دقیقه').join(' و '):'استراحت'}. غذاهای دوست‌نداشته: ${getDislikes().join('،')||'ندارد'}. مواد در دسترس: مرغ، ماهی، تخم‌مرغ، توفو، برنج، جو دوسر، ماست یونانی، میوه‌ها و سبزیجات معمولی. همیشه فارسی صمیمی با لحن مهربان جواب بده؛ دستور پخت‌ها را کامل و قدم‌به‌قدم بنویس (مواد با گریم + مراحل شماره‌دار) و کالری و پروتئین تقریبی بده. جواب‌ها کوتاه‌ولطیف ولی کامل باشند.`;
   try{
     if(p.endpoint==='GOOGLE'){
       const r=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${c.model}:generateContent?key=${c.key}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({systemInstruction:{parts:[{text:sys}]},contents:[...aiHistory.slice(-8),{role:'user',parts:[{text:q}]}],generationConfig:{maxOutputTokens:900}})});
