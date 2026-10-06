@@ -49,21 +49,74 @@
       </div>
 
       <div>
-        <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-percent"></i> ۲. فرم فعلی بدن</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="bodyFatContainer">
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this,'15-18')"><div class="h-14 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl"><i class="fa-solid fa-person-running"></i></div><span class="font-bold text-xs text-gray-700">۱۵-۱۸٪</span></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white selected" onclick="selectFat(this,'20-22')"><div class="h-14 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl"><i class="fa-solid fa-child-dress"></i></div><span class="font-bold text-xs text-gray-700">۲۰-۲۲٪</span></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this,'25-28')"><div class="h-14 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl"><i class="fa-solid fa-person"></i></div><span class="font-bold text-xs text-gray-700">۲۵-۲۸٪</span></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this,'30+')"><div class="h-14 bg-pink-50 rounded-xl mb-2 flex items-center justify-center text-pink-400 text-2xl"><i class="fa-solid fa-heart-pulse"></i></div><span class="font-bold text-xs text-gray-700">۳۰٪+</span></div>
+        <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-percent"></i> ۲. درصد چربی بدن — دقیق تخمین بزن</h2>
+        <p class="text-xs text-gray-400 mb-3">اندازه‌ها را با متر خیاطی وارد کن؛ فرمول نظامی آمریکا (دقیق‌ترین روش خانگی برای خانم‌ها) خودش درصد چربی را حساب می‌کند. اگر متر نداری، از کارت‌های تصویری پایین انتخاب کن.</p>
+        <div class="flex flex-col md:flex-row gap-4">
+          <!-- SVG illustration of measuring points -->
+          <div class="shrink-0 bg-pink-50/60 rounded-2xl border border-pink-100 p-3 text-center">
+            <svg viewBox="0 0 120 200" class="h-44 mx-auto">
+              <ellipse cx="60" cy="22" rx="14" ry="16" fill="#fbcfe8"/>
+              <path d="M42 40 Q60 34 78 40 L84 90 Q60 98 36 90 Z" fill="#f9a8d4"/>
+              <path d="M40 96 Q60 104 80 96 L84 130 Q60 140 36 130 Z" fill="#f472b6"/>
+              <path d="M44 140 L40 190 L56 190 L60 152 L64 190 L80 190 L76 140 Z" fill="#f9a8d4"/>
+              <line x1="26" y1="118" x2="94" y2="118" stroke="#be185d" stroke-width="3" stroke-dasharray="5 3"/>
+              <line x1="30" y1="62" x2="90" y2="62" stroke="#a78bfa" stroke-width="3" stroke-dasharray="5 3"/>
+              <text x="60" y="114" text-anchor="middle" font-size="9" fill="#be185d" font-weight="bold">دور کمر</text>
+              <text x="60" y="58" text-anchor="middle" font-size="9" fill="#7c3aed" font-weight="bold">گردن</text>
+            </svg>
+            <p class="text-[10px] text-gray-400 mt-1">نقاط اندازه‌گیری: گردن و باریک‌ترین جای کمر</p>
+          </div>
+          <!-- Inputs -->
+          <div class="flex-grow grid grid-cols-2 gap-3">
+            <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100 col-span-2"><label class="block text-xs font-bold text-gray-600 mb-1">📏 دور کمر (باریک‌ترین نقطه، سانتی‌متر)</label><input type="number" id="waist" value="72" oninput="estimateFat()" class="w-full p-2.5 rounded-xl border border-pink-200 text-center font-extrabold text-pink-600"></div>
+            <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100"><label class="block text-xs font-bold text-gray-600 mb-1">⭕ دور باسن (پهن‌ترین نقطه)</label><input type="number" id="hip" value="98" oninput="estimateFat()" class="w-full p-2.5 rounded-xl border border-pink-200 text-center font-extrabold text-pink-600"></div>
+            <div class="bg-pink-50/60 p-3 rounded-2xl border border-pink-100"><label class="block text-xs font-bold text-gray-600 mb-1">💠 گردن (زیر گلو)</label><input type="number" id="neck" value="33" oninput="estimateFat()" class="w-full p-2.5 rounded-xl border border-pink-200 text-center font-extrabold text-pink-600"></div>
+            <div class="bg-purple-50 p-3 rounded-2xl border border-purple-100 col-span-2 text-center">
+              <span class="block text-[10px] text-purple-500 font-bold">درصد چربی تخمینی تو</span>
+              <span id="fatResult" class="text-2xl font-extrabold text-purple-600">--</span><span class="text-[10px] text-gray-400">٪</span>
+              <p id="fatDesc" class="text-[10px] text-gray-400 mt-1"></p>
+            </div>
+          </div>
         </div>
+        <!-- Visual reference cards (fallback) -->
+        <p class="text-xs text-gray-400 mt-4 mb-2">یا اگر متر نداری، به تصویر نزدیک‌ترت را انتخاب کن (کلیک کن):</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="bodyFatContainer">
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this,'15-18')">
+            <svg viewBox="0 0 60 100" class="h-16 mx-auto"><path d="M30 10 Q38 10 38 20 L36 35 Q30 40 24 35 L22 20 Q22 10 30 10" fill="#f9a8d4"/><path d="M24 38 Q30 36 36 38 L38 55 Q30 60 22 55 Z" fill="#f472b6"/><path d="M26 62 L24 95 L29 95 L30 75 L31 95 L36 95 L34 62 Z" fill="#f9a8d4"/></svg>
+            <span class="block font-bold text-xs text-gray-700">۱۵-۱۸٪</span><span class="text-[10px] text-gray-400">عضلات دیده می‌شه، شکم خط‌دار</span>
+          </div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white selected" onclick="selectFat(this,'20-22')">
+            <svg viewBox="0 0 60 100" class="h-16 mx-auto"><path d="M30 10 Q38 10 38 20 L36 35 Q30 40 24 35 L22 20 Q22 10 30 10" fill="#fbcfe8"/><path d="M22 38 Q30 36 38 38 L40 58 Q30 64 20 58 Z" fill="#f472b6"/><path d="M25 66 L23 95 L29 95 L30 76 L31 95 L37 95 L35 66 Z" fill="#fbcfe8"/></svg>
+            <span class="block font-bold text-xs text-gray-700">۲۰-۲۲٪</span><span class="text-[10px] text-gray-400">سفت و متناسب، کمر باریک</span>
+          </div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this,'25-28')">
+            <svg viewBox="0 0 60 100" class="h-16 mx-auto"><path d="M30 10 Q38 10 38 20 L36 36 Q30 42 24 36 L22 20 Q22 10 30 10" fill="#fbcfe8"/><path d="M20 38 Q30 35 40 38 L42 60 Q30 67 18 60 Z" fill="#f9a8d4"/><path d="M25 68 L22 95 L29 95 L30 77 L31 95 L38 95 L35 68 Z" fill="#fbcfe8"/></svg>
+            <span class="block font-bold text-xs text-gray-700">۲۵-۲۸٪</span><span class="text-[10px] text-gray-400">نرم و نرمال، کمی چربی دور کمر</span>
+          </div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-3 text-center bg-white" onclick="selectFat(this,'30+')">
+            <svg viewBox="0 0 60 100" class="h-16 mx-auto"><path d="M30 10 Q39 10 39 20 L37 37 Q30 44 23 37 L21 20 Q21 10 30 10" fill="#fbcfe8"/><path d="M18 38 Q30 34 42 38 L44 64 Q30 72 16 64 Z" fill="#f9a8d4"/><path d="M24 70 L20 95 L28 95 L30 78 L32 95 L40 95 L36 70 Z" fill="#fbcfe8"/></svg>
+            <span class="block font-bold text-xs text-gray-700">۳۰٪ +</span><span class="text-[10px] text-gray-400">بافت نرم، چربی بیشتر دور شکم و پهلو</span>
+          </div>
+        </div>
+        <div id="estimatedFatBanner" class="hidden mt-3 text-[11px] font-bold text-purple-600 bg-purple-50 border border-purple-100 rounded-xl p-2"></div>
       </div>
 
       <div>
         <h2 class="text-base font-extrabold text-pink-600 mb-2"><i class="fa-solid fa-bullseye"></i> ۳. هدف بدنی</h2>
+        <p class="text-xs text-gray-400 mb-3">برنامه‌ی غذایی، مکمل‌ها و کالری بر اساس همین هدف تنظیم می‌شه:</p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="goalContainer">
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white selected" onclick="selectGoal(this,'fatloss')"><h3 class="font-bold text-gray-800 text-xs">🔥 چربی‌سوزی + حفظ عضله</h3></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'hourglass')"><h3 class="font-bold text-gray-800 text-xs">💎 فرم‌دهی ساعت‌شنی</h3></div>
-          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'health')"><h3 class="font-bold text-gray-800 text-xs">🍃 تثبیت و شادابی</h3></div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white selected" onclick="selectGoal(this,'fatloss')">
+            <div class="flex items-center justify-between mb-2"><h3 class="font-bold text-gray-800 text-xs">🔥 چربی‌سوزی + حفظ عضله</h3><span class="text-[9px] bg-pink-100 text-pink-600 px-1.5 py-0.5 rounded-md font-bold">مناسب ۲۵٪+</span></div>
+            <p class="text-[11px] text-gray-400 leading-relaxed">با کسری کالری ملایم (۳۰۰ کیلوکالری زیر نیازت)، چربی اضافه کم می‌شه بدون اینکه عضله بسوزه. پروتئین بالای برنامه و تمرین قدرتی/پیلاتس در این مسیر کمکت می‌کنن.</p>
+          </div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'hourglass')">
+            <div class="flex items-center justify-between mb-2"><h3 class="font-bold text-gray-800 text-xs">💎 فرم‌دهی ساعت‌شنی</h3><span class="text-[9px] bg-pink-100 text-pink-600 px-1.5 py-0.5 rounded-md font-bold">مناسب ۲۰-۲۵٪</span></div>
+            <p class="text-[11px] text-gray-400 leading-relaxed">وزن کم می‌کنی یا ثابت می‌مونی اما فرم بدن تغییر می‌کنه: باسن و شانه عضلانی‌تر، کمر باریک‌تر. تمرین مقاومتی نقش اصلی رو داره و پروتئین خیلی مهمه.</p>
+          </div>
+          <div class="selectable-card border-2 border-pink-100 rounded-2xl p-4 bg-white" onclick="selectGoal(this,'health')">
+            <div class="flex items-center justify-between mb-2"><h3 class="font-bold text-gray-800 text-xs">🍃 تثبیت و شادابی</h3><span class="text-[9px] bg-pink-100 text-pink-600 px-1.5 py-0.5 rounded-md font-bold">مناسب زیر ۲۰٪</span></div>
+            <p class="text-[11px] text-gray-400 leading-relaxed">چربی‌ات در محدوده سالمه؛ هدف حفظ وزن فعلی، انرژی بالا، پوست شاداب و عادت‌های غذایی پایدار بدون فشار رژیم سخته.</p>
+          </div>
         </div>
       </div>
 
@@ -406,6 +459,8 @@ function calculateAndShowPlan(){
   document.getElementById('targetFats').innerText=fat.toLocaleString('fa-IR');
   document.getElementById('macroLine').textContent=`سوخت‌وساز پایه حدود ${Math.round(bmr).toLocaleString('fa-IR')} کیلوکالری — برنامه با کسری ملایم چیده شده؛ اعداد دقیق نیستند و همین تقریبی کافیه 🌸`;
   planContext={cal,protein,carbs,fat,goal:selectedGoal};
+  const estFat=document.getElementById('fatResult')?.innerText;
+  if(estFat&&estFat!=='--')planContext.bodyFat=estFat;
   document.getElementById('todayDateText').innerText='تاریخ امروز: '+new Date().toLocaleDateString('fa-IR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   const wd=new Date().toLocaleDateString('fa-IR',{weekday:'long'});currentDay=daysOfWeek.includes(wd)?wd:'شنبه';
   localStorage.setItem('golden_form',JSON.stringify({age:a,height:h,weight:w,blacklist:document.getElementById('blacklist').value,sports:getSports()}));
@@ -542,6 +597,27 @@ async function askAI(){
   chatMsg(a,'ai');aiHistory.push({role:'assistant',content:a});b.innerHTML='➤';b.disabled=false;
 }
 
+/* ============ BODY FAT ESTIMATOR (US Navy Method) ============ */
+function estimateFat(){
+  const waist=parseFloat(document.getElementById('waist').value);
+  const neck=parseFloat(document.getElementById('neck').value);
+  const hip=parseFloat(document.getElementById('hip').value);
+  const height=parseFloat(document.getElementById('height').value)||165;
+  if(!waist||!neck||!hip||waist<=0||neck<=0||hip<=0)return;
+  // Navy formula for women (cm): 163.205*log10(waist+hip-neck) - 97.684*log10(height) - 78.387
+  const fat=163.205*Math.log10(waist+hip-neck)-97.684*Math.log10(height)-78.387;
+  const f=Math.max(8,Math.min(50,Math.round(fat)));
+  document.getElementById('fatResult').innerText=f.toLocaleString('fa-IR');
+  const desc=f<18?'بسیار کات و فیت — عضلات مشخص':f<23?'ایده‌آل و متناسب — سفت و باریک':f<29?'نرمال با کمی چربی نرم':'بافت چربی نرم — برنامه چربی‌سوزی مناسبته';
+  document.getElementById('fatDesc').innerText=desc;
+  // Auto-select matching visual card
+  const target=f<19?'15-18':f<24?'20-22':f<29?'25-28':'30+';
+  const map={'15-18':0,'20-22':1,'25-28':2,'30+':3};
+  const cards=document.querySelectorAll('#bodyFatContainer .selectable-card');
+  if(cards[map[target]])selectFat(cards[map[target]],target);
+  selectedFatManual=false;
+}
+  
 /* ============ INIT ============ */
 buildForm();buildWeek();renderChips();updateAiStatus();
 try{const s=JSON.parse(localStorage.getItem('golden_form'));
